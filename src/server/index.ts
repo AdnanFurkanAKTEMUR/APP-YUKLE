@@ -1,7 +1,10 @@
-import { publicProcedure, router } from "./trpc";
+import { privateProcedure, publicProcedure, router } from "./trpc";
 
 export const appRouter = router({
-  getTodos: publicProcedure.query(async () => {
+  getTodos: privateProcedure.query(async ({ ctx }) => {
+    if (ctx.name) {
+      return ctx.name;
+    }
     return [1, 2, 3];
   }),
 });
