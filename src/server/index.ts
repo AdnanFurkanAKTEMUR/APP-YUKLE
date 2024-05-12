@@ -1,12 +1,9 @@
 import { privateProcedure, publicProcedure, router } from "./trpc";
-
+import { CompanyUserRouter } from "./funcs/companyUser/companyUserRouter";
+import { TrailerTypeRouter } from "./funcs/trailerType/trailerTypeRouter";
 export const appRouter = router({
-  getTodos: privateProcedure.query(async ({ ctx }) => {
-    if (ctx.name) {
-      return ctx.name;
-    }
-    return [1, 2, 3];
-  }),
+  companyUser: CompanyUserRouter,
+  trailerType: TrailerTypeRouter,
 });
 
 export type AppRouter = typeof appRouter;

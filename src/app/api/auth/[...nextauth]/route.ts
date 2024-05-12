@@ -1,13 +1,15 @@
 import NextAuth from "next-auth/next";
+import { AuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 require("dotenv").config();
 
-export const nextAuthOptions = {
+const nextAuthOptions: AuthOptions = {
   session: {
-    jwt: true,
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 gün
   },
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     // CredentialsProvider({
     //   type: "credentials",
@@ -62,5 +64,5 @@ export const nextAuthOptions = {
   // },
 };
 
-export const handler = NextAuth(nextAuthOptions);
+const handler = NextAuth(nextAuthOptions);
 export { handler as GET, handler as POST };
