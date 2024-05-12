@@ -13,6 +13,8 @@ export const companyTypeSch = z.object({
   bank_account: z.string().optional(),
   ads: z.array(z.string()).optional(),
   point: z.number().optional(),
+  created_at: z.date().optional(),
+  updated_at: z.date().optional(),
 });
 
 export const createCompanySch = z.object({
@@ -54,6 +56,25 @@ export const getCompanyUserSch = z.object({
   user_id: z.string(),
 });
 
-export const createCompanyAdsSch = z.object({
-  
-})
+export const companyAdsSch = z.object({
+  _id: z.custom<ObjectId>().optional(),
+  id: z.string().optional(),
+  company_id: z.string(),
+  publish_user_id: z.string(),
+  approving_user_id: z.string(),
+  active: z.boolean(),
+  title: z.string(),
+  price: z.number(),
+  double_direction: z.boolean(),
+  priorty: z.boolean(),
+  departure_date: z.date(),
+  arrival_date: z.date(),
+  load_type_id: z.string(),
+  tonage: z.string(),
+  is_with_trailer: z.boolean(),
+  is_with_truck: z.boolean(),
+  driver_point_filter: z.number(),
+  documents: z.string(),
+});
+
+export const createCompanyAdsSch = z.object({});
