@@ -3,8 +3,7 @@ import { ObjectId } from "mongodb";
 import { CreateCompanyUserInputSchema } from "../userTypes/companyUserTypes";
 
 export const companyTypeSch = z.object({
-  _id: z.custom<ObjectId>().optional(),
-  id: z.string().optional(),
+  _id: z.string(),
   name: z.string(),
   address: z.string(),
   phone_number: z.string(),
