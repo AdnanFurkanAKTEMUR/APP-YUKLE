@@ -4,7 +4,6 @@ import "./globals.css";
 import Provider from "./_trpc/Provider";
 import { getServerSession } from "next-auth";
 import SessionProvider from "./_component/sessionProvider";
-import Nav from "./_component/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +22,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider>
-          <SessionProvider session={session}>
-            <Nav />
-            {children}
-          </SessionProvider>
+          <SessionProvider session={session}>{children}</SessionProvider>
         </Provider>
       </body>
     </html>
