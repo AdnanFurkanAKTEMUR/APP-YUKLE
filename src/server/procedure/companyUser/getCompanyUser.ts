@@ -1,4 +1,5 @@
-import { CompanyUserType } from "@/server/common/userTypes/companyUserTypes";
+
+import { CompanyUserType } from "@/server/common/companyUserType/companyUserTypes";
 import { connectToDatabase } from "@/server/database/mongo";
 import { ApiResponse, errorResponse, successResponse } from "@/server/utils/response";
 import { Collection, ObjectId } from "mongodb";

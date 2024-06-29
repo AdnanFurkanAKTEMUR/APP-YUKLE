@@ -1,5 +1,5 @@
 import { privateProcedure, publicProcedure, router } from "../../trpc";
-import { CreateCompanyUserInputSchema } from "../../common/userTypes/companyUserTypes";
+import { CreateCompanyUserInputSchema } from "../../common/companyUserType/companyUserTypes";
 import { CreateTrailerTypeInputSchema, DeleteTrailerTypeInputSch } from "@/server/common/trailerTypeType/trailerTypeType";
 import getTrailerType from "./getTrailerType";
 import getAllTrailerType from "./getAllTrailerType";

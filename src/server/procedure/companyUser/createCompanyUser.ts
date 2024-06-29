@@ -1,11 +1,10 @@
-import { CompanyUserType } from "@/server/common/userTypes/companyUserTypes";
+import { CompanyUserType, CreateCompanyUserType } from "@/server/common/companyUserType/companyUserTypes";
 import { connectToDatabase } from "@/server/database/mongo";
 import { Collection } from "mongodb";
-import { CreateCompanyUserInputType } from "../../common/userTypes/companyUserTypes";
 import { ApiResponse, successResponse } from "@/server/utils/response";
 import { errorResponse } from "../../utils/response";
 
-export default async function createCompanyUser(input: CreateCompanyUserInputType): Promise<ApiResponse<string>> {
+export default async function createCompanyUser(input: CreateCompanyUserType): Promise<ApiResponse< CompanyUserType | string>> {
   try {
     const client = await connectToDatabase();
     const db = client.db();
