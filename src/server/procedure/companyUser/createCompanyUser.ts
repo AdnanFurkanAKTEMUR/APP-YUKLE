@@ -2,8 +2,10 @@ import { CompanyUserType } from "@/server/common/userTypes/companyUserTypes";
 import { connectToDatabase } from "@/server/database/mongo";
 import { Collection } from "mongodb";
 import { CreateCompanyUserInputType } from "../../common/userTypes/companyUserTypes";
+import { ApiResponse, successResponse } from "@/server/utils/response";
+import { errorResponse } from "../../utils/response";
 
-export default async function createCompanyUser(input: CreateCompanyUserInputType) {
+export default async function createCompanyUser(input: CreateCompanyUserInputType): Promise<ApiResponse<string>> {
   try {
     const client = await connectToDatabase();
     const db = client.db();
@@ -17,10 +19,10 @@ export default async function createCompanyUser(input: CreateCompanyUserInputTyp
       created_at: new Date(),
       updated_at: new Date(),
     });
-    if(createdUser.insertedId){
-      return { success:true, reason:"Kullanıcı başarılı bi şekilde oluşturuldu!"}
-    }else {
-      return { success: false, reason: "ERR => Kullanıcı oluşturalamadı!"}
+    if (createdUser.insertedId) {
+      return successResponse("", "Kullanıcı başarılı bir şekilde oluşturuldu");
+    } else {
+      return errorResponse("bir hata meydana geldi");
     }
   } catch (e) {
     throw new Error(e + "create c user");

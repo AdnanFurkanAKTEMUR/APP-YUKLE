@@ -1,8 +1,7 @@
 import { z } from "zod";
 
 export const CompanyUserSchema = z.object({
-  _id: z.string().optional(),
-  id: z.string().optional(),
+  _id: z.any(),
   name: z.string(),
   surname: z.string(),
   password: z.string(),
