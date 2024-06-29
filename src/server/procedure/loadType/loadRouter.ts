@@ -6,7 +6,7 @@ import createLoad from "./createLoad";
 import updateLoad from "./updateLoad";
 import deleteLoad from "./deleteLoad";
 
-export const CompanyUserRouter = router({
+export const LoadRouter = router({
   getLoad: privateProcedure.input(DeleteOrGetLoadTypeSchema).query(async ({ ctx, input }) => {
     //ctx kontrolü ileride içinde token ve kullanıcı bilgisi var
     const result = await getLoad(input);
