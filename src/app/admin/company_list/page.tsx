@@ -1,12 +1,12 @@
 "use client";
 
 import AdminLayout from "@/app/_component/admin/adminLayout/AdminLayout";
-import CreateCompanyUserComponent from "@/app/_component/admin/create_company_user/CreateCompanyUserComp";
+import CompanyListComponent from "@/app/_component/admin/CompanyListComponent/CompanyListComponent";
 
 export default function createCompanyUser() {
   return (
     <AdminLayout>
-      <CreateCompanyUserComponent />
+      <CompanyListComponent />
     </AdminLayout>
   );
 }

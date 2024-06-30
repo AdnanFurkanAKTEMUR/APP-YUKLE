@@ -1,7 +1,8 @@
-import { CreateCompanySch } from "@/server/common/companyType/companyType";
+import { CreateCompanySch, DeleteOrGetCompanySchema } from "@/server/common/companyType/companyType";
 import { privateProcedure, publicProcedure, router } from "../../trpc";
 import createCompany from "./createCompany";
 import getAllCompany from "./getAllCompany";
+import deleteCompany from "./deleteCompany";
 
 export const CompanyRouter = router({
   createCompnay: privateProcedure.input(CreateCompanySch).mutation(async ({ ctx, input }) => {
@@ -10,6 +11,10 @@ export const CompanyRouter = router({
   }),
   getAllCompany: privateProcedure.query(async ({ ctx, input }) => {
     const result = await getAllCompany();
+    return result;
+  }),
+  deleteCompany: privateProcedure.input(DeleteOrGetCompanySchema).mutation(async ({ ctx, input }) => {
+    const result = await deleteCompany(input);
     return result;
   }),
 });

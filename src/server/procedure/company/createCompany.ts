@@ -9,7 +9,7 @@ export default async function createCompany(input: CreateCompanyType): Promise<A
     const db = client.db();
     const compnayCollection: Collection<CompanyType> = db.collection("company");
     const createCompany = await compnayCollection.insertOne({
-      name: input.phone_number,
+      name: input.name,
       address: input.address,
       phone_number: input.phone_number,
       vkn: input.vkn,
