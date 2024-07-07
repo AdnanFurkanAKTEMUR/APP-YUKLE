@@ -24,6 +24,7 @@ export default function edit_company() {
       <AdminLayout>
         <Form
           name="create_company"
+          //@ts-ignore
           initialValues={data.value}
           onFinish={onFinish}
           layout="vertical"

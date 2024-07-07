@@ -6,8 +6,10 @@ const secret = process.env.NEXTAUTH_SECRET;
 const t = initTRPC.context<typeof createContext>().create();
 
 const isAuthed = t.middleware(async ({ ctx, next }) => {
+  //console.log(ctx?.cookies._headers, "ctx")
   //@ts-ignore
   const token = await getToken({ req: ctx, secret });
+  console.log(token, "token")
   if (!token) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
