@@ -1,11 +1,4 @@
-import {
-  BaseEntity,
-  Column,
-  CreateDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class AdminUser extends BaseEntity {
@@ -28,20 +21,20 @@ export class AdminUser extends BaseEntity {
   verified!: boolean;
 
   @Column({ nullable: true })
-  verification_token_expires: Date;
+  verificationTokenExpires: Date;
 
   @Column({ nullable: true })
-  verification_token: string;
+  verificationToken: string;
 
   @Column({ nullable: true })
-  reset_password_token: string;
+  resetPasswordToken: string;
 
   @Column({ nullable: true })
-  reset_password_token_expires: Date;
+  resetPasswordTokenExpires: Date;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 }

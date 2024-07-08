@@ -29,17 +29,17 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   AdminUser: { // root type
-    created_at: string; // String!
+    createdAt: string; // String!
     email: string; // String!
     id: number; // Int!
     name: string; // String!
     password: string; // String!
-    reset_password_token?: string | null; // String
-    reset_passwotd_token_expires?: string | null; // String
+    resetPasswordToken?: string | null; // String
+    resetPasswotdTokenExpires?: string | null; // String
     surname: string; // String!
-    updated_at: string; // String!
-    verification_token?: string | null; // String
-    verification_token_expires?: string | null; // String
+    updatedAt: string; // String!
+    verificationToken?: string | null; // String
+    verificationTokenExpires?: string | null; // String
     verified: boolean; // Boolean!
   }
   AuthType: { // root type
@@ -75,17 +75,17 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   AdminUser: { // field return type
-    created_at: string; // String!
+    createdAt: string; // String!
     email: string; // String!
     id: number; // Int!
     name: string; // String!
     password: string; // String!
-    reset_password_token: string | null; // String
-    reset_passwotd_token_expires: string | null; // String
+    resetPasswordToken: string | null; // String
+    resetPasswotdTokenExpires: string | null; // String
     surname: string; // String!
-    updated_at: string; // String!
-    verification_token: string | null; // String
-    verification_token_expires: string | null; // String
+    updatedAt: string; // String!
+    verificationToken: string | null; // String
+    verificationTokenExpires: string | null; // String
     verified: boolean; // Boolean!
   }
   AuthType: { // field return type
@@ -120,17 +120,17 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   AdminUser: { // field return type name
-    created_at: 'String'
+    createdAt: 'String'
     email: 'String'
     id: 'Int'
     name: 'String'
     password: 'String'
-    reset_password_token: 'String'
-    reset_passwotd_token_expires: 'String'
+    resetPasswordToken: 'String'
+    resetPasswotdTokenExpires: 'String'
     surname: 'String'
-    updated_at: 'String'
-    verification_token: 'String'
-    verification_token_expires: 'String'
+    updatedAt: 'String'
+    verificationToken: 'String'
+    verificationTokenExpires: 'String'
     verified: 'Boolean'
   }
   AuthType: { // field return type name

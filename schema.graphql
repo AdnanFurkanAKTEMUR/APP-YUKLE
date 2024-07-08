@@ -3,17 +3,17 @@
 
 
 type AdminUser {
-  created_at: String!
+  createdAt: String!
   email: String!
   id: Int!
   name: String!
   password: String!
-  reset_password_token: String
-  reset_passwotd_token_expires: String
+  resetPasswordToken: String
+  resetPasswotdTokenExpires: String
   surname: String!
-  updated_at: String!
-  verification_token: String
-  verification_token_expires: String
+  updatedAt: String!
+  verificationToken: String
+  verificationTokenExpires: String
   verified: Boolean!
 }
 

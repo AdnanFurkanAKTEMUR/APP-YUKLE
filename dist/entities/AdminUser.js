@@ -41,27 +41,27 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Date)
-], AdminUser.prototype, "verification_token_expires", void 0);
+], AdminUser.prototype, "verificationTokenExpires", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
-], AdminUser.prototype, "verification_token", void 0);
+], AdminUser.prototype, "verificationToken", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
-], AdminUser.prototype, "reset_password_token", void 0);
+], AdminUser.prototype, "resetPasswordToken", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", Date)
-], AdminUser.prototype, "reset_password_token_expires", void 0);
+], AdminUser.prototype, "resetPasswordTokenExpires", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], AdminUser.prototype, "created_at", void 0);
+], AdminUser.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], AdminUser.prototype, "updated_at", void 0);
+], AdminUser.prototype, "updatedAt", void 0);
 exports.AdminUser = AdminUser = __decorate([
     (0, typeorm_1.Entity)()
 ], AdminUser);

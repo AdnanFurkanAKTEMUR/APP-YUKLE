@@ -17,12 +17,12 @@ exports.AdminUserType = (0, nexus_1.objectType)({
         t.nonNull.string("surname");
         t.nonNull.string("email");
         t.nonNull.string("password");
-        t.nonNull.string("created_at");
-        t.nonNull.string("updated_at");
-        t.nullable.string("verification_token");
-        t.nullable.string("verification_token_expires");
-        t.nullable.string("reset_password_token");
-        t.nullable.string("reset_passwotd_token_expires");
+        t.nonNull.string("createdAt");
+        t.nonNull.string("updatedAt");
+        t.nullable.string("verificationToken");
+        t.nullable.string("verificationTokenExpires");
+        t.nullable.string("resetPasswordToken");
+        t.nullable.string("resetPasswotdTokenExpires");
         t.nonNull.boolean("verified");
     },
 });
@@ -74,8 +74,8 @@ exports.AdminUserMutation = (0, nexus_1.extendType)({
                 const { email, name, surname, password } = args;
                 const conn = context.SqlConnection;
                 const hashedPassword = await argon2_1.default.hash(password);
-                const verification_token = (0, generateToken_1.default)(32);
-                const verification_token_expires = new Date(Date.now() + 30 * 60 * 1000);
+                const verificationToken = (0, generateToken_1.default)(32);
+                const verificationTokenExpires = new Date(Date.now() + 30 * 60 * 1000);
                 let adminUser;
                 try {
                     const result = await conn
@@ -87,8 +87,8 @@ exports.AdminUserMutation = (0, nexus_1.extendType)({
                         name,
                         surname,
                         password: hashedPassword,
-                        verification_token,
-                        verification_token_expires,
+                        verificationToken,
+                        verificationTokenExpires,
                         verified: false,
                     })
                         .returning("*")
