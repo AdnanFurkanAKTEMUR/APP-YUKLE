@@ -13,8 +13,8 @@ export const productType = objectType({
         return User.findOne({ where: { id: parent.creatorId } });
       },
     });
-    t.nonNull.string("created_at");
-    t.nonNull.string("updated_at");
+    t.nonNull.string("createdAt");
+    t.nonNull.string("updatedAt");
   },
 });
 

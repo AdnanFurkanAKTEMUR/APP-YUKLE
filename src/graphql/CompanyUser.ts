@@ -1,5 +1,5 @@
 import { objectType } from "nexus";
-import { Ad } from "../entities/Ads";
+import { Ad } from "../entities/Ad";
 import { Company } from "../entities/Company";
 
 export const CompanyUserType = objectType({
@@ -38,13 +38,7 @@ export const CompanyUserType = objectType({
         return await Ad.find({ where: { approvedUser: parent.id } });
       },
     });
-
-    t.nonNull.field("createdAt", {
-      type: "DateTime",
-    });
-
-    t.nonNull.field("updatedAt", {
-      type: "DateTime",
-    });
+    t.nonNull.string("createdAt");
+    t.nonNull.string("updatedAt");
   },
 });

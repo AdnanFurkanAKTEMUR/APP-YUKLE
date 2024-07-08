@@ -1,7 +1,6 @@
 import { objectType } from "nexus";
-import { Ad } from "../entities/Ads";
+import { Ad } from "../entities/Ad";
 import { Company } from "../entities/Company";
-
 
 export const CompanyTrailerType = objectType({
   name: "CompanyTrailer",
@@ -23,13 +22,7 @@ export const CompanyTrailerType = objectType({
         return await Ad.findOne({ where: { companyTrailer: parent.id } });
       },
     });
-
-    t.nonNull.field("created_at", {
-      type: "DateTime",
-    });
-
-    t.nonNull.field("updated_at", {
-      type: "DateTime",
-    });
+    t.nonNull.string("createdAt");
+    t.nonNull.string("updatedAt");
   },
 });

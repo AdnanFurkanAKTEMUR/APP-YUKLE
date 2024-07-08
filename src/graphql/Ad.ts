@@ -71,20 +71,9 @@ export const AdType = objectType({
       },
     });
 
-    t.nonNull.field("departureDate", {
-      type: "DateTime",
-    });
-
-    t.nonNull.field("arrivalDate", {
-      type: "DateTime",
-    });
-
-    t.nonNull.field("createdAt", {
-      type: "DateTime",
-    });
-
-    t.nonNull.field("updatedAt", {
-      type: "DateTime",
-    });
+    t.nonNull.string("departureDate");
+    t.nonNull.string("arrivalDate");
+    t.nonNull.string("createdAt");
+    t.nonNull.string("updatedAt");
   },
 });

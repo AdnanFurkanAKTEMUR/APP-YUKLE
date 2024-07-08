@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Company } from "./Company";
-import { Ad } from "./Ads";
+import { Ad } from "./Ad";
 
 //alanlar daha sonra genişletilecek
 @Entity()
@@ -16,8 +16,8 @@ export class CompanyTrailer extends BaseEntity {
 
   @ManyToOne(() => Company, (company) => company.companyTrailers)
   company: Company;
-  
-  @OneToOne(() => Ad, (ad) => ad.companyTrailer) 
+
+  @OneToOne(() => Ad, (ad) => ad.companyTrailer)
   ad: Ad;
 
   @CreateDateColumn()

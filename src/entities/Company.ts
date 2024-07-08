@@ -3,7 +3,7 @@ import { CompanyBankAccount } from "./CompanyBankAccount";
 import { CompanyUser } from "./CompanyUser";
 import { CompanyTrailer } from "./CompanyTrailer";
 import { CompanyTruck } from "./CompanyTrucks";
-import { Ad } from "./Ads";
+import { Ad } from "./Ad";
 import { CompanyLoad } from "./CompanyLoad";
 //ads eklenecek
 @Entity()

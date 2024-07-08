@@ -1,6 +1,6 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Company } from "./Company";
-import { Ad } from "./Ads";
+import { Ad } from "./Ad";
 
 @Entity()
 export class CompanyTruck extends BaseEntity {

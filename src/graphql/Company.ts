@@ -4,7 +4,7 @@ import { CompanyUser } from "../entities/CompanyUser";
 import { CompanyTrailer } from "../entities/CompanyTrailer";
 import { CompanyTruck } from "../entities/CompanyTrucks";
 import { CompanyLoad } from "../entities/CompanyLoad";
-import { Ad } from "../entities/Ads";
+import { Ad } from "../entities/Ad";
 export const CompanyType = objectType({
   name: "Company",
   definition(t) {
@@ -56,12 +56,8 @@ export const CompanyType = objectType({
         return await Ad.find({ where: { company: parent.id } });
       },
     });
-    t.nonNull.field("createdAt", {
-      type: "DateTime",
-    });
 
-    t.nonNull.field("updatedAt", {
-      type: "DateTime",
-    });
+    t.nonNull.string("createdAt");
+    t.nonNull.string("updatedAt");
   },
 });

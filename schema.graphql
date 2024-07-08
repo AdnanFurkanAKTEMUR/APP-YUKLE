@@ -2,6 +2,33 @@
 ### Do not make changes to this file directly
 
 
+type Ad {
+  active: Boolean!
+  approvedUser: CompanyUser
+  arrivalDate: String!
+  company: Company
+  companyId: Int!
+  companyLoad: CompanyLoad
+  companyTrailer: CompanyTrailer
+  companyTruck: CompanyTruck
+  createdAt: String!
+  createdUser: CompanyUser
+  departureDate: String!
+  description: String!
+  documents: String!
+  doubleDirection: Boolean!
+  driverPointFilter: Float!
+  id: Int!
+  price: Float!
+  prioty: Boolean!
+  publishUser: CompanyUser
+  title: String!
+  tonage: String!
+  trailer: Boolean!
+  truck: Boolean!
+  updatedAt: String!
+}
+
 type AdminUser {
   createdAt: String!
   email: String!
@@ -22,6 +49,79 @@ type AuthType {
   token: String!
 }
 
+type Company {
+  address: String!
+  ads: [Ad]
+  bankAccounts: [CompanyBankAccount]
+  companyLoads: [CompanyLoad]
+  companyName: String!
+  companyTrailers: [CompanyTrailer]
+  companyTrucks: [CompanyTruck]
+  companyUsers: [CompanyUser]
+  createdAt: String!
+  id: Int!
+  phoneNumber: String!
+  point: Float!
+  updatedAt: String!
+  vkn: String!
+}
+
+type CompanyBankAccount {
+  accountUserName: String!
+  bankAccountNumber: String!
+  bankName: String!
+  company: Company
+  companyId: Int!
+  createdAt: String!
+  iban: String!
+  id: Int!
+  updatedAt: String!
+}
+
+type CompanyLoad {
+  ad: Ad
+  company: Company
+  companyId: Int!
+  createdAt: String!
+  id: Int!
+  name: String!
+  updatedAt: String!
+}
+
+type CompanyTrailer {
+  ad: Ad
+  company: Company
+  companyId: Int!
+  createdAt: String!
+  id: Int!
+  name: String!
+  updatedAt: String!
+}
+
+type CompanyTruck {
+  ad: Ad
+  company: Company
+  companyId: Int!
+  createdAt: String!
+  id: Int!
+  name: String!
+  updatedAt: String!
+}
+
+type CompanyUser {
+  approvedAds: [Ad]
+  company: Company
+  createdAds: [Ad]
+  createdAt: String!
+  email: String!
+  id: Int!
+  name: String!
+  publishAds: [Ad]
+  role: String!
+  surname: String!
+  updatedAt: String!
+}
+
 type Mutation {
   createAdminUserMutation(email: String!, name: String!, password: String!, surname: String!): AdminUser!
   createProductMutation(name: String!, price: Float!): Product!
@@ -29,13 +129,13 @@ type Mutation {
 }
 
 type Product {
+  createdAt: String!
   createdBy: User
-  created_at: String!
   creatorId: Int!
   id: Int!
   name: String!
   price: Float!
-  updated_at: String!
+  updatedAt: String!
 }
 
 type Query {
@@ -45,7 +145,9 @@ type Query {
 }
 
 type User {
+  createdAt: String!
   email: String!
   password: String!
+  updatedAt: String!
   username: String!
 }

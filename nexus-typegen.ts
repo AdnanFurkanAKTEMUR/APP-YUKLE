@@ -28,6 +28,25 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Ad: { // root type
+    active: boolean; // Boolean!
+    arrivalDate: string; // String!
+    companyId: number; // Int!
+    createdAt: string; // String!
+    departureDate: string; // String!
+    description: string; // String!
+    documents: string; // String!
+    doubleDirection: boolean; // Boolean!
+    driverPointFilter: number; // Float!
+    id: number; // Int!
+    price: number; // Float!
+    prioty: boolean; // Boolean!
+    title: string; // String!
+    tonage: string; // String!
+    trailer: boolean; // Boolean!
+    truck: boolean; // Boolean!
+    updatedAt: string; // String!
+  }
   AdminUser: { // root type
     createdAt: string; // String!
     email: string; // String!
@@ -46,19 +65,71 @@ export interface NexusGenObjects {
     admin_user: NexusGenRootTypes['AdminUser']; // AdminUser!
     token: string; // String!
   }
+  Company: { // root type
+    address: string; // String!
+    companyName: string; // String!
+    createdAt: string; // String!
+    id: number; // Int!
+    phoneNumber: string; // String!
+    point: number; // Float!
+    updatedAt: string; // String!
+    vkn: string; // String!
+  }
+  CompanyBankAccount: { // root type
+    accountUserName: string; // String!
+    bankAccountNumber: string; // String!
+    bankName: string; // String!
+    companyId: number; // Int!
+    createdAt: string; // String!
+    iban: string; // String!
+    id: number; // Int!
+    updatedAt: string; // String!
+  }
+  CompanyLoad: { // root type
+    companyId: number; // Int!
+    createdAt: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    updatedAt: string; // String!
+  }
+  CompanyTrailer: { // root type
+    companyId: number; // Int!
+    createdAt: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    updatedAt: string; // String!
+  }
+  CompanyTruck: { // root type
+    companyId: number; // Int!
+    createdAt: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    updatedAt: string; // String!
+  }
+  CompanyUser: { // root type
+    createdAt: string; // String!
+    email: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    role: string; // String!
+    surname: string; // String!
+    updatedAt: string; // String!
+  }
   Mutation: {};
   Product: { // root type
-    created_at: string; // String!
+    createdAt: string; // String!
     creatorId: number; // Int!
     id: number; // Int!
     name: string; // String!
     price: number; // Float!
-    updated_at: string; // String!
+    updatedAt: string; // String!
   }
   Query: {};
   User: { // root type
+    createdAt: string; // String!
     email: string; // String!
     password: string; // String!
+    updatedAt: string; // String!
     username: string; // String!
   }
 }
@@ -74,6 +145,32 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Ad: { // field return type
+    active: boolean; // Boolean!
+    approvedUser: NexusGenRootTypes['CompanyUser'] | null; // CompanyUser
+    arrivalDate: string; // String!
+    company: NexusGenRootTypes['Company'] | null; // Company
+    companyId: number; // Int!
+    companyLoad: NexusGenRootTypes['CompanyLoad'] | null; // CompanyLoad
+    companyTrailer: NexusGenRootTypes['CompanyTrailer'] | null; // CompanyTrailer
+    companyTruck: NexusGenRootTypes['CompanyTruck'] | null; // CompanyTruck
+    createdAt: string; // String!
+    createdUser: NexusGenRootTypes['CompanyUser'] | null; // CompanyUser
+    departureDate: string; // String!
+    description: string; // String!
+    documents: string; // String!
+    doubleDirection: boolean; // Boolean!
+    driverPointFilter: number; // Float!
+    id: number; // Int!
+    price: number; // Float!
+    prioty: boolean; // Boolean!
+    publishUser: NexusGenRootTypes['CompanyUser'] | null; // CompanyUser
+    title: string; // String!
+    tonage: string; // String!
+    trailer: boolean; // Boolean!
+    truck: boolean; // Boolean!
+    updatedAt: string; // String!
+  }
   AdminUser: { // field return type
     createdAt: string; // String!
     email: string; // String!
@@ -92,19 +189,86 @@ export interface NexusGenFieldTypes {
     admin_user: NexusGenRootTypes['AdminUser']; // AdminUser!
     token: string; // String!
   }
+  Company: { // field return type
+    address: string; // String!
+    ads: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
+    bankAccounts: Array<NexusGenRootTypes['CompanyBankAccount'] | null> | null; // [CompanyBankAccount]
+    companyLoads: Array<NexusGenRootTypes['CompanyLoad'] | null> | null; // [CompanyLoad]
+    companyName: string; // String!
+    companyTrailers: Array<NexusGenRootTypes['CompanyTrailer'] | null> | null; // [CompanyTrailer]
+    companyTrucks: Array<NexusGenRootTypes['CompanyTruck'] | null> | null; // [CompanyTruck]
+    companyUsers: Array<NexusGenRootTypes['CompanyUser'] | null> | null; // [CompanyUser]
+    createdAt: string; // String!
+    id: number; // Int!
+    phoneNumber: string; // String!
+    point: number; // Float!
+    updatedAt: string; // String!
+    vkn: string; // String!
+  }
+  CompanyBankAccount: { // field return type
+    accountUserName: string; // String!
+    bankAccountNumber: string; // String!
+    bankName: string; // String!
+    company: NexusGenRootTypes['Company'] | null; // Company
+    companyId: number; // Int!
+    createdAt: string; // String!
+    iban: string; // String!
+    id: number; // Int!
+    updatedAt: string; // String!
+  }
+  CompanyLoad: { // field return type
+    ad: NexusGenRootTypes['Ad'] | null; // Ad
+    company: NexusGenRootTypes['Company'] | null; // Company
+    companyId: number; // Int!
+    createdAt: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    updatedAt: string; // String!
+  }
+  CompanyTrailer: { // field return type
+    ad: NexusGenRootTypes['Ad'] | null; // Ad
+    company: NexusGenRootTypes['Company'] | null; // Company
+    companyId: number; // Int!
+    createdAt: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    updatedAt: string; // String!
+  }
+  CompanyTruck: { // field return type
+    ad: NexusGenRootTypes['Ad'] | null; // Ad
+    company: NexusGenRootTypes['Company'] | null; // Company
+    companyId: number; // Int!
+    createdAt: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    updatedAt: string; // String!
+  }
+  CompanyUser: { // field return type
+    approvedAds: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
+    company: NexusGenRootTypes['Company'] | null; // Company
+    createdAds: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
+    createdAt: string; // String!
+    email: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    publishAds: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
+    role: string; // String!
+    surname: string; // String!
+    updatedAt: string; // String!
+  }
   Mutation: { // field return type
     createAdminUserMutation: NexusGenRootTypes['AdminUser']; // AdminUser!
     createProductMutation: NexusGenRootTypes['Product']; // Product!
     login: NexusGenRootTypes['AuthType']; // AuthType!
   }
   Product: { // field return type
+    createdAt: string; // String!
     createdBy: NexusGenRootTypes['User'] | null; // User
-    created_at: string; // String!
     creatorId: number; // Int!
     id: number; // Int!
     name: string; // String!
     price: number; // Float!
-    updated_at: string; // String!
+    updatedAt: string; // String!
   }
   Query: { // field return type
     getAdminUserQuery: NexusGenRootTypes['AdminUser']; // AdminUser!
@@ -112,13 +276,41 @@ export interface NexusGenFieldTypes {
     products: NexusGenRootTypes['Product'][]; // [Product!]!
   }
   User: { // field return type
+    createdAt: string; // String!
     email: string; // String!
     password: string; // String!
+    updatedAt: string; // String!
     username: string; // String!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Ad: { // field return type name
+    active: 'Boolean'
+    approvedUser: 'CompanyUser'
+    arrivalDate: 'String'
+    company: 'Company'
+    companyId: 'Int'
+    companyLoad: 'CompanyLoad'
+    companyTrailer: 'CompanyTrailer'
+    companyTruck: 'CompanyTruck'
+    createdAt: 'String'
+    createdUser: 'CompanyUser'
+    departureDate: 'String'
+    description: 'String'
+    documents: 'String'
+    doubleDirection: 'Boolean'
+    driverPointFilter: 'Float'
+    id: 'Int'
+    price: 'Float'
+    prioty: 'Boolean'
+    publishUser: 'CompanyUser'
+    title: 'String'
+    tonage: 'String'
+    trailer: 'Boolean'
+    truck: 'Boolean'
+    updatedAt: 'String'
+  }
   AdminUser: { // field return type name
     createdAt: 'String'
     email: 'String'
@@ -137,19 +329,86 @@ export interface NexusGenFieldTypeNames {
     admin_user: 'AdminUser'
     token: 'String'
   }
+  Company: { // field return type name
+    address: 'String'
+    ads: 'Ad'
+    bankAccounts: 'CompanyBankAccount'
+    companyLoads: 'CompanyLoad'
+    companyName: 'String'
+    companyTrailers: 'CompanyTrailer'
+    companyTrucks: 'CompanyTruck'
+    companyUsers: 'CompanyUser'
+    createdAt: 'String'
+    id: 'Int'
+    phoneNumber: 'String'
+    point: 'Float'
+    updatedAt: 'String'
+    vkn: 'String'
+  }
+  CompanyBankAccount: { // field return type name
+    accountUserName: 'String'
+    bankAccountNumber: 'String'
+    bankName: 'String'
+    company: 'Company'
+    companyId: 'Int'
+    createdAt: 'String'
+    iban: 'String'
+    id: 'Int'
+    updatedAt: 'String'
+  }
+  CompanyLoad: { // field return type name
+    ad: 'Ad'
+    company: 'Company'
+    companyId: 'Int'
+    createdAt: 'String'
+    id: 'Int'
+    name: 'String'
+    updatedAt: 'String'
+  }
+  CompanyTrailer: { // field return type name
+    ad: 'Ad'
+    company: 'Company'
+    companyId: 'Int'
+    createdAt: 'String'
+    id: 'Int'
+    name: 'String'
+    updatedAt: 'String'
+  }
+  CompanyTruck: { // field return type name
+    ad: 'Ad'
+    company: 'Company'
+    companyId: 'Int'
+    createdAt: 'String'
+    id: 'Int'
+    name: 'String'
+    updatedAt: 'String'
+  }
+  CompanyUser: { // field return type name
+    approvedAds: 'Ad'
+    company: 'Company'
+    createdAds: 'Ad'
+    createdAt: 'String'
+    email: 'String'
+    id: 'Int'
+    name: 'String'
+    publishAds: 'Ad'
+    role: 'String'
+    surname: 'String'
+    updatedAt: 'String'
+  }
   Mutation: { // field return type name
     createAdminUserMutation: 'AdminUser'
     createProductMutation: 'Product'
     login: 'AuthType'
   }
   Product: { // field return type name
+    createdAt: 'String'
     createdBy: 'User'
-    created_at: 'String'
     creatorId: 'Int'
     id: 'Int'
     name: 'String'
     price: 'Float'
-    updated_at: 'String'
+    updatedAt: 'String'
   }
   Query: { // field return type name
     getAdminUserQuery: 'AdminUser'
@@ -157,8 +416,10 @@ export interface NexusGenFieldTypeNames {
     products: 'Product'
   }
   User: { // field return type name
+    createdAt: 'String'
     email: 'String'
     password: 'String'
+    updatedAt: 'String'
     username: 'String'
   }
 }

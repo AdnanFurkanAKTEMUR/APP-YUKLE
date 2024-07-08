@@ -18,4 +18,11 @@ __exportStar(require("./Product"), exports);
 __exportStar(require("./User"), exports);
 __exportStar(require("./Auth"), exports);
 __exportStar(require("./AdminUser"), exports);
+__exportStar(require("./Ad"), exports);
+__exportStar(require("./Company"), exports);
+__exportStar(require("./CompanyBankAccount"), exports);
+__exportStar(require("./CompanyLoad"), exports);
+__exportStar(require("./CompanyTrailer"), exports);
+__exportStar(require("./CompanyTruck"), exports);
+__exportStar(require("./CompanyUser"), exports);
 //# sourceMappingURL=index.js.map
