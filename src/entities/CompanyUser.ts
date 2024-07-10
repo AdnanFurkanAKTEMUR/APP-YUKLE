@@ -19,6 +19,9 @@ export class CompanyUser extends BaseEntity {
   @Column()
   role!: string;
 
+  @Column()
+  companyId!: number;
+
   @ManyToOne(() => Company, (company) => company.companyUsers)
   company: Company;
 

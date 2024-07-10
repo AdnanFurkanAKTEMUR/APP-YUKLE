@@ -110,7 +110,7 @@ type CompanyTruck {
 
 type CompanyUser {
   approvedAds: [Ad]
-  company: Company
+  company: Company!
   createdAds: [Ad]
   createdAt: String!
   email: String!
@@ -124,8 +124,12 @@ type CompanyUser {
 
 type Mutation {
   createAdminUserMutation(email: String!, name: String!, password: String!, surname: String!): AdminUser!
+  createCompanyMutation(address: String!, companyName: String!, phoneNumber: String!, point: String!, vkn: String!): Company!
+  createCompanyUser(companyId: Int!, email: String!, name: String!, role: String!, surname: String!): CompanyUser!
   createProductMutation(name: String!, price: Float!): Product!
+  deleteCompany(companyId: Int!): Company!
   login(email: String!, password: String!): AuthType!
+  updateCompanyInfo(address: String!, companyId: Int!, companyName: String!, phoneNumber: String!, point: String!, vkn: String!): Company!
 }
 
 type Product {
@@ -141,6 +145,9 @@ type Product {
 type Query {
   getAdminUserQuery(id: Int!): AdminUser!
   getAllAdminUserQuery: AdminUser!
+  getAllCompanyUsers: [CompanyUser]!
+  getCompanies: [Company]!
+  getCompany(getCompanyId: Int!): Company!
   products: [Product!]!
 }
 

@@ -1,6 +1,7 @@
-import { objectType } from "nexus";
+import { objectType, nonNull, extendType, stringArg, intArg } from "nexus";
 import { Ad } from "../entities/Ad";
 import { Company } from "../entities/Company";
+import { CompanyUser } from "../entities/CompanyUser";
 
 export const CompanyUserType = objectType({
   name: "CompanyUser",
@@ -11,10 +12,11 @@ export const CompanyUserType = objectType({
     t.nonNull.string("email");
     t.nonNull.string("role");
 
-    t.field("company", {
+    t.nonNull.field("company", {
       type: "Company",
       resolve: async (parent) => {
-        return await Company.findOne(parent.companyId);
+        console.log(parent.companyId);
+        return await Company.findOne({ where: { id: parent.companyId } });
       },
     });
 
@@ -40,5 +42,48 @@ export const CompanyUserType = objectType({
     });
     t.nonNull.string("createdAt");
     t.nonNull.string("updatedAt");
+  },
+});
+
+export const CompanyUserQuery = extendType({
+  type: "Query",
+  definition(t) {
+    t.nonNull.list.field("getAllCompanyUsers", {
+      type: "CompanyUser",
+      resolve: async (): Promise<CompanyUser[]> => {
+        const allCompanyUsers = await CompanyUser.find();
+        console.log(allCompanyUsers);
+        if (allCompanyUsers) {
+          return await allCompanyUsers;
+        } else {
+          throw new Error("Kullanıcılar bulunamadı!");
+        }
+      },
+    });
+  },
+});
+
+export const CompanyUserMutation = extendType({
+  type: "Mutation",
+  definition(t) {
+    t.nonNull.field("createCompanyUser", {
+      type: "CompanyUser",
+      args: {
+        name: nonNull(stringArg()),
+        surname: nonNull(stringArg()),
+        email: nonNull(stringArg()),
+        role: nonNull(stringArg()),
+        companyId: nonNull(intArg()),
+      },
+      resolve: async (_parent, args, _context, _info): Promise<CompanyUser> => {
+        const { name, surname, email, role, companyId } = args;
+        const companyUser = await CompanyUser.create({ name, surname, email, role, companyId: companyId }).save();
+        if (companyUser) {
+          return companyUser;
+        } else {
+          throw new Error("Kullanıcı bulunamadı!");
+        }
+      },
+    });
   },
 });

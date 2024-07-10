@@ -24,7 +24,9 @@ exports.ProductQuery = (0, nexus_1.extendType)({
     definition(t) {
         t.nonNull.list.nonNull.field("products", {
             type: "Product",
-            resolve(_parent, _args, _context, _info) {
+            async resolve(_parent, _args, _context, _info) {
+                const p = await Product_1.Product.find();
+                console.log(p);
                 return Product_1.Product.find();
             },
         });

@@ -23,11 +23,13 @@ export const ProductQuery = extendType({
   definition(t) {
     t.nonNull.list.nonNull.field("products", {
       type: "Product",
-      resolve(_parent, _args, _context, _info): Promise<Product[]> {
+      async resolve(_parent, _args, _context, _info): Promise<Product[]> {
         //düz sql yazmak istersekte context içinde sql connection var
         // const { SqlConnection } = context
         //SqlConnection auto complete için DataSource tipini implemente edilmeli.
         // return = SqlConnection.query(`select * from product`)
+        const p = await Product.find();
+        console.log(p);
         return Product.find();
       },
     });

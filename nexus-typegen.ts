@@ -245,7 +245,7 @@ export interface NexusGenFieldTypes {
   }
   CompanyUser: { // field return type
     approvedAds: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
-    company: NexusGenRootTypes['Company'] | null; // Company
+    company: NexusGenRootTypes['Company']; // Company!
     createdAds: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
     createdAt: string; // String!
     email: string; // String!
@@ -258,8 +258,12 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     createAdminUserMutation: NexusGenRootTypes['AdminUser']; // AdminUser!
+    createCompanyMutation: NexusGenRootTypes['Company']; // Company!
+    createCompanyUser: NexusGenRootTypes['CompanyUser']; // CompanyUser!
     createProductMutation: NexusGenRootTypes['Product']; // Product!
+    deleteCompany: NexusGenRootTypes['Company']; // Company!
     login: NexusGenRootTypes['AuthType']; // AuthType!
+    updateCompanyInfo: NexusGenRootTypes['Company']; // Company!
   }
   Product: { // field return type
     createdAt: string; // String!
@@ -273,6 +277,9 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     getAdminUserQuery: NexusGenRootTypes['AdminUser']; // AdminUser!
     getAllAdminUserQuery: NexusGenRootTypes['AdminUser']; // AdminUser!
+    getAllCompanyUsers: Array<NexusGenRootTypes['CompanyUser'] | null>; // [CompanyUser]!
+    getCompanies: Array<NexusGenRootTypes['Company'] | null>; // [Company]!
+    getCompany: NexusGenRootTypes['Company']; // Company!
     products: NexusGenRootTypes['Product'][]; // [Product!]!
   }
   User: { // field return type
@@ -398,8 +405,12 @@ export interface NexusGenFieldTypeNames {
   }
   Mutation: { // field return type name
     createAdminUserMutation: 'AdminUser'
+    createCompanyMutation: 'Company'
+    createCompanyUser: 'CompanyUser'
     createProductMutation: 'Product'
+    deleteCompany: 'Company'
     login: 'AuthType'
+    updateCompanyInfo: 'Company'
   }
   Product: { // field return type name
     createdAt: 'String'
@@ -413,6 +424,9 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     getAdminUserQuery: 'AdminUser'
     getAllAdminUserQuery: 'AdminUser'
+    getAllCompanyUsers: 'CompanyUser'
+    getCompanies: 'Company'
+    getCompany: 'Company'
     products: 'Product'
   }
   User: { // field return type name
@@ -432,18 +446,46 @@ export interface NexusGenArgTypes {
       password: string; // String!
       surname: string; // String!
     }
+    createCompanyMutation: { // args
+      address: string; // String!
+      companyName: string; // String!
+      phoneNumber: string; // String!
+      point: string; // String!
+      vkn: string; // String!
+    }
+    createCompanyUser: { // args
+      companyId: number; // Int!
+      email: string; // String!
+      name: string; // String!
+      role: string; // String!
+      surname: string; // String!
+    }
     createProductMutation: { // args
       name: string; // String!
       price: number; // Float!
+    }
+    deleteCompany: { // args
+      companyId: number; // Int!
     }
     login: { // args
       email: string; // String!
       password: string; // String!
     }
+    updateCompanyInfo: { // args
+      address: string; // String!
+      companyId: number; // Int!
+      companyName: string; // String!
+      phoneNumber: string; // String!
+      point: string; // String!
+      vkn: string; // String!
+    }
   }
   Query: {
     getAdminUserQuery: { // args
       id: number; // Int!
+    }
+    getCompany: { // args
+      getCompanyId: number; // Int!
     }
   }
 }
