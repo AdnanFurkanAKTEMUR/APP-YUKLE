@@ -116,20 +116,28 @@ type CompanyUser {
   email: String!
   id: Int!
   name: String!
+  password: String!
   publishAds: [Ad]
+  resetPasswordToken: String
+  resetPasswotdTokenExpires: String
   role: String!
   surname: String!
   updatedAt: String!
+  verificationToken: String
+  verificationTokenExpires: String
+  verified: Boolean!
 }
 
 type Mutation {
   createAdminUserMutation(email: String!, name: String!, password: String!, surname: String!): AdminUser!
   createCompanyMutation(address: String!, companyName: String!, phoneNumber: String!, point: String!, vkn: String!): Company!
-  createCompanyUser(companyId: Int!, email: String!, name: String!, role: String!, surname: String!): CompanyUser!
+  createCompanyUser(companyId: Int!, email: String!, name: String!, password: String!, role: String!, surname: String!): CompanyUser!
   createProductMutation(name: String!, price: Float!): Product!
   deleteCompany(companyId: Int!): Company!
+  deleteCompanyUser(companyUserId: Int!): String!
   login(email: String!, password: String!): AuthType!
   updateCompanyInfo(address: String!, companyId: Int!, companyName: String!, phoneNumber: String!, point: String!, vkn: String!): Company!
+  updateCompanyUser(companyUserId: Int!, name: String!, surname: String!): CompanyUser!
 }
 
 type Product {

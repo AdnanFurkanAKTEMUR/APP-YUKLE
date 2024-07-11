@@ -13,7 +13,7 @@ export class CompanyUser extends BaseEntity {
   @Column()
   surname!: string;
 
-  @Column()
+  @Column({ unique: true })
   email!: string;
 
   @Column()
@@ -21,6 +21,24 @@ export class CompanyUser extends BaseEntity {
 
   @Column()
   companyId!: number;
+
+  @Column()
+  password!: string;
+
+  @Column()
+  verified!: boolean;
+
+  @Column({ nullable: true })
+  verificationTokenExpires: Date;
+
+  @Column({ nullable: true })
+  verificationToken: string;
+
+  @Column({ nullable: true })
+  resetPasswordToken: string;
+
+  @Column({ nullable: true })
+  resetPasswordTokenExpires: Date;
 
   @ManyToOne(() => Company, (company) => company.companyUsers)
   company: Company;

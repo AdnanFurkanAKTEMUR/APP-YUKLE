@@ -28,8 +28,6 @@ export const ProductQuery = extendType({
         // const { SqlConnection } = context
         //SqlConnection auto complete için DataSource tipini implemente edilmeli.
         // return = SqlConnection.query(`select * from product`)
-        const p = await Product.find();
-        console.log(p);
         return Product.find();
       },
     });

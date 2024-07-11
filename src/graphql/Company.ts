@@ -127,17 +127,18 @@ export const CompanyMutation = extendType({
       },
       resolve: async (_parent, args, _context, _info): Promise<Company> => {
         const { companyName, address, phoneNumber, vkn, point, companyId } = args;
-        const company = await Company.update({ id: companyId }, { companyName, address, phoneNumber, vkn, point });
-        if (company.affected == 1) {
-          const updatedCompany = await Company.findOne({ where: { id: companyId } });
-          if (updatedCompany) {
-            return updatedCompany;
-          } else {
-            throw new Error("Kayıt bulunamadı!");
-          }
-        } else {
-          throw new Error("Kayıt Eklenemedi!");
+        const updatedCompany = await Company.findOne({ where: { id: companyId } });
+        if (!updatedCompany) {
+          throw new Error("Firma bulunamadı!");
         }
+        updatedCompany.companyName = companyName;
+        updatedCompany.address = address;
+        updatedCompany.phoneNumber = phoneNumber;
+        updatedCompany.vkn = vkn;
+        updatedCompany.point = point;
+
+        updatedCompany.save();
+        return updatedCompany;
       },
     });
 

@@ -111,9 +111,15 @@ export interface NexusGenObjects {
     email: string; // String!
     id: number; // Int!
     name: string; // String!
+    password: string; // String!
+    resetPasswordToken?: string | null; // String
+    resetPasswotdTokenExpires?: string | null; // String
     role: string; // String!
     surname: string; // String!
     updatedAt: string; // String!
+    verificationToken?: string | null; // String
+    verificationTokenExpires?: string | null; // String
+    verified: boolean; // Boolean!
   }
   Mutation: {};
   Product: { // root type
@@ -251,10 +257,16 @@ export interface NexusGenFieldTypes {
     email: string; // String!
     id: number; // Int!
     name: string; // String!
+    password: string; // String!
     publishAds: Array<NexusGenRootTypes['Ad'] | null> | null; // [Ad]
+    resetPasswordToken: string | null; // String
+    resetPasswotdTokenExpires: string | null; // String
     role: string; // String!
     surname: string; // String!
     updatedAt: string; // String!
+    verificationToken: string | null; // String
+    verificationTokenExpires: string | null; // String
+    verified: boolean; // Boolean!
   }
   Mutation: { // field return type
     createAdminUserMutation: NexusGenRootTypes['AdminUser']; // AdminUser!
@@ -262,8 +274,10 @@ export interface NexusGenFieldTypes {
     createCompanyUser: NexusGenRootTypes['CompanyUser']; // CompanyUser!
     createProductMutation: NexusGenRootTypes['Product']; // Product!
     deleteCompany: NexusGenRootTypes['Company']; // Company!
+    deleteCompanyUser: string; // String!
     login: NexusGenRootTypes['AuthType']; // AuthType!
     updateCompanyInfo: NexusGenRootTypes['Company']; // Company!
+    updateCompanyUser: NexusGenRootTypes['CompanyUser']; // CompanyUser!
   }
   Product: { // field return type
     createdAt: string; // String!
@@ -398,10 +412,16 @@ export interface NexusGenFieldTypeNames {
     email: 'String'
     id: 'Int'
     name: 'String'
+    password: 'String'
     publishAds: 'Ad'
+    resetPasswordToken: 'String'
+    resetPasswotdTokenExpires: 'String'
     role: 'String'
     surname: 'String'
     updatedAt: 'String'
+    verificationToken: 'String'
+    verificationTokenExpires: 'String'
+    verified: 'Boolean'
   }
   Mutation: { // field return type name
     createAdminUserMutation: 'AdminUser'
@@ -409,8 +429,10 @@ export interface NexusGenFieldTypeNames {
     createCompanyUser: 'CompanyUser'
     createProductMutation: 'Product'
     deleteCompany: 'Company'
+    deleteCompanyUser: 'String'
     login: 'AuthType'
     updateCompanyInfo: 'Company'
+    updateCompanyUser: 'CompanyUser'
   }
   Product: { // field return type name
     createdAt: 'String'
@@ -457,6 +479,7 @@ export interface NexusGenArgTypes {
       companyId: number; // Int!
       email: string; // String!
       name: string; // String!
+      password: string; // String!
       role: string; // String!
       surname: string; // String!
     }
@@ -466,6 +489,9 @@ export interface NexusGenArgTypes {
     }
     deleteCompany: { // args
       companyId: number; // Int!
+    }
+    deleteCompanyUser: { // args
+      companyUserId: number; // Int!
     }
     login: { // args
       email: string; // String!
@@ -478,6 +504,11 @@ export interface NexusGenArgTypes {
       phoneNumber: string; // String!
       point: string; // String!
       vkn: string; // String!
+    }
+    updateCompanyUser: { // args
+      companyUserId: number; // Int!
+      name: string; // String!
+      surname: string; // String!
     }
   }
   Query: {
