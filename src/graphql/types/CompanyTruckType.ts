@@ -13,6 +13,17 @@ const CompanyTruckType = gql`
 
   type Query {
     getAllCompanyTruck: [CompanyTruck]
+    getCompanyTruck(input: getId): CompanyTruck
+  }
+
+  input createCompanyTruckInput {
+    name: String!
+    companyId: Int!
+    adId: Int
+  }
+
+  type Mutation {
+    createCompanyTruck(input: createCompanyTruckInput): CompanyTruck
   }
 `;
 

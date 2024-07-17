@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyTruckType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyTruckType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,gBAAgB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;CAc3B,CAAC;AAEF,kBAAe,gBAAgB,CAAC"}
+{"version":3,"file":"CompanyTruckType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyTruckType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,gBAAgB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;CAyB3B,CAAC;AAEF,kBAAe,gBAAgB,CAAC"}

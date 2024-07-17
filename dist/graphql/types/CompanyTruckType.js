@@ -14,6 +14,17 @@ const CompanyTruckType = (0, graphql_tag_1.gql) `
 
   type Query {
     getAllCompanyTruck: [CompanyTruck]
+    getCompanyTruck(input: getId): CompanyTruck
+  }
+
+  input createCompanyTruckInput {
+    name: String!
+    companyId: Int!
+    adId: Int
+  }
+
+  type Mutation {
+    createCompanyTruck(input: createCompanyTruckInput): CompanyTruck
   }
 `;
 exports.default = CompanyTruckType;

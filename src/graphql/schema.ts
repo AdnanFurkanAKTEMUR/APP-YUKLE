@@ -23,10 +23,12 @@ import CompanyTrailerResolver from "./resolvers/CompanyTrailerResolver";
 import AuthType from "./types/AuthType";
 import AuthResolver from "./resolvers/AuthResolver";
 import GeneralInputTypes from "./types/GeneralInputTypes";
+import ProductType from "./types/ProductType";
+import ProductResolver from "./resolvers/ProductResolver";
 
 const schema = makeExecutableSchema({
-  typeDefs: [GeneralInputTypes, AdminUserType, AuthType, CompanyTrailerType, CompanyType, CompanyBankAccountType, CompanyLoadType, AdType, CompanyUserType, CompanyTruckType],
-  resolvers: [AdminUserResolver, AuthResolver, CompanyTrailerResolver, CompanyResolver, CompanyBankAccountResolver, CompanyLoadResolver, AdResolver, CompanyUserResolver, CompanyTruckResolver],
+  typeDefs: [ProductType, GeneralInputTypes, AdminUserType, AuthType, CompanyTrailerType, CompanyType, CompanyBankAccountType, CompanyLoadType, AdType, CompanyUserType, CompanyTruckType],
+  resolvers: [ProductResolver, AdminUserResolver, AuthResolver, CompanyTrailerResolver, CompanyResolver, CompanyBankAccountResolver, CompanyLoadResolver, AdResolver, CompanyUserResolver, CompanyTruckResolver],
 });
 
 export default schema;
