@@ -1,8 +1,8 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Company } from "./Company";
 import { CompanyUser } from "./CompanyUser";
 import { CompanyLoad } from "./CompanyLoad";
 import { CompanyTrailer } from "./CompanyTrailer";
+import { Company } from "@entities/Company";
 import { CompanyTruck } from "./CompanyTrucks";
 
 @Entity()
@@ -68,7 +68,7 @@ export class Ad extends BaseEntity {
 
   @OneToOne(() => CompanyTruck, (companyTruck) => companyTruck.ad)
   @JoinColumn()
-  companyTruck: CompanyTruck;
+  companyTruck: CompanyTruck
 
   @Column()
   departureDate: Date;

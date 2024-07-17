@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ad = void 0;
 const typeorm_1 = require("typeorm");
-const Company_1 = require("./Company");
 const CompanyUser_1 = require("./CompanyUser");
 const CompanyLoad_1 = require("./CompanyLoad");
 const CompanyTrailer_1 = require("./CompanyTrailer");
+const Company_1 = require("./Company");
 const CompanyTrucks_1 = require("./CompanyTrucks");
 let Ad = class Ad extends typeorm_1.BaseEntity {
 };

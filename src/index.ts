@@ -5,7 +5,7 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import express from "express";
 import http from "http";
 import cors from "cors";
-import { schema } from "./schema";
+import schema from "./graphql/schema";
 import typeormConfig from "./typeorm.config";
 import { auth } from "./middlewares/auth";
 
@@ -28,9 +28,7 @@ async function startServer() {
     express.json(),
     expressMiddleware(server, {
       context: async ({ req, res }) => {
-        const token = req?.headers?.authorization
-          ? auth(req.headers.authorization)
-          : null;
+        const token = req?.headers?.authorization ? auth(req.headers.authorization) : null;
         return {
           user_id: token?.user_id,
           req,
