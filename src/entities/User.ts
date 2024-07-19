@@ -3,11 +3,9 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { Product } from "./Product";
 
 @Entity()
 export class User extends BaseEntity {
@@ -22,9 +20,6 @@ export class User extends BaseEntity {
 
   @Column()
   password!: string;
-
-  @OneToMany(() => Product, (product) => product.creator)
-  products: Product[];
 
   @CreateDateColumn()
   created_at: Date;

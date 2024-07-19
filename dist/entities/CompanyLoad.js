@@ -30,10 +30,16 @@ __decorate([
 ], CompanyLoad.prototype, "companyId", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.companyLoads),
+    (0, typeorm_1.JoinColumn)({ name: "companyId" }),
     __metadata("design:type", Company_1.Company)
 ], CompanyLoad.prototype, "company", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], CompanyLoad.prototype, "adId", void 0);
+__decorate([
     (0, typeorm_1.OneToOne)(() => Ad_1.Ad, (ad) => ad.companyLoad),
+    (0, typeorm_1.JoinColumn)({ name: "adId" }),
     __metadata("design:type", Ad_1.Ad)
 ], CompanyLoad.prototype, "ad", void 0);
 __decorate([

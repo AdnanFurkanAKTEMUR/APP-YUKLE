@@ -30,7 +30,16 @@ async function startServer() {
             var _a;
             const token = ((_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization) ? (0, auth_1.auth)(req.headers.authorization) : null;
             return {
-                user_id: token === null || token === void 0 ? void 0 : token.user_id,
+                user: {
+                    user_id: token === null || token === void 0 ? void 0 : token.user_id,
+                    company_id: token === null || token === void 0 ? void 0 : token.company_id,
+                    name: token === null || token === void 0 ? void 0 : token.name,
+                    surname: token === null || token === void 0 ? void 0 : token.surname,
+                    email: token === null || token === void 0 ? void 0 : token.email,
+                    verified: token === null || token === void 0 ? void 0 : token.verified,
+                    role: token === null || token === void 0 ? void 0 : token.role,
+                    type: token === null || token === void 0 ? void 0 : token.type,
+                },
                 req,
                 res,
                 SqlConnection,

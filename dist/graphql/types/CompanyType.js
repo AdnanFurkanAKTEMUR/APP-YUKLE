@@ -5,7 +5,7 @@ const CompanyType = (0, graphql_tag_1.gql) `
   type Company {
     address: String
     ads: [Ad]
-    bankAccounts: [CompanyBankAccount]
+    companyBankAccounts: [CompanyBankAccount]
     companyLoads: [CompanyLoad]
     companyTrailers: [CompanyTrailer]
     companyTrucks: [CompanyTruck]

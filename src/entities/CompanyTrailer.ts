@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Company } from "./Company";
 import { Ad } from "./Ad";
 
@@ -8,21 +8,26 @@ export class CompanyTrailer extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
   name!: string;
 
   @Column()
   companyId!: number;
 
   @ManyToOne(() => Company, (company) => company.companyTrailers)
+  @JoinColumn({ name: "companyId" })
   company: Company;
 
+  @Column({ nullable: true })
+  adId: number;
+
   @OneToOne(() => Ad, (ad) => ad.companyTrailer)
+  @JoinColumn({ name: "adId" })
   ad: Ad;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
 }

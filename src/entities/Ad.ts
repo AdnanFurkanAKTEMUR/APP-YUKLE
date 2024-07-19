@@ -47,28 +47,50 @@ export class Ad extends BaseEntity {
   companyId!: number;
 
   @ManyToOne(() => Company, (company) => company.ads)
+  @JoinColumn({ name: "companyId" })
   company: Company;
 
+  @Column()
+  createdCompanyUserId!: number;
+
   @ManyToOne(() => CompanyUser, (cu) => cu.createdAds)
-  createdUser: CompanyUser;
+  @JoinColumn({ name: "createdCompanyUserId" })
+  createdCompanyUser: CompanyUser;
+
+  @Column({ nullable: true })
+  publishedCompanyUserId: number;
 
   @ManyToOne(() => CompanyUser, (cu) => cu.publishAds)
-  publishUser: CompanyUser;
+  @JoinColumn({ name: "publishedCompanyUserId" })
+  publishedCompanyUser: CompanyUser;
+
+  @Column({ nullable: true })
+  approvedCompanyUserId: number;
 
   @ManyToOne(() => CompanyUser, (cu) => cu.approvedAds)
-  approvedUser: CompanyUser;
+  @JoinColumn({ name: "approvedCompanyUserId" })
+  approvedCompanyUser: CompanyUser;
+
+  @Column()
+  companyLoadId!: number;
 
   @OneToOne(() => CompanyLoad, (companyLoad) => companyLoad.ad)
-  @JoinColumn()
+  @JoinColumn({ name: "companyLoadId" })
   companyLoad: CompanyLoad;
 
+  @Column({ nullable: true })
+  companyTrailerId: number;
+
   @OneToOne(() => CompanyTrailer, (companyTrailer) => companyTrailer.ad)
-  @JoinColumn()
+  @JoinColumn({ name: "companyTrailerId" })
   companyTrailer: CompanyTrailer;
 
+  @Column({ nullable: true })
+  companyTruckId: number;
+
   @OneToOne(() => CompanyTruck, (companyTruck) => companyTruck.ad)
-  @JoinColumn()
-  companyTruck: CompanyTruck
+  @JoinColumn({ name: "companyTruckId" })
+  companyTruck: CompanyTruck;
 
   @Column()
   departureDate: Date;

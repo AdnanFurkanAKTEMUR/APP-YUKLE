@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyUserType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyUserType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,eAAe,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAsC1B,CAAC;AAEF,kBAAe,eAAe,CAAC"}
+{"version":3,"file":"CompanyUserType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyUserType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,eAAe,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAsE1B,CAAC;AAEF,kBAAe,eAAe,CAAC"}

@@ -4,7 +4,7 @@ const CompanyType = gql`
   type Company {
     address: String
     ads: [Ad]
-    bankAccounts: [CompanyBankAccount]
+    companyBankAccounts: [CompanyBankAccount]
     companyLoads: [CompanyLoad]
     companyTrailers: [CompanyTrailer]
     companyTrucks: [CompanyTruck]

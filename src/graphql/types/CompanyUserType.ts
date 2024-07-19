@@ -2,15 +2,12 @@ import { gql } from "graphql-tag";
 
 const CompanyUserType = gql`
   type CompanyUser {
-    approvedAds: [Ad]
     company: Company
-    createdAds: [Ad]
     createdAt: String
     email: String
     id: Int
     name: String
     password: String
-    publishAds: [Ad]
     resetPasswordToken: String
     resetPasswotdTokenExpires: String
     role: String
@@ -19,6 +16,7 @@ const CompanyUserType = gql`
     verificationToken: String
     verificationTokenExpires: String
     verified: Boolean
+    companyId: Int
   }
 
   input createCompanyUserInput {
@@ -30,6 +28,34 @@ const CompanyUserType = gql`
     surname: String!
   }
 
+  input updateCompanyUserInput {
+    name: String
+    surname: String
+    role: String
+  }
+
+  input resetCompanyUserPasswordInput {
+    email: String
+    password: String
+    token: String
+  }
+
+  input changeCompanyUserPasswordInput {
+    id: Int!
+    password: String!
+    newPassword: String!
+  }
+
+  input sendVerificationEmailToCompanyUserInput {
+    id: Int!
+    email: String!
+  }
+
+  input verifyCompanyUserInput {
+    id: Int!
+    email: String!
+  }
+
   type Query {
     getAllCompanyUser: [CompanyUser]
     getCompanyUser(input: getId): CompanyUser
@@ -37,6 +63,12 @@ const CompanyUserType = gql`
 
   type Mutation {
     createCompanyUser(input: createCompanyUserInput): CompanyUser
+    deleteCompanyUser(input: getId): successMsg
+    updateCompanyUser(input: updateCompanyUserInput): CompanyUser
+    resetCompanyUserPassword(input: resetCompanyUserPasswordInput): successMsg
+    changeCompanyUserPassword(input: changeCompanyUserPasswordInput): successMsg
+    sendVerificationEmailToCompanyUser(input: sendVerificationEmailToCompanyUserInput): successMsg
+    verifyCompanyUser(input: verifyCompanyUserInput): successMsg
   }
 `;
 

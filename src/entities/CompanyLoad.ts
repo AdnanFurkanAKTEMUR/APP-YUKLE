@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Company } from "./Company";
 import { Ad } from "./Ad";
 
@@ -14,9 +14,14 @@ export class CompanyLoad extends BaseEntity {
   companyId!: number;
 
   @ManyToOne(() => Company, (company) => company.companyLoads)
+  @JoinColumn({ name: "companyId" })
   company: Company;
 
+  @Column({ nullable: true })
+  adId: number;
+
   @OneToOne(() => Ad, (ad) => ad.companyLoad)
+  @JoinColumn({ name: "adId" })
   ad: Ad;
 
   @CreateDateColumn()

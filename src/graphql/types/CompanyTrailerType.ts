@@ -11,8 +11,16 @@ const CompanyTrailerType = gql`
     updatedAt: String
   }
 
+  input createCompanyTrailerInput {
+    companyId: Int!
+    name: String!
+  }
+
   type Query {
     getAllCompanyTrailer: [CompanyTrailer]
+  }
+  type Mutation {
+    createCompanyTrailer(input:createCompanyTrailerInput): CompanyTrailer
   }
 `;
 

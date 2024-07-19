@@ -38,10 +38,6 @@ __decorate([
 ], CompanyUser.prototype, "role", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyUser.prototype, "companyId", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], CompanyUser.prototype, "password", void 0);
 __decorate([
@@ -49,35 +45,40 @@ __decorate([
     __metadata("design:type", Boolean)
 ], CompanyUser.prototype, "verified", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Date)
+    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
+    __metadata("design:type", Object)
 ], CompanyUser.prototype, "verificationTokenExpires", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    __metadata("design:type", Object)
 ], CompanyUser.prototype, "verificationToken", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    __metadata("design:type", Object)
 ], CompanyUser.prototype, "resetPasswordToken", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Date)
+    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
+    __metadata("design:type", Object)
 ], CompanyUser.prototype, "resetPasswordTokenExpires", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], CompanyUser.prototype, "companyId", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.companyUsers),
+    (0, typeorm_1.JoinColumn)({ name: "companyId" }),
     __metadata("design:type", Company_1.Company)
 ], CompanyUser.prototype, "company", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.createdUser),
+    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.createdCompanyUser),
     __metadata("design:type", Array)
 ], CompanyUser.prototype, "createdAds", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.publishUser),
+    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.publishedCompanyUser),
     __metadata("design:type", Array)
 ], CompanyUser.prototype, "publishAds", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.approvedUser),
+    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.approvedCompanyUser),
     __metadata("design:type", Array)
 ], CompanyUser.prototype, "approvedAds", void 0);
 __decorate([

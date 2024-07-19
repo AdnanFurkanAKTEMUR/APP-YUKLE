@@ -41,6 +41,7 @@ __decorate([
 ], CompanyBankAccount.prototype, "companyId", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.bankAccounts),
+    (0, typeorm_1.JoinColumn)({ name: "companyId" }),
     __metadata("design:type", Company_1.Company)
 ], CompanyBankAccount.prototype, "company", void 0);
 __decorate([

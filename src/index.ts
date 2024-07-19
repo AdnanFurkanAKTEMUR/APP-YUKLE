@@ -30,7 +30,16 @@ async function startServer() {
       context: async ({ req, res }) => {
         const token = req?.headers?.authorization ? auth(req.headers.authorization) : null;
         return {
-          user_id: token?.user_id,
+          user: {
+            user_id: token?.user_id,
+            company_id: token?.company_id,
+            name: token?.name,
+            surname: token?.surname,
+            email: token?.email,
+            verified: token?.verified,
+            role: token?.role,
+            type: token?.type,
+          },
           req,
           res,
           SqlConnection,

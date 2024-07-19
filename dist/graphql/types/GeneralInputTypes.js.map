@@ -1,1 +1,1 @@
-{"version":3,"file":"GeneralInputTypes.js","sourceRoot":"","sources":["../../../src/graphql/types/GeneralInputTypes.ts"],"names":[],"mappings":";;;;;AAAA,8DAA8B;AAE9B,MAAM,iBAAiB,GAAG,IAAA,qBAAG,EAAA;;;;CAI5B,CAAC;AAEF,kBAAe,iBAAiB,CAAC"}
+{"version":3,"file":"GeneralInputTypes.js","sourceRoot":"","sources":["../../../src/graphql/types/GeneralInputTypes.ts"],"names":[],"mappings":";;;;;AAAA,8DAA8B;AAE9B,MAAM,iBAAiB,GAAG,IAAA,qBAAG,EAAA;;;;;;;;;CAS5B,CAAC;AAEF,kBAAe,iBAAiB,CAAC"}

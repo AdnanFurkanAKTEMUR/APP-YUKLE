@@ -12,8 +12,16 @@ const CompanyTrailerType = (0, graphql_tag_1.gql) `
     updatedAt: String
   }
 
+  input createCompanyTrailerInput {
+    companyId: Int!
+    name: String!
+  }
+
   type Query {
     getAllCompanyTrailer: [CompanyTrailer]
+  }
+  type Mutation {
+    createCompanyTrailer(input:createCompanyTrailerInput): CompanyTrailer
   }
 `;
 exports.default = CompanyTrailerType;

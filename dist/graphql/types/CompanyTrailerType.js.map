@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyTrailerType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyTrailerType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,kBAAkB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;CAc7B,CAAC;AAEF,kBAAe,kBAAkB,CAAC"}
+{"version":3,"file":"CompanyTrailerType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyTrailerType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,kBAAkB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;CAsB7B,CAAC;AAEF,kBAAe,kBAAkB,CAAC"}
