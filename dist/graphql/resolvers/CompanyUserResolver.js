@@ -37,7 +37,7 @@ const CompanyUserResolver = {
         deleteCompanyUser: async (_parent, args, _context, _info) => {
             const { id } = args.input;
             const deletedUser = await CompanyUser_1.CompanyUser.delete({ id });
-            if (deletedUser.affected) {
+            if (deletedUser.affected === 1) {
                 return { success: true, msg: "silme başarılı" };
             }
             else {

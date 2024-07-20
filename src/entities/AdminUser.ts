@@ -20,17 +20,17 @@ export class AdminUser extends BaseEntity {
   @Column()
   verified!: boolean;
 
-  @Column({ nullable: true })
-  verificationTokenExpires: Date;
+  @Column({ type: "timestamp", nullable: true })
+  verificationTokenExpires: Date | null;
 
-  @Column({ nullable: true })
-  verificationToken: string;
+  @Column({ type: "varchar", nullable: true })
+  verificationToken: string | null;
 
-  @Column({ nullable: true })
-  resetPasswordToken: string;
+  @Column({ type: "varchar", nullable: true })
+  resetPasswordToken: string | null;
 
-  @Column({ nullable: true })
-  resetPasswordTokenExpires: Date;
+  @Column({ type: "timestamp", nullable: true })
+  resetPasswordTokenExpires: Date | null;
 
   @CreateDateColumn()
   createdAt: Date;
