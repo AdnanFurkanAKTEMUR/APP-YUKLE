@@ -2,13 +2,13 @@ import { gql } from "graphql-tag";
 
 const CompanyTrailerType = gql`
   type CompanyTrailer {
+    id: Int
+    companyId: Int
+    name: String
     ad: Ad
     company: Company
-    companyId: Int
-    createdAt: String
-    id: Int
-    name: String
     updatedAt: String
+    createdAt: String
   }
 
   input createCompanyTrailerInput {
@@ -20,7 +20,7 @@ const CompanyTrailerType = gql`
     getAllCompanyTrailer: [CompanyTrailer]
   }
   type Mutation {
-    createCompanyTrailer(input:createCompanyTrailerInput): CompanyTrailer
+    createCompanyTrailer(input: createCompanyTrailerInput): CompanyTrailer
   }
 `;
 

@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_tag_1 = require("graphql-tag");
 const CompanyTrailerType = (0, graphql_tag_1.gql) `
   type CompanyTrailer {
+    id: Int
+    companyId: Int
+    name: String
     ad: Ad
     company: Company
-    companyId: Int
-    createdAt: String
-    id: Int
-    name: String
     updatedAt: String
+    createdAt: String
   }
 
   input createCompanyTrailerInput {
@@ -21,7 +21,7 @@ const CompanyTrailerType = (0, graphql_tag_1.gql) `
     getAllCompanyTrailer: [CompanyTrailer]
   }
   type Mutation {
-    createCompanyTrailer(input:createCompanyTrailerInput): CompanyTrailer
+    createCompanyTrailer(input: createCompanyTrailerInput): CompanyTrailer
   }
 `;
 exports.default = CompanyTrailerType;

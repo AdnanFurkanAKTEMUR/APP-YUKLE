@@ -3,21 +3,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_tag_1 = require("graphql-tag");
 const CompanyUserType = (0, graphql_tag_1.gql) `
   type CompanyUser {
-    company: Company
-    createdAt: String
-    email: String
     id: Int
+    companyId: Int
+    email: String
     name: String
+    surname: String
+    role: String
     password: String
     resetPasswordToken: String
     resetPasswotdTokenExpires: String
-    role: String
-    surname: String
-    updatedAt: String
     verificationToken: String
     verificationTokenExpires: String
     verified: Boolean
-    companyId: Int
+    company: Company
+    updatedAt: String
+    createdAt: String
   }
 
   input createCompanyUserInput {

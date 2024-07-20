@@ -2,13 +2,13 @@ import { gql } from "graphql-tag";
 
 const CompanyTruckType = gql`
   type CompanyTruck {
+    id: Int
+    companyId: Int
+    name: String
     ad: Ad
     company: Company
-    companyId: Int
-    createdAt: String
-    id: Int
-    name: String
     updatedAt: String
+    createdAt: String
   }
 
   type Query {

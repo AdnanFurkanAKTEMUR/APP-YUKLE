@@ -3,15 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_tag_1 = require("graphql-tag");
 const CompanyBankAccountType = (0, graphql_tag_1.gql) `
   type CompanyBankAccount {
+    id: Int
     accountUserName: String
     bankAccountNumber: String
     bankName: String
-    company: Company
     companyId: Int
-    createdAt: String
     iban: String
-    id: Int
+    company: Company
     updatedAt: String
+    createdAt: String
   }
 
   input createCompanyBankAccountInput {

@@ -2,15 +2,15 @@ import { gql } from "graphql-tag";
 
 const CompanyBankAccountType = gql`
   type CompanyBankAccount {
+    id: Int
     accountUserName: String
     bankAccountNumber: String
     bankName: String
-    company: Company
     companyId: Int
-    createdAt: String
     iban: String
-    id: Int
+    company: Company
     updatedAt: String
+    createdAt: String
   }
 
   input createCompanyBankAccountInput {

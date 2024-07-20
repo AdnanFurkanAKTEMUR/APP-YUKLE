@@ -2,20 +2,20 @@ import { gql } from "graphql-tag";
 
 const CompanyType = gql`
   type Company {
+    id: Int
+    companyName: String
     address: String
+    vkn: String
+    phoneNumber: String
+    point: Float
     ads: [Ad]
     companyBankAccounts: [CompanyBankAccount]
     companyLoads: [CompanyLoad]
     companyTrailers: [CompanyTrailer]
     companyTrucks: [CompanyTruck]
     companyUsers: [CompanyUser]
-    companyName: String
-    createdAt: String
-    id: Int
-    phoneNumber: String
-    point: Float
     updatedAt: String
-    vkn: String
+    createdAt: String
   }
 
   input createCompanyInput {
