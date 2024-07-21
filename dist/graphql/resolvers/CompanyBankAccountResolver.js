@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Company_1 = require("@entities/Company");
-const CompanyBankAccount_1 = require("@entities/CompanyBankAccount");
+const Company_1 = require("../../entities/Company");
+const CompanyBankAccount_1 = require("../../entities/CompanyBankAccount");
 const In_1 = require("typeorm/find-options/operator/In");
 const CompanyBankAccountResolver = {
     Query: {

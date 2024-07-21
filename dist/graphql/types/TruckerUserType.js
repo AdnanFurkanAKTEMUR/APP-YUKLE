@@ -13,7 +13,7 @@ type Trucker {
    TruckerMail: String
    TruckerPhone: String
    TruckerPassword: String
-   TruckerUserName: string
+   TruckerUserName: String
    TruckerKvkk: Boolean
    TruckerVerfied: Boolean
    TruckerVerificationTokenExpires: String
@@ -36,12 +36,12 @@ input createTruckerInput{
 }
 
 type Query{
-    getAllTrucker:[Trucker]
+    getAllTruckerUser:[Trucker]
     getTruckerUser(input: getId): Trucker
 }
 
 type Mutation{
-    createTrucker(input: createTruckerInput): Trucker
+    createTruckerUser(input: createTruckerInput): Trucker
 }
 `;
 exports.default = TruckerUserType;

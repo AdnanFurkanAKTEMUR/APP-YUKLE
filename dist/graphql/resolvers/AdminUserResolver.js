@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const AdminUser_1 = require("@entities/AdminUser");
+const AdminUser_1 = require("../../entities/AdminUser");
 const argon2_1 = __importDefault(require("argon2"));
-const generateToken_1 = __importDefault(require("@helpers/generateToken"));
+const generateToken_1 = __importDefault(require("../../helpers/generateToken"));
 const AdminUserResolvers = {
     Query: {
         getAllAdminUser: async (_parent, _args, _context, _info) => {

@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Company_1 = require("@entities/Company");
-const CompanyUser_1 = require("@entities/CompanyUser");
+const Company_1 = require("../../entities/Company");
+const CompanyUser_1 = require("../../entities/CompanyUser");
 const CompanyBankAccount_1 = require("../../entities/CompanyBankAccount");
-const CompanyLoad_1 = require("@entities/CompanyLoad");
-const CompanyTrailer_1 = require("@entities/CompanyTrailer");
-const CompanyTrucks_1 = require("@entities/CompanyTrucks");
+const CompanyLoad_1 = require("../../entities/CompanyLoad");
+const CompanyTrailer_1 = require("../../entities/CompanyTrailer");
+const CompanyTrucks_1 = require("../../entities/CompanyTrucks");
 const CompanyResolver = {
     Query: {
         getAllCompany: async (_parent, _args, context, _info) => {
