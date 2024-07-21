@@ -13,11 +13,12 @@ const CompanyLoad_1 = require("./entities/CompanyLoad");
 const CompanyTrailer_1 = require("./entities/CompanyTrailer");
 const CompanyTrucks_1 = require("./entities/CompanyTrucks");
 const CompanyUser_1 = require("./entities/CompanyUser");
+const TruckerUser_1 = require("./entities/TruckerUser");
 dotenv_1.default.config();
 exports.default = new typeorm_1.DataSource({
     type: "postgres",
     url: process.env.POSTGRES_CONNECTION_STRING,
-    entities: [AdminUser_1.AdminUser, Ad_1.Ad, Company_1.Company, CompanyBankAccount_1.CompanyBankAccount, CompanyLoad_1.CompanyLoad, CompanyTrailer_1.CompanyTrailer, CompanyTrucks_1.CompanyTruck, CompanyUser_1.CompanyUser],
+    entities: [TruckerUser_1.TruckerUser, AdminUser_1.AdminUser, Ad_1.Ad, Company_1.Company, CompanyBankAccount_1.CompanyBankAccount, CompanyLoad_1.CompanyLoad, CompanyTrailer_1.CompanyTrailer, CompanyTrucks_1.CompanyTruck, CompanyUser_1.CompanyUser],
     synchronize: true,
 });
 //# sourceMappingURL=typeorm.config.js.map
