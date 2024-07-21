@@ -33,7 +33,7 @@ input createTruckerInput{
 
 type Query{
     getAllTrucker:[Trucker]
-    getAdminUser(input: getId): Trucker
+    getTruckerUser(input: getId): Trucker
 }
 
 type Mutation{

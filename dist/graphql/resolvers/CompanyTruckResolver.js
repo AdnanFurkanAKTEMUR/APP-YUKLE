@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Company_1 = require("../../entities/Company");
-const CompanyTrucks_1 = require("../../entities/CompanyTrucks");
+const Company_1 = require("@entities/Company");
+const CompanyTrucks_1 = require("@entities/CompanyTrucks");
 const CompanyTruckResolver = {
     Query: {
         getAllCompanyTruck: async (_parent, _args, _context, _info) => {

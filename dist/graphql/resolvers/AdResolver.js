@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Ad_1 = require("../../entities/Ad");
+const Ad_1 = require("@entities/Ad");
 const AdResolver = {
     Query: {
         getAllAd: async (_parent, _args, _context, _info) => {

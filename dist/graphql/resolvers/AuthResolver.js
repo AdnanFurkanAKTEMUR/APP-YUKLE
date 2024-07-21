@@ -26,8 +26,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const AdminUser_1 = require("../../entities/AdminUser");
-const CompanyUser_1 = require("../../entities/CompanyUser");
+const AdminUser_1 = require("@entities/AdminUser");
+const CompanyUser_1 = require("@entities/CompanyUser");
 const argon2_1 = __importDefault(require("argon2"));
 const jwt = __importStar(require("jsonwebtoken"));
 const AuthResolver = {

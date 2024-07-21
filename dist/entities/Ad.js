@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 const CompanyUser_1 = require("./CompanyUser");
 const CompanyLoad_1 = require("./CompanyLoad");
 const CompanyTrailer_1 = require("./CompanyTrailer");
-const Company_1 = require("./Company");
+const Company_1 = require("@entities/Company");
 const CompanyTrucks_1 = require("./CompanyTrucks");
 let Ad = class Ad extends typeorm_1.BaseEntity {
 };

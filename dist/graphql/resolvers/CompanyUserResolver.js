@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Company_1 = require("../../entities/Company");
-const CompanyUser_1 = require("../../entities/CompanyUser");
-const generateToken_1 = __importDefault(require("../../helpers/generateToken"));
+const Company_1 = require("@entities/Company");
+const CompanyUser_1 = require("@entities/CompanyUser");
+const generateToken_1 = __importDefault(require("@helpers/generateToken"));
 const argon2_1 = __importDefault(require("argon2"));
 const CompanyUserResolver = {
     Query: {
