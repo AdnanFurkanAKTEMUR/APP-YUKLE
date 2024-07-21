@@ -8,7 +8,7 @@ type Trucker {
    TruckerIdentificationNumer: String 
    TruckerMail: String
    TruckerPhone: String
-   TruckerPassword:string
+   TruckerPassword: String
    TruckerUserName: string
    TruckerKvkk: Boolean
    TruckerVerfied: Boolean
