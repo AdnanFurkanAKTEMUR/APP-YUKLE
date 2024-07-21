@@ -27,8 +27,8 @@ input createTruckerInput{
     TruckerIdentificationNumer: String!
     TruckerMail: String!
     TruckerPhone: String!
-    TruckerPassword:string!
-    TruckerUserName: string!
+    TruckerPassword: String!
+    TruckerUserName: String!
 }
 
 type Query{
