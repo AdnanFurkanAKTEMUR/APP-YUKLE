@@ -8,11 +8,16 @@ const CompanyTrailer_1 = require("@entities/CompanyTrailer");
 const CompanyTrucks_1 = require("@entities/CompanyTrucks");
 const CompanyResolver = {
     Query: {
-        getAllCompany: async (_parent, _args, _context, _info) => {
+        getAllCompany: async (_parent, _args, context, _info) => {
+            var _a;
+            if (!(context === null || context === void 0 ? void 0 : context.user) || ((_a = context === null || context === void 0 ? void 0 : context.user) === null || _a === void 0 ? void 0 : _a.type) !== 0)
+                throw new Error("yetkiniz yok!");
             const company = await Company_1.Company.find();
             return company;
         },
-        getCompany: async (_parent, args, _context, _info) => {
+        getCompany: async (_parent, args, context, _info) => {
+            if (!(context === null || context === void 0 ? void 0 : context.user))
+                throw new Error("yetkiniz yok!");
             const { id } = args.input;
             const company = await Company_1.Company.findOne({ where: { id: id } });
             const companyUsers = await CompanyUser_1.CompanyUser.find({ where: { companyId: id } });
@@ -24,10 +29,46 @@ const CompanyResolver = {
         },
     },
     Mutation: {
-        createCompany: async (_parent, args, _context, _info) => {
+        createCompany: async (_parent, args, context, _info) => {
+            var _a;
+            if (!(context === null || context === void 0 ? void 0 : context.user) || ((_a = context === null || context === void 0 ? void 0 : context.user) === null || _a === void 0 ? void 0 : _a.type) !== 0)
+                throw new Error("yetkiniz yok!");
             const { companyName, address, phoneNumber, vkn, point } = args.input;
             const company = await Company_1.Company.create({ companyName, address, phoneNumber, vkn, point }).save();
             return company;
+        },
+        updateCompany: async (_parent, args, context, _info) => {
+            var _a;
+            if (!(context === null || context === void 0 ? void 0 : context.user) || ((_a = context === null || context === void 0 ? void 0 : context.user) === null || _a === void 0 ? void 0 : _a.type) !== 1 || context.user.role !== "admin")
+                throw new Error("yetkiniz yok!");
+            const { id, companyName, address, phoneNumber, vkn, point } = args.input;
+            const company = await Company_1.Company.findOne({ where: { id } });
+            if (!company)
+                throw new Error("Kayıt bulunamadı!");
+            if (companyName)
+                company.companyName = companyName;
+            if (address)
+                company.address = address;
+            if (phoneNumber)
+                company.phoneNumber = phoneNumber;
+            if (vkn)
+                company.vkn = vkn;
+            if (point)
+                company.point = point;
+            const sR = await company.save();
+            if (sR === null || sR === void 0 ? void 0 : sR.id)
+                return company;
+            throw new Error("Güncelleme başarısız");
+        },
+        deleteCompany: async (_parent, args, context, _info) => {
+            var _a;
+            if (!(context === null || context === void 0 ? void 0 : context.user) || ((_a = context === null || context === void 0 ? void 0 : context.user) === null || _a === void 0 ? void 0 : _a.type) !== 0)
+                throw new Error("yetkiniz yok!");
+            const { id } = args.input;
+            const company = await Company_1.Company.delete({ id });
+            if (company.affected === 1)
+                return { success: true, msg: "Silme başarılı" };
+            throw new Error("Silme başarısız");
         },
     },
 };

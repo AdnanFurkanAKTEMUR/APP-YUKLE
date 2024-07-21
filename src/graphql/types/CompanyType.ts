@@ -25,6 +25,14 @@ const CompanyType = gql`
     point: String!
     vkn: String!
   }
+  input updateCompanyInput {
+    id: Int!
+    address: String
+    companyName: String
+    phoneNumber: String
+    point: String
+    vkn: String
+  }
 
   type Query {
     getAllCompany: [Company]
@@ -32,6 +40,8 @@ const CompanyType = gql`
   }
   type Mutation {
     createCompany(input: createCompanyInput): Company
+    updateCompany(input: updateCompanyInput): Company
+    deleteCompany(input: getId): successMsg
   }
 `;
 
