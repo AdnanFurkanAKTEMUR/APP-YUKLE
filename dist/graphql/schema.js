@@ -23,11 +23,11 @@ const CompanyTrailerResolver_1 = __importDefault(require("./resolvers/CompanyTra
 const AuthType_1 = __importDefault(require("./types/AuthType"));
 const AuthResolver_1 = __importDefault(require("./resolvers/AuthResolver"));
 const GeneralInputTypes_1 = __importDefault(require("./types/GeneralInputTypes"));
-const ProductType_1 = __importDefault(require("./types/ProductType"));
-const ProductResolver_1 = __importDefault(require("./resolvers/ProductResolver"));
+const TruckerUserType_1 = __importDefault(require("./types/TruckerUserType"));
+const TruckerUserResolver_1 = __importDefault(require("./resolvers/TruckerUserResolver"));
 const schema = (0, schema_1.makeExecutableSchema)({
-    typeDefs: [ProductType_1.default, GeneralInputTypes_1.default, AdminUserType_1.default, AuthType_1.default, CompanyTrailerType_1.default, CompanyType_1.default, CompanyBankAccountType_1.default, CompanyLoadType_1.default, AdType_1.default, CompanyUserType_1.default, CompanyTruckType_1.default],
-    resolvers: [ProductResolver_1.default, AdminUserResolver_1.default, AuthResolver_1.default, CompanyTrailerResolver_1.default, CompanyResolver_1.default, CompanyBankAccountResolver_1.default, CompanyLoadResolver_1.default, AdResolver_1.default, CompanyUserResolver_1.default, CompanyTruckResolver_1.default],
+    typeDefs: [TruckerUserType_1.default, GeneralInputTypes_1.default, AdminUserType_1.default, AuthType_1.default, CompanyTrailerType_1.default, CompanyType_1.default, CompanyBankAccountType_1.default, CompanyLoadType_1.default, AdType_1.default, CompanyUserType_1.default, CompanyTruckType_1.default],
+    resolvers: [TruckerUserResolver_1.default, AdminUserResolver_1.default, AuthResolver_1.default, CompanyTrailerResolver_1.default, CompanyResolver_1.default, CompanyBankAccountResolver_1.default, CompanyLoadResolver_1.default, AdResolver_1.default, CompanyUserResolver_1.default, CompanyTruckResolver_1.default],
 });
 exports.default = schema;
 //# sourceMappingURL=schema.js.map

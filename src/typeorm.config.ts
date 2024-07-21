@@ -1,7 +1,5 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
-import { Product } from "./entities/Product";
-import { User } from "./entities/User";
 import { AdminUser } from "./entities/AdminUser";
 import { Ad } from "./entities/Ad";
 import { Company } from "./entities/Company";
@@ -15,6 +13,6 @@ dotenv.config();
 export default new DataSource({
   type: "postgres",
   url: process.env.POSTGRES_CONNECTION_STRING,
-  entities: [Product, User, AdminUser, Ad, Company, CompanyBankAccount, CompanyLoad, CompanyTrailer, CompanyTruck, CompanyUser],
+  entities: [ AdminUser, Ad, Company, CompanyBankAccount, CompanyLoad, CompanyTrailer, CompanyTruck, CompanyUser],
   synchronize: true,
 });
