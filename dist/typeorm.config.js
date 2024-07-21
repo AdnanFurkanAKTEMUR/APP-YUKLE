@@ -5,8 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const dotenv_1 = __importDefault(require("dotenv"));
-const Product_1 = require("./entities/Product");
-const User_1 = require("./entities/User");
 const AdminUser_1 = require("./entities/AdminUser");
 const Ad_1 = require("./entities/Ad");
 const Company_1 = require("./entities/Company");
@@ -19,7 +17,7 @@ dotenv_1.default.config();
 exports.default = new typeorm_1.DataSource({
     type: "postgres",
     url: process.env.POSTGRES_CONNECTION_STRING,
-    entities: [Product_1.Product, User_1.User, AdminUser_1.AdminUser, Ad_1.Ad, Company_1.Company, CompanyBankAccount_1.CompanyBankAccount, CompanyLoad_1.CompanyLoad, CompanyTrailer_1.CompanyTrailer, CompanyTrucks_1.CompanyTruck, CompanyUser_1.CompanyUser],
+    entities: [AdminUser_1.AdminUser, Ad_1.Ad, Company_1.Company, CompanyBankAccount_1.CompanyBankAccount, CompanyLoad_1.CompanyLoad, CompanyTrailer_1.CompanyTrailer, CompanyTrucks_1.CompanyTruck, CompanyUser_1.CompanyUser],
     synchronize: true,
 });
 //# sourceMappingURL=typeorm.config.js.map
