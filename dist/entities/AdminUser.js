@@ -39,20 +39,20 @@ __decorate([
     __metadata("design:type", Boolean)
 ], AdminUser.prototype, "verified", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Date)
+    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
+    __metadata("design:type", Object)
 ], AdminUser.prototype, "verificationTokenExpires", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    __metadata("design:type", Object)
 ], AdminUser.prototype, "verificationToken", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    __metadata("design:type", Object)
 ], AdminUser.prototype, "resetPasswordToken", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Date)
+    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
+    __metadata("design:type", Object)
 ], AdminUser.prototype, "resetPasswordTokenExpires", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),

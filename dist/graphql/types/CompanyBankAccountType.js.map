@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyBankAccountType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyBankAccountType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,sBAAsB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;CAgBjC,CAAC;AAEF,kBAAe,sBAAsB,CAAC"}
+{"version":3,"file":"CompanyBankAccountType.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyBankAccountType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,sBAAsB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAuCjC,CAAC;AAEF,kBAAe,sBAAsB,CAAC"}

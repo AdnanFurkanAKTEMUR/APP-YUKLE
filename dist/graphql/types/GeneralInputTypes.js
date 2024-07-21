@@ -8,6 +8,11 @@ const GeneralInputTypes = (0, graphql_tag_1.default) `
   input getId {
     id: Int!
   }
+
+  type successMsg {
+    success: Boolean
+    msg: String
+  }
 `;
 exports.default = GeneralInputTypes;
 //# sourceMappingURL=GeneralInputTypes.js.map

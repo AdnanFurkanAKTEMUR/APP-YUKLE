@@ -1,4 +1,4 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Company } from "./Company";
 
 @Entity()
@@ -22,6 +22,7 @@ export class CompanyBankAccount extends BaseEntity {
   companyId!: number;
 
   @ManyToOne(() => Company, (company) => company.bankAccounts)
+  @JoinColumn({ name: "companyId" })
   company: Company;
 
   @CreateDateColumn()

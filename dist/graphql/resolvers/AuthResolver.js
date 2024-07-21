@@ -27,21 +27,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const AdminUser_1 = require("../../entities/AdminUser");
+const CompanyUser_1 = require("../../entities/CompanyUser");
 const argon2_1 = __importDefault(require("argon2"));
 const jwt = __importStar(require("jsonwebtoken"));
 const AuthResolver = {
     Mutation: {
-        login: async (_parent, args, _context, _info) => {
+        loginAdminUserMobile: async (_parent, args, _context, _info) => {
             const { email, password } = args.input;
-            const admin_user = await AdminUser_1.AdminUser.findOne({ where: { email } });
-            if (!admin_user) {
+            const adminUser = await AdminUser_1.AdminUser.findOne({ where: { email } });
+            if (!adminUser)
                 throw new Error("Kullanıcı bulunamadı");
-            }
-            const isValid = await argon2_1.default.verify(admin_user.password, password);
+            const isValid = await argon2_1.default.verify(adminUser.password, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ user_id: admin_user.id }, process.env.TOKEN_SECRET);
-            return { token, admin_user };
+            const token = jwt.sign({ user_id: adminUser.id, name: adminUser.name, surname: adminUser.surname, email: adminUser.email, verified: adminUser.verified, type: 0 }, process.env.TOKEN_SECRET);
+            return { token, adminUser };
+        },
+        loginCompanyUserMobile: async (_parent, args, _context, _info) => {
+            const { email, password } = args.input;
+            const companyUser = await CompanyUser_1.CompanyUser.findOne({ where: { email } });
+            if (!companyUser)
+                throw new Error("Kullanıcı bulunamadı");
+            const isValid = await argon2_1.default.verify(companyUser.password, password);
+            if (!isValid)
+                throw new Error("Invalid creds.");
+            const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyId, name: companyUser.name, surname: companyUser.surname, role: companyUser.role, email: companyUser.email, verified: companyUser.verified, type: 1 }, process.env.TOKEN_SECRET);
+            return { token, companyUser };
         },
     },
 };

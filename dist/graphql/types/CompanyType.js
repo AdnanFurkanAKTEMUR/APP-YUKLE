@@ -3,20 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_tag_1 = require("graphql-tag");
 const CompanyType = (0, graphql_tag_1.gql) `
   type Company {
+    id: Int
+    companyName: String
     address: String
+    vkn: String
+    phoneNumber: String
+    point: Float
     ads: [Ad]
-    bankAccounts: [CompanyBankAccount]
+    companyBankAccounts: [CompanyBankAccount]
     companyLoads: [CompanyLoad]
     companyTrailers: [CompanyTrailer]
     companyTrucks: [CompanyTruck]
     companyUsers: [CompanyUser]
-    companyName: String
-    createdAt: String
-    id: Int
-    phoneNumber: String
-    point: Float
     updatedAt: String
-    vkn: String
+    createdAt: String
   }
 
   input createCompanyInput {

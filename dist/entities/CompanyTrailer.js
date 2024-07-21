@@ -21,7 +21,7 @@ __decorate([
     __metadata("design:type", Number)
 ], CompanyTrailer.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
 ], CompanyTrailer.prototype, "name", void 0);
 __decorate([
@@ -30,20 +30,26 @@ __decorate([
 ], CompanyTrailer.prototype, "companyId", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.companyTrailers),
+    (0, typeorm_1.JoinColumn)({ name: "companyId" }),
     __metadata("design:type", Company_1.Company)
 ], CompanyTrailer.prototype, "company", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], CompanyTrailer.prototype, "adId", void 0);
+__decorate([
     (0, typeorm_1.OneToOne)(() => Ad_1.Ad, (ad) => ad.companyTrailer),
+    (0, typeorm_1.JoinColumn)({ name: "adId" }),
     __metadata("design:type", Ad_1.Ad)
 ], CompanyTrailer.prototype, "ad", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], CompanyTrailer.prototype, "created_at", void 0);
+], CompanyTrailer.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], CompanyTrailer.prototype, "updated_at", void 0);
+], CompanyTrailer.prototype, "updatedAt", void 0);
 exports.CompanyTrailer = CompanyTrailer = __decorate([
     (0, typeorm_1.Entity)()
 ], CompanyTrailer);
