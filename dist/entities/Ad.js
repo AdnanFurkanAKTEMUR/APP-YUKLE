@@ -68,6 +68,14 @@ __decorate([
     __metadata("design:type", String)
 ], Ad.prototype, "documents", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: "boolean", default: false }),
+    __metadata("design:type", Boolean)
+], Ad.prototype, "published", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "boolean", default: false }),
+    __metadata("design:type", Boolean)
+], Ad.prototype, "approved", void 0);
+__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], Ad.prototype, "companyId", void 0);
@@ -86,8 +94,8 @@ __decorate([
     __metadata("design:type", CompanyUser_1.CompanyUser)
 ], Ad.prototype, "createdCompanyUser", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Object)
 ], Ad.prototype, "publishedCompanyUserId", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (cu) => cu.publishAds),
@@ -95,8 +103,8 @@ __decorate([
     __metadata("design:type", CompanyUser_1.CompanyUser)
 ], Ad.prototype, "publishedCompanyUser", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Object)
 ], Ad.prototype, "approvedCompanyUserId", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (cu) => cu.approvedAds),
@@ -104,30 +112,15 @@ __decorate([
     __metadata("design:type", CompanyUser_1.CompanyUser)
 ], Ad.prototype, "approvedCompanyUser", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Ad.prototype, "companyLoadId", void 0);
-__decorate([
     (0, typeorm_1.OneToOne)(() => CompanyLoad_1.CompanyLoad, (companyLoad) => companyLoad.ad),
-    (0, typeorm_1.JoinColumn)({ name: "companyLoadId" }),
     __metadata("design:type", CompanyLoad_1.CompanyLoad)
 ], Ad.prototype, "companyLoad", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
-], Ad.prototype, "companyTrailerId", void 0);
-__decorate([
     (0, typeorm_1.OneToOne)(() => CompanyTrailer_1.CompanyTrailer, (companyTrailer) => companyTrailer.ad),
-    (0, typeorm_1.JoinColumn)({ name: "companyTrailerId" }),
     __metadata("design:type", CompanyTrailer_1.CompanyTrailer)
 ], Ad.prototype, "companyTrailer", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
-], Ad.prototype, "companyTruckId", void 0);
-__decorate([
     (0, typeorm_1.OneToOne)(() => CompanyTrucks_1.CompanyTruck, (companyTruck) => companyTruck.ad),
-    (0, typeorm_1.JoinColumn)({ name: "companyTruckId" }),
     __metadata("design:type", CompanyTrucks_1.CompanyTruck)
 ], Ad.prototype, "companyTruck", void 0);
 __decorate([

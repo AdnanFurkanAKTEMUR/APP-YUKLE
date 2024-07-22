@@ -18,8 +18,8 @@ export class CompanyTrailer extends BaseEntity {
   @JoinColumn({ name: "companyId" })
   company: Company;
 
-  @Column({ nullable: true })
-  adId: number;
+  @Column({type:"int", nullable: true })
+  adId: number | null;
 
   @OneToOne(() => Ad, (ad) => ad.companyTrailer)
   @JoinColumn({ name: "adId" })

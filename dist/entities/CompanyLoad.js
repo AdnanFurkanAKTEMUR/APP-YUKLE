@@ -34,8 +34,8 @@ __decorate([
     __metadata("design:type", Company_1.Company)
 ], CompanyLoad.prototype, "company", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Object)
 ], CompanyLoad.prototype, "adId", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => Ad_1.Ad, (ad) => ad.companyLoad),

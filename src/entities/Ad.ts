@@ -43,6 +43,12 @@ export class Ad extends BaseEntity {
   @Column()
   documents!: string;
 
+  @Column({ type: "boolean", default: false })
+  published: boolean;
+
+  @Column({ type: "boolean", default: false })
+  approved: boolean;
+
   @Column()
   companyId!: number;
 
@@ -57,39 +63,27 @@ export class Ad extends BaseEntity {
   @JoinColumn({ name: "createdCompanyUserId" })
   createdCompanyUser: CompanyUser;
 
-  @Column({ nullable: true })
-  publishedCompanyUserId: number;
+  @Column({ type: "int", nullable: true })
+  publishedCompanyUserId: number | null;
 
   @ManyToOne(() => CompanyUser, (cu) => cu.publishAds)
   @JoinColumn({ name: "publishedCompanyUserId" })
   publishedCompanyUser: CompanyUser;
 
-  @Column({ nullable: true })
-  approvedCompanyUserId: number;
+  @Column({ type: "int", nullable: true })
+  approvedCompanyUserId: number | null;
 
   @ManyToOne(() => CompanyUser, (cu) => cu.approvedAds)
   @JoinColumn({ name: "approvedCompanyUserId" })
   approvedCompanyUser: CompanyUser;
 
-  @Column()
-  companyLoadId!: number;
-
   @OneToOne(() => CompanyLoad, (companyLoad) => companyLoad.ad)
-  @JoinColumn({ name: "companyLoadId" })
   companyLoad: CompanyLoad;
 
-  @Column({ nullable: true })
-  companyTrailerId: number;
-
   @OneToOne(() => CompanyTrailer, (companyTrailer) => companyTrailer.ad)
-  @JoinColumn({ name: "companyTrailerId" })
   companyTrailer: CompanyTrailer;
 
-  @Column({ nullable: true })
-  companyTruckId: number;
-
   @OneToOne(() => CompanyTruck, (companyTruck) => companyTruck.ad)
-  @JoinColumn({ name: "companyTruckId" })
   companyTruck: CompanyTruck;
 
   @Column()

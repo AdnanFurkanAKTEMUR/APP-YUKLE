@@ -26,7 +26,8 @@
       "@entities/*": ["./src/entities/*"],
       "@graphql/*":["src/graphql2/*"],
       "@helpers/*":["./src/helpers/*"],
-      "@middlewares/*":["./src/middlewares/*"]
+      "@middlewares/*":["./src/middlewares/*"],
+      "@genType/*":["src/genType/*"]
     }
   },
   "exclude": ["node_modules"],
