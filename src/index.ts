@@ -8,6 +8,7 @@ import cors from "cors";
 import schema from "./graphql/schema";
 import typeormConfig from "./typeorm.config";
 import { auth } from "./middlewares/auth";
+//import * as jwt from "jsonwebtoken";
 
 async function startServer() {
   const SqlConnection = await typeormConfig.initialize();
@@ -28,9 +29,12 @@ async function startServer() {
     express.json(),
     expressMiddleware(server, {
       context: async ({ req, res }) => {
-        console.log("first")
-        console.log(req)
-        const token = req?.headers?.authorization ? auth(req.headers.authorization) : null;
+        let token: any;
+        if (req?.headers?.authorization) {
+          token = await auth(req.headers.authorization, "");
+        } else if (req.headers.cookie) {
+          token = await auth("", req.headers.cookie);
+        }
         return {
           user: {
             id: token?.id,
@@ -41,6 +45,7 @@ async function startServer() {
             verified: token?.verified,
             role: token?.role,
             type: token?.type,
+            from: token?.from,
           },
           req,
           res,

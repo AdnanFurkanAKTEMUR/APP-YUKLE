@@ -5,7 +5,8 @@ import generateToken from "@helpers/generateToken";
 
 const AdminUserResolvers = {
   Query: {
-    getAllAdminUser: async (_parent: any, _args: any, _context: any, _info: any) => {
+    getAllAdminUser: async (_parent: any, _args: any, context: any, _info: any) => {
+      console.log(context.user, "context.user");
       const adminUsers = await AdminUser.find();
       return adminUsers;
     },

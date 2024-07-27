@@ -28,9 +28,13 @@ async function startServer() {
     app.use("/", (0, cors_1.default)(corsOptions), express_1.default.json(), (0, express4_1.expressMiddleware)(server, {
         context: async ({ req, res }) => {
             var _a;
-            console.log("first");
-            console.log(req);
-            const token = ((_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization) ? (0, auth_1.auth)(req.headers.authorization) : null;
+            let token;
+            if ((_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization) {
+                token = await (0, auth_1.auth)(req.headers.authorization, "");
+            }
+            else if (req.headers.cookie) {
+                token = await (0, auth_1.auth)("", req.headers.cookie);
+            }
             return {
                 user: {
                     id: token === null || token === void 0 ? void 0 : token.id,
@@ -41,6 +45,7 @@ async function startServer() {
                     verified: token === null || token === void 0 ? void 0 : token.verified,
                     role: token === null || token === void 0 ? void 0 : token.role,
                     type: token === null || token === void 0 ? void 0 : token.type,
+                    from: token === null || token === void 0 ? void 0 : token.from,
                 },
                 req,
                 res,

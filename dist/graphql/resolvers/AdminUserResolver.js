@@ -8,7 +8,8 @@ const argon2_1 = __importDefault(require("argon2"));
 const generateToken_1 = __importDefault(require("../../helpers/generateToken"));
 const AdminUserResolvers = {
     Query: {
-        getAllAdminUser: async (_parent, _args, _context, _info) => {
+        getAllAdminUser: async (_parent, _args, context, _info) => {
+            console.log(context.user, "context.user");
             const adminUsers = await AdminUser_1.AdminUser.find();
             return adminUsers;
         },
