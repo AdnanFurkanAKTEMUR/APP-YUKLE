@@ -28,11 +28,13 @@ async function startServer() {
     app.use("/", (0, cors_1.default)(corsOptions), express_1.default.json(), (0, express4_1.expressMiddleware)(server, {
         context: async ({ req, res }) => {
             var _a;
+            console.log("first");
+            console.log(req);
             const token = ((_a = req === null || req === void 0 ? void 0 : req.headers) === null || _a === void 0 ? void 0 : _a.authorization) ? (0, auth_1.auth)(req.headers.authorization) : null;
             return {
                 user: {
-                    user_id: token === null || token === void 0 ? void 0 : token.user_id,
-                    company_id: token === null || token === void 0 ? void 0 : token.company_id,
+                    id: token === null || token === void 0 ? void 0 : token.id,
+                    companyId: token === null || token === void 0 ? void 0 : token.companyId,
                     name: token === null || token === void 0 ? void 0 : token.name,
                     surname: token === null || token === void 0 ? void 0 : token.surname,
                     email: token === null || token === void 0 ? void 0 : token.email,

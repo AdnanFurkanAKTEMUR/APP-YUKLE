@@ -27,6 +27,7 @@ exports.auth = void 0;
 const jwt = __importStar(require("jsonwebtoken"));
 const auth = (header) => {
     const token = header.split(" ")[1];
+    console.log(token);
     if (!token) {
         throw new Error("Invalid Token");
     }

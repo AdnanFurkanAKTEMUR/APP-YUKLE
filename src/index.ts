@@ -28,11 +28,13 @@ async function startServer() {
     express.json(),
     expressMiddleware(server, {
       context: async ({ req, res }) => {
+        console.log("first")
+        console.log(req)
         const token = req?.headers?.authorization ? auth(req.headers.authorization) : null;
         return {
           user: {
-            user_id: token?.user_id,
-            company_id: token?.company_id,
+            id: token?.id,
+            companyId: token?.companyId,
             name: token?.name,
             surname: token?.surname,
             email: token?.email,

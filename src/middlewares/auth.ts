@@ -1,8 +1,8 @@
 import * as jwt from "jsonwebtoken";
 
 export interface AuthTokenPayload {
-  user_id: number;
-  company_id: number;
+  id: number;
+  companyId: number;
   name: string;
   surname: string;
   email: string;
@@ -13,7 +13,7 @@ export interface AuthTokenPayload {
 
 export const auth = (header: string): AuthTokenPayload => {
   const token = header.split(" ")[1];
-
+  console.log(token)
   if (!token) {
     throw new Error("Invalid Token");
   }
