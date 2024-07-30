@@ -50,6 +50,26 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyProfile.prototype, "taxAdministration", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    __metadata("design:type", String)
+], CompanyProfile.prototype, "taxPlateDoc", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Number)
+], CompanyProfile.prototype, "companyDocumentId", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], CompanyProfile.prototype, "createdBy", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Number)
+], CompanyProfile.prototype, "updatedBy", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Number)
+], CompanyProfile.prototype, "deletedBy", void 0);
+__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyProfile.prototype, "createdAt", void 0);

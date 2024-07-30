@@ -2,6 +2,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToMany, On
 import { CompanyRecord } from "./CompanyRecord";
 import { CompanyUser } from "./CompanyUser";
 
+
 @Entity()
 export class CompanyProfile extends BaseEntity {
   @PrimaryGeneratedColumn()
@@ -15,7 +16,7 @@ export class CompanyProfile extends BaseEntity {
   companyRecord: CompanyRecord;
 
   @OneToMany(() => CompanyUser, (companyUser) => companyUser.companyProfile)
-  companyUsers: CompanyUser[]
+  companyUsers: CompanyUser[];
 
   @Column()
   companyCode: string;
@@ -28,6 +29,21 @@ export class CompanyProfile extends BaseEntity {
 
   @Column()
   taxAdministration: string;
+
+  @Column({ type: "varchar", nullable: true })
+  taxPlateDoc: string;
+
+  @Column({ type: "int", nullable: true })
+  companyDocumentId: number;
+
+  @Column()
+  createdBy!: number;
+
+  @Column({ type: "int", nullable: true })
+  updatedBy: number;
+
+  @Column({ type: "int", nullable: true })
+  deletedBy: number;
 
   @CreateDateColumn()
   createdAt: Date;

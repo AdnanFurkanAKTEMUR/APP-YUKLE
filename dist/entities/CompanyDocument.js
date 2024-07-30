@@ -9,68 +9,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Address = void 0;
+exports.CompanyDocument = void 0;
 const typeorm_1 = require("typeorm");
-let Address = class Address extends typeorm_1.BaseEntity {
+let CompanyDocument = class CompanyDocument extends typeorm_1.BaseEntity {
 };
-exports.Address = Address;
+exports.CompanyDocument = CompanyDocument;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Address.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Address.prototype, "companyId", void 0);
+], CompanyDocument.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Address.prototype, "addressName", void 0);
+], CompanyDocument.prototype, "documentTitle", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Address.prototype, "addressTitle", void 0);
+], CompanyDocument.prototype, "documentType", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Address.prototype, "addressDescription", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
-    __metadata("design:type", String)
-], Address.prototype, "addressType", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], Address.prototype, "CountryId", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], Address.prototype, "CityId", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], Address.prototype, "DistrictId", void 0);
+], CompanyDocument.prototype, "documentFolder", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
-], Address.prototype, "createdBy", void 0);
+], CompanyDocument.prototype, "companyProfileId", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], CompanyDocument.prototype, "createdBy", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
-], Address.prototype, "updatedBy", void 0);
+], CompanyDocument.prototype, "updatedBy", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
-], Address.prototype, "deletedBy", void 0);
+], CompanyDocument.prototype, "deletedBy", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
-], Address.prototype, "createdAt", void 0);
+], CompanyDocument.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
-], Address.prototype, "updatedAt", void 0);
-exports.Address = Address = __decorate([
+], CompanyDocument.prototype, "updatedAt", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], CompanyDocument.prototype, "deletedAt", void 0);
+exports.CompanyDocument = CompanyDocument = __decorate([
     (0, typeorm_1.Entity)()
-], Address);
-//# sourceMappingURL=Address.js.map
+], CompanyDocument);
+//# sourceMappingURL=CompanyDocument.js.map

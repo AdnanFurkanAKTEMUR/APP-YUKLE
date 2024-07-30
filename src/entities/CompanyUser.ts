@@ -38,7 +38,14 @@ export class CompanyUser extends BaseEntity {
   @JoinColumn({ name: "companyProfileId" })
   companyProfile: CompanyProfile;
 
-  //createBy deleteBy updateBy
+  @Column()
+  createdBy!: number;
+
+  @Column({ type: "int", nullable: true })
+  updatedBy: number;
+
+  @Column({ type: "int", nullable: true })
+  deletedBy: number;
 
   @CreateDateColumn()
   createdAt: Date;

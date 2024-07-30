@@ -29,9 +29,14 @@ export class Address extends BaseEntity {
   @Column({ type: "int", nullable: true })
   DistrictId!: number;
 
-  //createdBy
-  //updatedBy
-  //deletedBy
+  @Column()
+  createdBy!: number;
+
+  @Column({ type: "int", nullable: true })
+  updatedBy: number;
+
+  @Column({ type: "int", nullable: true })
+  deletedBy: number;
 
   @CreateDateColumn()
   createdAt: Date;

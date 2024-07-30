@@ -61,6 +61,18 @@ __decorate([
     __metadata("design:type", CompanyProfile_1.CompanyProfile)
 ], CompanyUser.prototype, "companyProfile", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", Number)
+], CompanyUser.prototype, "createdBy", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Number)
+], CompanyUser.prototype, "updatedBy", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Number)
+], CompanyUser.prototype, "deletedBy", void 0);
+__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyUser.prototype, "createdAt", void 0);

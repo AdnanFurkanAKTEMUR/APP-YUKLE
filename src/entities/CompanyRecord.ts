@@ -65,9 +65,6 @@ export class CompanyRecord extends BaseEntity {
   @Column({ type: "boolean", nullable: true })
   mailVerification: boolean;
 
-  //@Column({ type: "int", nullable: true })
-  //deletedBy, created, updated
-
   @CreateDateColumn()
   createdAt: Date;
 
