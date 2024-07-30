@@ -1,6 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Company } from "./Company";
-import { Ad } from "./Ad";
 
 @Entity()
 export class CompanyUser extends BaseEntity {
@@ -8,34 +7,29 @@ export class CompanyUser extends BaseEntity {
   id!: number;
 
   @Column()
-  name!: string;
+  userFirstName!: string;
 
   @Column()
-  surname!: string;
+  userLastName!: string;
 
   @Column({ unique: true })
-  email!: string;
+  userEmail!: string;
 
   @Column()
-  role!: string;
+  userRole!: string;
 
   @Column()
-  password!: string;
+  userPassword!: string;
 
-  @Column()
-  verified!: boolean;
+  @Column({ default: true })
+  userStatus!: boolean;
 
-  @Column({ type: "timestamp", nullable: true })
-  verificationTokenExpires: Date | null;
+  @Column({ nullable: true, type: "varchar" })
+  userPhone: string;
 
-  @Column({ type: "varchar", nullable: true })
-  verificationToken: string | null;
-
-  @Column({ type: "varchar", nullable: true })
-  resetPasswordToken: string | null;
-
-  @Column({ type: "timestamp", nullable: true })
-  resetPasswordTokenExpires: Date | null;
+  //s3teki yeri
+  @Column({ nullable: true, type: "varchar" })
+  userImage: string;
 
   @Column()
   companyId!: number;
@@ -44,18 +38,14 @@ export class CompanyUser extends BaseEntity {
   @JoinColumn({ name: "companyId" })
   company: Company;
 
-  @OneToMany(() => Ad, (ad) => ad.createdCompanyUser)
-  createdAds: Ad[];
-
-  @OneToMany(() => Ad, (ad) => ad.publishedCompanyUser)
-  publishAds: Ad[];
-
-  @OneToMany(() => Ad, (ad) => ad.approvedCompanyUser)
-  approvedAds: Ad[];
+  //createBy deleteBy updateBy
 
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

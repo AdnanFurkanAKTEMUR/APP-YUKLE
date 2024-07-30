@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyUser = void 0;
 const typeorm_1 = require("typeorm");
 const Company_1 = require("./Company");
-const Ad_1 = require("./Ad");
 let CompanyUser = class CompanyUser extends typeorm_1.BaseEntity {
 };
 exports.CompanyUser = CompanyUser;
@@ -23,43 +22,35 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CompanyUser.prototype, "name", void 0);
+], CompanyUser.prototype, "userFirstName", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CompanyUser.prototype, "surname", void 0);
+], CompanyUser.prototype, "userLastName", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
-], CompanyUser.prototype, "email", void 0);
+], CompanyUser.prototype, "userEmail", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CompanyUser.prototype, "role", void 0);
+], CompanyUser.prototype, "userRole", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CompanyUser.prototype, "password", void 0);
+], CompanyUser.prototype, "userPassword", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ default: true }),
     __metadata("design:type", Boolean)
-], CompanyUser.prototype, "verified", void 0);
+], CompanyUser.prototype, "userStatus", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "verificationTokenExpires", void 0);
+    (0, typeorm_1.Column)({ nullable: true, type: "varchar" }),
+    __metadata("design:type", String)
+], CompanyUser.prototype, "userPhone", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "verificationToken", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "resetPasswordToken", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "resetPasswordTokenExpires", void 0);
+    (0, typeorm_1.Column)({ nullable: true, type: "varchar" }),
+    __metadata("design:type", String)
+], CompanyUser.prototype, "userImage", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -70,18 +61,6 @@ __decorate([
     __metadata("design:type", Company_1.Company)
 ], CompanyUser.prototype, "company", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.createdCompanyUser),
-    __metadata("design:type", Array)
-], CompanyUser.prototype, "createdAds", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.publishedCompanyUser),
-    __metadata("design:type", Array)
-], CompanyUser.prototype, "publishAds", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => Ad_1.Ad, (ad) => ad.approvedCompanyUser),
-    __metadata("design:type", Array)
-], CompanyUser.prototype, "approvedAds", void 0);
-__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyUser.prototype, "createdAt", void 0);
@@ -89,6 +68,10 @@ __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyUser.prototype, "updatedAt", void 0);
+__decorate([
+    (0, typeorm_1.DeleteDateColumn)(),
+    __metadata("design:type", Date)
+], CompanyUser.prototype, "deletedAt", void 0);
 exports.CompanyUser = CompanyUser = __decorate([
     (0, typeorm_1.Entity)()
 ], CompanyUser);
