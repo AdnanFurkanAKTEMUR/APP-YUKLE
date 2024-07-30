@@ -1,4 +1,5 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CompanyProfile } from "./CompanyProfile";
 
 @Entity()
 export class CompanyRecord extends BaseEntity {
@@ -32,6 +33,13 @@ export class CompanyRecord extends BaseEntity {
 
   @Column()
   truckType: string;
+
+  @Column({ nullable: true, type: "int" })
+  companyProfileId: number;
+
+  @OneToOne(() => CompanyProfile, (companyProfile) => companyProfile.companyRecord)
+  @JoinColumn({ name: "companyProfileId" })
+  companyProfile: CompanyProfile;
 
   @Column({ type: "int", nullable: true })
   countryId: number;

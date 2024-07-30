@@ -1,5 +1,5 @@
 import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Company } from "./Company";
+import { CompanyProfile } from "./CompanyProfile";
 
 @Entity()
 export class CompanyUser extends BaseEntity {
@@ -15,7 +15,7 @@ export class CompanyUser extends BaseEntity {
   @Column({ unique: true })
   userEmail!: string;
 
-  @Column()
+  @Column({ default: "regular" })
   userRole!: string;
 
   @Column()
@@ -32,11 +32,11 @@ export class CompanyUser extends BaseEntity {
   userImage: string;
 
   @Column()
-  companyId!: number;
+  companyProfileId!: number;
 
-  @ManyToOne(() => Company, (company) => company.companyUsers)
-  @JoinColumn({ name: "companyId" })
-  company: Company;
+  @ManyToOne(() => CompanyProfile, (company) => company.companyUsers)
+  @JoinColumn({ name: "companyProfileId" })
+  companyProfile: CompanyProfile;
 
   //createBy deleteBy updateBy
 

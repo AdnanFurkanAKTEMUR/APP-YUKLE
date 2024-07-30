@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var _a, _b, _c, _d;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Ad = void 0;
 const typeorm_1 = require("typeorm");
@@ -82,7 +83,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.ads),
     (0, typeorm_1.JoinColumn)({ name: "companyId" }),
-    __metadata("design:type", Company_1.Company)
+    __metadata("design:type", typeof (_a = typeof Company_1.Company !== "undefined" && Company_1.Company) === "function" ? _a : Object)
 ], Ad.prototype, "company", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
@@ -113,15 +114,15 @@ __decorate([
 ], Ad.prototype, "approvedCompanyUser", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => CompanyLoad_1.CompanyLoad, (companyLoad) => companyLoad.ad),
-    __metadata("design:type", CompanyLoad_1.CompanyLoad)
+    __metadata("design:type", typeof (_b = typeof CompanyLoad_1.CompanyLoad !== "undefined" && CompanyLoad_1.CompanyLoad) === "function" ? _b : Object)
 ], Ad.prototype, "companyLoad", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => CompanyTrailer_1.CompanyTrailer, (companyTrailer) => companyTrailer.ad),
-    __metadata("design:type", CompanyTrailer_1.CompanyTrailer)
+    __metadata("design:type", typeof (_c = typeof CompanyTrailer_1.CompanyTrailer !== "undefined" && CompanyTrailer_1.CompanyTrailer) === "function" ? _c : Object)
 ], Ad.prototype, "companyTrailer", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => CompanyTrucks_1.CompanyTruck, (companyTruck) => companyTruck.ad),
-    __metadata("design:type", CompanyTrucks_1.CompanyTruck)
+    __metadata("design:type", typeof (_d = typeof CompanyTrucks_1.CompanyTruck !== "undefined" && CompanyTrucks_1.CompanyTruck) === "function" ? _d : Object)
 ], Ad.prototype, "companyTruck", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
