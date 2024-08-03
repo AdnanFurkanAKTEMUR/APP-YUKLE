@@ -5,7 +5,7 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import express from "express";
 import http from "http";
 import cors from "cors";
-import schema from "./graphql/schema";
+import shieldedSchema from "./graphql/schema";
 import typeormConfig from "./typeorm.config";
 import { auth } from "./middlewares/auth";
 //import * as jwt from "jsonwebtoken";
@@ -19,7 +19,7 @@ async function startServer() {
     credentials: true,
   };
   const server = new ApolloServer({
-    schema: schema,
+    schema: shieldedSchema,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
   await server.start();
