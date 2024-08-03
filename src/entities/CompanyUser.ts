@@ -1,5 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { CompanyProfile } from "./CompanyProfile";
+import { Offer } from "./Offer";
 
 @Entity()
 export class CompanyUser extends BaseEntity {
@@ -37,6 +38,9 @@ export class CompanyUser extends BaseEntity {
   @ManyToOne(() => CompanyProfile, (company) => company.companyUsers)
   @JoinColumn({ name: "companyProfileId" })
   companyProfile: CompanyProfile;
+
+  @OneToMany(() => Offer, (offer) => offer.companyUser)
+  offers: Offer[];
 
   @Column()
   createdBy!: number;

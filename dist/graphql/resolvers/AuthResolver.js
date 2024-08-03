@@ -45,13 +45,13 @@ const AuthResolver = {
         },
         loginCompanyUserMobile: async (_parent, args, _context, _info) => {
             const { email, password } = args.input;
-            const companyUser = await CompanyUser_1.CompanyUser.findOne({ where: { email } });
+            const companyUser = await CompanyUser_1.CompanyUser.findOne({ where: { userEmail: email } });
             if (!companyUser)
                 throw new Error("Kullanıcı bulunamadı");
-            const isValid = await argon2_1.default.verify(companyUser.password, password);
+            const isValid = await argon2_1.default.verify(companyUser.userPassword, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyId, name: companyUser.name, surname: companyUser.surname, role: companyUser.role, email: companyUser.email, verified: companyUser.verified, type: 1 }, process.env.TOKEN_SECRET);
+            const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyProfileId, name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: 1 }, process.env.TOKEN_SECRET);
             return { token, companyUser };
         },
     },

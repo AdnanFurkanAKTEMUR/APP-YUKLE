@@ -4,30 +4,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const schema_1 = require("@graphql-tools/schema");
-const AdminUserType_1 = __importDefault(require("./types/AdminUserType"));
-const AdminUserResolver_1 = __importDefault(require("./resolvers/AdminUserResolver"));
-const CompanyType_1 = __importDefault(require("./types/CompanyType"));
-const CompanyResolver_1 = __importDefault(require("./resolvers/CompanyResolver"));
-const CompanyBankAccountType_1 = __importDefault(require("./types/CompanyBankAccountType"));
-const CompanyBankAccountResolver_1 = __importDefault(require("./resolvers/CompanyBankAccountResolver"));
-const CompanyLoadType_1 = __importDefault(require("./types/CompanyLoadType"));
-const CompanyLoadResolver_1 = __importDefault(require("./resolvers/CompanyLoadResolver"));
-const AdType_1 = __importDefault(require("./types/AdType"));
-const AdResolver_1 = __importDefault(require("./resolvers/AdResolver"));
-const CompanyUserType_1 = __importDefault(require("./types/CompanyUserType"));
-const CompanyUserResolver_1 = __importDefault(require("./resolvers/CompanyUserResolver"));
-const CompanyTruckResolver_1 = __importDefault(require("./resolvers/CompanyTruckResolver"));
-const CompanyTruckType_1 = __importDefault(require("./types/CompanyTruckType"));
-const CompanyTrailerType_1 = __importDefault(require("./types/CompanyTrailerType"));
-const CompanyTrailerResolver_1 = __importDefault(require("./resolvers/CompanyTrailerResolver"));
 const AuthType_1 = __importDefault(require("./types/AuthType"));
 const AuthResolver_1 = __importDefault(require("./resolvers/AuthResolver"));
 const GeneralInputTypes_1 = __importDefault(require("./types/GeneralInputTypes"));
-const TruckerUserType_1 = __importDefault(require("./types/TruckerUserType"));
-const TruckerUserResolver_1 = __importDefault(require("./resolvers/TruckerUserResolver"));
+const AdminUserType_1 = __importDefault(require("./types/AdminUserType"));
+const AddressType_1 = __importDefault(require("./types/AddressType"));
+const CityType_1 = __importDefault(require("./types/CityType"));
+const CompanyDocument_1 = __importDefault(require("./types/CompanyDocument"));
+const CompanyProfile_1 = __importDefault(require("./types/CompanyProfile"));
+const CompanyRecord_1 = __importDefault(require("./types/CompanyRecord"));
+const CompanyUser_1 = __importDefault(require("./types/CompanyUser"));
+const CountryType_1 = __importDefault(require("./types/CountryType"));
+const DistrictType_1 = __importDefault(require("./types/DistrictType"));
+const OfferType_1 = __importDefault(require("./types/OfferType"));
+const AcceptedOfferType_1 = __importDefault(require("./types/AcceptedOfferType"));
+const AdminUserResolver_1 = __importDefault(require("./resolvers/AdminUserResolver"));
 const schema = (0, schema_1.makeExecutableSchema)({
-    typeDefs: [TruckerUserType_1.default, GeneralInputTypes_1.default, AdminUserType_1.default, AuthType_1.default, CompanyTrailerType_1.default, CompanyType_1.default, CompanyBankAccountType_1.default, CompanyLoadType_1.default, AdType_1.default, CompanyUserType_1.default, CompanyTruckType_1.default],
-    resolvers: [TruckerUserResolver_1.default, AdminUserResolver_1.default, AuthResolver_1.default, CompanyTrailerResolver_1.default, CompanyResolver_1.default, CompanyBankAccountResolver_1.default, CompanyLoadResolver_1.default, AdResolver_1.default, CompanyUserResolver_1.default, CompanyTruckResolver_1.default],
+    typeDefs: [AcceptedOfferType_1.default, AddressType_1.default, AdminUserType_1.default, AuthType_1.default, CityType_1.default, CompanyDocument_1.default, CompanyProfile_1.default, CompanyRecord_1.default, CompanyUser_1.default, CountryType_1.default, DistrictType_1.default, GeneralInputTypes_1.default, OfferType_1.default],
+    resolvers: [AuthResolver_1.default, AdminUserResolver_1.default],
 });
 exports.default = schema;
 //# sourceMappingURL=schema.js.map

@@ -41,15 +41,15 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
-], Address.prototype, "CountryId", void 0);
+], Address.prototype, "countryId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
-], Address.prototype, "CityId", void 0);
+], Address.prototype, "cityId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
-], Address.prototype, "DistrictId", void 0);
+], Address.prototype, "districtId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)

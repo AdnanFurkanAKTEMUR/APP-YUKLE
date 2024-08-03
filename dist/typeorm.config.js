@@ -6,19 +6,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const dotenv_1 = __importDefault(require("dotenv"));
 const AdminUser_1 = require("./entities/AdminUser");
-const Ad_1 = require("./entities/Ad");
-const Company_1 = require("./entities/Company");
-const CompanyBankAccount_1 = require("./entities/CompanyBankAccount");
-const CompanyLoad_1 = require("./entities/CompanyLoad");
-const CompanyTrailer_1 = require("./entities/CompanyTrailer");
-const CompanyTrucks_1 = require("./entities/CompanyTrucks");
+const Address_1 = require("./entities/Address");
+const City_1 = require("./entities/City");
+const CompanyDocument_1 = require("./entities/CompanyDocument");
+const CompanyProfile_1 = require("./entities/CompanyProfile");
+const CompanyRecord_1 = require("./entities/CompanyRecord");
 const CompanyUser_1 = require("./entities/CompanyUser");
-const TruckerUser_1 = require("./entities/TruckerUser");
+const Country_1 = require("./entities/Country");
+const District_1 = require("./entities/District");
+const Offer_1 = require("./entities/Offer");
 dotenv_1.default.config();
 exports.default = new typeorm_1.DataSource({
     type: "postgres",
     url: process.env.POSTGRES_CONNECTION_STRING,
-    entities: [TruckerUser_1.TruckerUser, AdminUser_1.AdminUser, Ad_1.Ad, Company_1.Company, CompanyBankAccount_1.CompanyBankAccount, CompanyLoad_1.CompanyLoad, CompanyTrailer_1.CompanyTrailer, CompanyTrucks_1.CompanyTruck, CompanyUser_1.CompanyUser],
+    entities: [Address_1.Address, AdminUser_1.AdminUser, City_1.City, CompanyDocument_1.CompanyDocument, CompanyProfile_1.CompanyProfile, CompanyRecord_1.CompanyRecord, CompanyUser_1.CompanyUser, Country_1.Country, District_1.District, Offer_1.Offer],
     synchronize: true,
 });
 //# sourceMappingURL=typeorm.config.js.map

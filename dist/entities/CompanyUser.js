@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyUser = void 0;
 const typeorm_1 = require("typeorm");
 const CompanyProfile_1 = require("./CompanyProfile");
+const Offer_1 = require("./Offer");
 let CompanyUser = class CompanyUser extends typeorm_1.BaseEntity {
 };
 exports.CompanyUser = CompanyUser;
@@ -60,6 +61,10 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: "companyProfileId" }),
     __metadata("design:type", CompanyProfile_1.CompanyProfile)
 ], CompanyUser.prototype, "companyProfile", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.companyUser),
+    __metadata("design:type", Array)
+], CompanyUser.prototype, "offers", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)

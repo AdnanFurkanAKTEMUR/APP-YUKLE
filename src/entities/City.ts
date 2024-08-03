@@ -24,9 +24,6 @@ export class City extends BaseEntity {
   @JoinColumn({ name: "countryId" })
   country: Country;
 
-  //updatedBy
-  //createdBy
-
   @CreateDateColumn()
   createdAt: Date;
 

@@ -1,19 +1,21 @@
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
 import { AdminUser } from "./entities/AdminUser";
-import { Ad } from "./entities/Ad";
-import { Company } from "./entities/Company";
-import { CompanyBankAccount } from "./entities/CompanyBankAccount";
-import { CompanyLoad } from "./entities/CompanyLoad";
-import { CompanyTrailer } from "./entities/CompanyTrailer";
-import { CompanyTruck } from "./entities/CompanyTrucks";
-import { CompanyUser } from "./entities/CompanyUser";
-import { TruckerUser } from './entities/TruckerUser';
+import { Address } from "@entities/Address";
+import { City } from "@entities/City";
+import { CompanyDocument } from "@entities/CompanyDocument";
+import { CompanyProfile } from "@entities/CompanyProfile";
+import { CompanyRecord } from "@entities/CompanyRecord";
+import { CompanyUser } from "@entities/CompanyUser";
+import { Country } from "@entities/Country";
+import { District } from "@entities/District";
+import { Offer } from "@entities/Offer";
+
 dotenv.config();
 
 export default new DataSource({
   type: "postgres",
   url: process.env.POSTGRES_CONNECTION_STRING,
-  entities: [ TruckerUser,AdminUser, Ad, Company, CompanyBankAccount, CompanyLoad, CompanyTrailer, CompanyTruck, CompanyUser],
+  entities: [ Address, AdminUser, City, CompanyDocument, CompanyProfile, CompanyRecord, CompanyUser, Country, District, Offer],
   synchronize: true,
 });

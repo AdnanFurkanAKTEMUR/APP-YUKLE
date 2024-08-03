@@ -21,13 +21,13 @@ export class Address extends BaseEntity {
   addressType: string;
 
   @Column({ type: "int", nullable: true })
-  CountryId!: number;
+  countryId!: number;
 
   @Column({ type: "int", nullable: true })
-  CityId!: number;
+  cityId!: number;
 
   @Column({ type: "int", nullable: true })
-  DistrictId!: number;
+  districtId!: number;
 
   @Column()
   createdBy!: number;
