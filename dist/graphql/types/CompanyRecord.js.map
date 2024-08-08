@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyRecord.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyRecord.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,iBAAiB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CA8B5B,CAAC;AAEF,kBAAe,iBAAiB,CAAC"}
+{"version":3,"file":"CompanyRecord.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyRecord.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,iBAAiB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CAsD5B,CAAC;AAEF,kBAAe,iBAAiB,CAAC"}

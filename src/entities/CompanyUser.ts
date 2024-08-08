@@ -10,6 +10,9 @@ export class CompanyUser extends BaseEntity {
   @Column()
   userFirstName!: string;
 
+  @Column({ type: "int", default: 1, readonly: true })
+  type: number;
+
   @Column()
   userLastName!: string;
 

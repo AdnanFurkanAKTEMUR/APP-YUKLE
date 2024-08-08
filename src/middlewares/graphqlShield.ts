@@ -1,7 +1,6 @@
-import { Context } from '@genType/genType';
-import { rule, shield, or, not } from 'graphql-shield';
+import { Context } from "@genType/genType";
+import { rule, shield, or, not } from "graphql-shield";
 //and
-
 
 const isAdmin = rule()((_parent, _args, context: Context) => {
   return context.user?.type === 0;
@@ -19,15 +18,17 @@ const isAuthenticated = rule()((_parent, _args, context: Context) => {
   return context.user !== null;
 });
 
-
-export const permissions = shield({
-  Query: {
-    getCompanyRecord: or(isAdmin, isCompanyUser, not(isAuthenticated))
-    // adminOnlyQuery: isAdmin,
-    // regularUserQuery: or(isAdmin, isCompanyUser),
-    // publicQuery: or(isAdmin, isCompanyUser, not(isAuthenticated)),
+export const permissions = shield(
+  {
+    Query: {
+      getCompanyRecord: or(isAdmin, isCompanyUser, not(isAuthenticated)),
+    },
+    Mutation: {
+      createCompanyRecord: or(isAdmin, not(isAuthenticated)),
+    },
   },
-  Mutation: {
-    // adminOnlyMutation: isAdmin,
-  },
-});
+  {
+    fallbackError: new Error("Erişim izni reddedildi!"), // Özel hata mesajı
+    allowExternalErrors: true,
+  }
+);

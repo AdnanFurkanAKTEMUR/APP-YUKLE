@@ -13,6 +13,7 @@ const AdminUserType = (0, graphql_tag_1.gql) `
     verificationToken: String
     resetPasswordToken: String
     resetPasswordTokenExpires: String
+    type: Int
     createdAt: String
     updatedAt: String
   }

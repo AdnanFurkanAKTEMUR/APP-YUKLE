@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyProfile = void 0;
 const typeorm_1 = require("typeorm");
-const CompanyRecord_1 = require("./CompanyRecord");
 const CompanyUser_1 = require("./CompanyUser");
 let CompanyProfile = class CompanyProfile extends typeorm_1.BaseEntity {
 };
@@ -20,15 +19,6 @@ __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], CompanyProfile.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyProfile.prototype, "companyRecordId", void 0);
-__decorate([
-    (0, typeorm_1.OneToOne)(() => CompanyRecord_1.CompanyRecord, (cr) => cr.companyProfile),
-    (0, typeorm_1.JoinColumn)({ name: "companyRecordId" }),
-    __metadata("design:type", CompanyRecord_1.CompanyRecord)
-], CompanyProfile.prototype, "companyRecord", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.companyProfile),
     __metadata("design:type", Array)
@@ -57,10 +47,6 @@ __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
 ], CompanyProfile.prototype, "companyDocumentId", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyProfile.prototype, "createdBy", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)

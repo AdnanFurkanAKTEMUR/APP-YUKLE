@@ -10,5 +10,5 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "singleAttributePerLine": true,
-  "printWidth": 9999
+  "printWidth": 100
 }

@@ -40,7 +40,7 @@ const AuthResolver = {
             const isValid = await argon2_1.default.verify(adminUser.password, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ id: adminUser.id, name: adminUser.name, surname: adminUser.surname, email: adminUser.email, verified: adminUser.verified, type: 0, companyId: 0, role: "" }, process.env.TOKEN_SECRET);
+            const token = jwt.sign({ id: adminUser.id, name: adminUser.name, surname: adminUser.surname, email: adminUser.email, verified: adminUser.verified, type: adminUser.type, companyId: 0, role: "" }, process.env.TOKEN_SECRET);
             return { token, adminUser };
         },
         loginCompanyUserMobile: async (_parent, args, _context, _info) => {
@@ -51,7 +51,7 @@ const AuthResolver = {
             const isValid = await argon2_1.default.verify(companyUser.userPassword, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyProfileId, name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: 1 }, process.env.TOKEN_SECRET);
+            const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyProfileId, name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET);
             return { token, companyUser };
         },
     },

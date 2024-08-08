@@ -1,19 +1,18 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { CompanyRecord } from "./CompanyRecord";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { CompanyUser } from "./CompanyUser";
-
 
 @Entity()
 export class CompanyProfile extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
-
-  @Column()
-  companyRecordId!: number;
-
-  @OneToOne(() => CompanyRecord, (cr) => cr.companyProfile)
-  @JoinColumn({ name: "companyRecordId" })
-  companyRecord: CompanyRecord;
 
   @OneToMany(() => CompanyUser, (companyUser) => companyUser.companyProfile)
   companyUsers: CompanyUser[];
@@ -35,9 +34,6 @@ export class CompanyProfile extends BaseEntity {
 
   @Column({ type: "int", nullable: true })
   companyDocumentId: number;
-
-  @Column()
-  createdBy!: number;
 
   @Column({ type: "int", nullable: true })
   updatedBy: number;

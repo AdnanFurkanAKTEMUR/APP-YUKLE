@@ -15,8 +15,13 @@ const isAuthenticated = (0, graphql_shield_1.rule)()((_parent, _args, context) =
 });
 exports.permissions = (0, graphql_shield_1.shield)({
     Query: {
-        getCompanyRecord: (0, graphql_shield_1.or)(isAdmin, isCompanyUser, (0, graphql_shield_1.not)(isAuthenticated))
+        getCompanyRecord: (0, graphql_shield_1.or)(isAdmin, isCompanyUser, (0, graphql_shield_1.not)(isAuthenticated)),
     },
-    Mutation: {},
+    Mutation: {
+        createCompanyRecord: (0, graphql_shield_1.or)(isAdmin, (0, graphql_shield_1.not)(isAuthenticated)),
+    },
+}, {
+    fallbackError: new Error("Erişim izni reddedildi!"),
+    allowExternalErrors: true,
 });
 //# sourceMappingURL=graphqlShield.js.map

@@ -17,10 +17,25 @@ import AcceptedOfferType from "./types/AcceptedOfferType";
 import AdminUserResolvers from "./resolvers/AdminUserResolver";
 import { applyMiddleware } from "graphql-middleware";
 import { permissions } from "@middlewares/graphqlShield";
+import CompanyRecordResolvers from "./resolvers/CompanyRecordResolver";
 
 const schema = makeExecutableSchema({
-  typeDefs: [AcceptedOfferType, AddressType, AdminUserType, AuthType, CityType, CompanyDocumentType, CompanyProfileType, CompanyRecordType, CompanyUserType, CountryType, DistrictType, GeneralInputTypes, OfferType],
-  resolvers: [AuthResolver, AdminUserResolvers],
+  typeDefs: [
+    AcceptedOfferType,
+    AddressType,
+    AdminUserType,
+    AuthType,
+    CityType,
+    CompanyDocumentType,
+    CompanyProfileType,
+    CompanyRecordType,
+    CompanyUserType,
+    CountryType,
+    DistrictType,
+    GeneralInputTypes,
+    OfferType,
+  ],
+  resolvers: [AuthResolver, AdminUserResolvers, CompanyRecordResolvers],
 });
 
 const shieldedSchema = applyMiddleware(schema, permissions);

@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyRecord = void 0;
 const typeorm_1 = require("typeorm");
-const CompanyProfile_1 = require("./CompanyProfile");
 let CompanyRecord = class CompanyRecord extends typeorm_1.BaseEntity {
 };
 exports.CompanyRecord = CompanyRecord;
@@ -56,24 +55,19 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyRecord.prototype, "truckType", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true, type: "int" }),
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
 ], CompanyRecord.prototype, "companyProfileId", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.companyRecord),
-    (0, typeorm_1.JoinColumn)({ name: "companyProfileId" }),
-    __metadata("design:type", CompanyProfile_1.CompanyProfile)
-], CompanyRecord.prototype, "companyProfile", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], CompanyRecord.prototype, "countryId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], CompanyRecord.prototype, "cityId", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
 ], CompanyRecord.prototype, "districtId", void 0);
 __decorate([
@@ -89,11 +83,11 @@ __decorate([
     __metadata("design:type", Boolean)
 ], CompanyRecord.prototype, "kvkkConfirm", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "boolean", nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Boolean)
 ], CompanyRecord.prototype, "otpVerification", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "boolean", nullable: true }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", Boolean)
 ], CompanyRecord.prototype, "mailVerification", void 0);
 __decorate([

@@ -19,6 +19,10 @@ __decorate([
     __metadata("design:type", Number)
 ], AdminUser.prototype, "id", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: "int", default: 0, readonly: true }),
+    __metadata("design:type", Number)
+], AdminUser.prototype, "type", void 0);
+__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], AdminUser.prototype, "name", void 0);

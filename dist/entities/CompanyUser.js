@@ -25,6 +25,10 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyUser.prototype, "userFirstName", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ type: "int", default: 1, readonly: true }),
+    __metadata("design:type", Number)
+], CompanyUser.prototype, "type", void 0);
+__decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], CompanyUser.prototype, "userLastName", void 0);

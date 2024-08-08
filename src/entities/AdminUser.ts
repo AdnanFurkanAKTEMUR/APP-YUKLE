@@ -5,6 +5,9 @@ export class AdminUser extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Column({ type: "int", default: 0, readonly: true })
+  type: number;
+
   @Column()
   name!: string;
 

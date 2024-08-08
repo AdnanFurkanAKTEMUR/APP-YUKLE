@@ -1,5 +1,12 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { CompanyProfile } from "./CompanyProfile";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+
 
 @Entity()
 export class CompanyRecord extends BaseEntity {
@@ -26,32 +33,28 @@ export class CompanyRecord extends BaseEntity {
   taxNumber!: string;
 
   @Column()
-  companySector: string;
+  companySector!: string;
 
   @Column()
-  dailyTrip: string;
+  dailyTrip!: string;
 
   @Column()
-  truckType: string;
+  truckType!: string;
 
-  @Column({ nullable: true, type: "int" })
+  @Column({type:"int", nullable:true})
   companyProfileId: number;
 
-  @OneToOne(() => CompanyProfile, (companyProfile) => companyProfile.companyRecord)
-  @JoinColumn({ name: "companyProfileId" })
-  companyProfile: CompanyProfile;
-
-  @Column({ type: "int", nullable: true })
-  countryId: number;
-
-  @Column({ type: "int", nullable: true })
-  cityId: number;
-
-  @Column({ type: "int", nullable: true })
-  districtId: number;
+  @Column()
+  countryId!: number;
 
   @Column()
-  addressDescription: string;
+  cityId!: number;
+
+  @Column()
+  districtId!: number;
+
+  @Column()
+  addressDescription!: string;
 
   @Column()
   messageConfirm!: boolean;
@@ -59,11 +62,11 @@ export class CompanyRecord extends BaseEntity {
   @Column()
   kvkkConfirm!: boolean;
 
-  @Column({ type: "boolean", nullable: true })
-  otpVerification: boolean;
+  @Column()
+  otpVerification!: boolean;
 
-  @Column({ type: "boolean", nullable: true })
-  mailVerification: boolean;
+  @Column()
+  mailVerification!: boolean;
 
   @CreateDateColumn()
   createdAt: Date;

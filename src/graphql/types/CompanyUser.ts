@@ -14,6 +14,7 @@ const CompanyUserType = gql`
     companyProfileId: Int
     companyProfile: CompanyProfile
     offers: [Offer]
+    type: Int
     createdBy: CompanyUser
     updatedBy: CompanyUser
     deletedBy: CompanyUser

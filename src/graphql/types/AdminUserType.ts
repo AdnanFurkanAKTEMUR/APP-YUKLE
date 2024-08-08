@@ -12,6 +12,7 @@ const AdminUserType = gql`
     verificationToken: String
     resetPasswordToken: String
     resetPasswordTokenExpires: String
+    type: Int
     createdAt: String
     updatedAt: String
   }

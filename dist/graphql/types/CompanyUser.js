@@ -15,6 +15,7 @@ const CompanyUserType = (0, graphql_tag_1.gql) `
     companyProfileId: Int
     companyProfile: CompanyProfile
     offers: [Offer]
+    type: Int
     createdBy: CompanyUser
     updatedBy: CompanyUser
     deletedBy: CompanyUser
