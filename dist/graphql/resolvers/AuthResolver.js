@@ -51,7 +51,7 @@ const AuthResolver = {
             const isValid = await argon2_1.default.verify(companyUser.userPassword, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyProfileId, name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET);
+            const token = jwt.sign({ user_id: companyUser.id, company_id: "", name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET);
             return { token, companyUser };
         },
     },

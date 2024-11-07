@@ -59,18 +59,17 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyUser.prototype, "userImage", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyUser.prototype, "companyProfileId", void 0);
-__decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyProfile_1.CompanyProfile, (company) => company.companyUsers),
-    (0, typeorm_1.JoinColumn)({ name: "companyProfileId" }),
     __metadata("design:type", CompanyProfile_1.CompanyProfile)
 ], CompanyUser.prototype, "companyProfile", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.companyUser),
+    (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.createdCompanyUser),
     __metadata("design:type", Array)
-], CompanyUser.prototype, "offers", void 0);
+], CompanyUser.prototype, "createdOffers", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.updatedCompanyUser),
+    __metadata("design:type", Array)
+], CompanyUser.prototype, "updatedOffers", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.createdCompanyUser, { nullable: true }),
     __metadata("design:type", Object)

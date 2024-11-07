@@ -1,13 +1,20 @@
-import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { CompanyUser } from "./CompanyUser";
+import { Address } from "./Address";
 
 @Entity()
 export class Offer extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
-
-  @Column()
-  companyUserId!: number;
 
   @Column()
   offerStartDate: Date;
@@ -48,41 +55,17 @@ export class Offer extends BaseEntity {
   @Column()
   counterOffer: number;
 
-  //address tablosu idsi
-  @Column()
-  fastPickupId: number;
-
-  //country tablosu idsi
-  @Column()
-  pickupCountryId: number;
-
-  // city tablosu idsi
-  @Column()
-  pickupCityId: number;
-
-  //dsitrict
-  @Column()
-  pickupDistrictId: number;
-
-  //address tablosundaki description alanı
-  @Column()
-  placeDetail: string;
+  @ManyToOne(() => Address, (address) => address.offersAddress)
+  address: Address;
 
   @Column({ type: "bool", default: false })
   offersAccepted: boolean;
 
-  @Column()
-  createdBy!: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.createdOffers)
+  createdCompanyUser!: CompanyUser;
 
-  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.offers, { nullable: false })
-  @JoinColumn({ name: "companyUserId" })
-  companyUser: CompanyUser;
-
-  @Column({ type: "int", nullable: true })
-  updatedBy: number;
-
-  @Column({ type: "int", nullable: true })
-  deletedBy: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedOffers, { nullable: true })
+  updatedCompanyUser?: CompanyUser | null;
 
   @CreateDateColumn()
   createdAt: Date;

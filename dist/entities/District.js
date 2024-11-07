@@ -34,10 +34,6 @@ __decorate([
     __metadata("design:type", String)
 ], District.prototype, "postalCode", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
-    __metadata("design:type", String)
-], District.prototype, "plateCode", void 0);
-__decorate([
     (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.district, { nullable: true }),
     __metadata("design:type", Object)
 ], District.prototype, "addresses", void 0);

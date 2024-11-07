@@ -10,7 +10,6 @@ const DistrictType = (0, graphql_tag_1.default) `
     districtName: String
     city: City
     postalCode: String
-    plateCode: String
     createdAt: String
     updatedAt: String
   }
@@ -23,7 +22,6 @@ const DistrictType = (0, graphql_tag_1.default) `
     districtName: String!
     cityId: Int
     postalCode: String
-    plateCode: String
   }
 
   type Query {

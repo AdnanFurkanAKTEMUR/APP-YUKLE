@@ -4,7 +4,6 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -48,15 +47,14 @@ export class CompanyUser extends BaseEntity {
   @Column({ nullable: true, type: "varchar" })
   userImage: string;
 
-  @Column()
-  companyProfileId!: number;
-
   @ManyToOne(() => CompanyProfile, (company) => company.companyUsers)
-  @JoinColumn({ name: "companyProfileId" })
   companyProfile: CompanyProfile;
 
-  @OneToMany(() => Offer, (offer) => offer.companyUser)
-  offers: Offer[];
+  @OneToMany(() => Offer, (offer) => offer.createdCompanyUser)
+  createdOffers: Offer[];
+
+  @OneToMany(() => Offer, (offer) => offer.updatedCompanyUser)
+  updatedOffers: Offer[];
 
   @OneToMany(() => Address, (address) => address.createdCompanyUser, { nullable: true })
   createdAddresses?: Address[] | null;

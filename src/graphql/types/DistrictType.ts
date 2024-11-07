@@ -6,7 +6,6 @@ const DistrictType = gql`
     districtName: String
     city: City
     postalCode: String
-    plateCode: String
     createdAt: String
     updatedAt: String
   }
@@ -19,7 +18,6 @@ const DistrictType = gql`
     districtName: String!
     cityId: Int
     postalCode: String
-    plateCode: String
   }
 
   type Query {

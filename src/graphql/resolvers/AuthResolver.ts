@@ -20,7 +20,7 @@ const AuthResolver = {
       if (!companyUser) throw new Error("Kullanıcı bulunamadı");
       const isValid = await argon2.verify(companyUser.userPassword, password);
       if (!isValid) throw new Error("Invalid creds.");
-      const token = jwt.sign({ user_id: companyUser.id, company_id: companyUser.companyProfileId, name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET as jwt.Secret);
+      const token = jwt.sign({ user_id: companyUser.id, company_id: "", name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET as jwt.Secret);
       return { token, companyUser };
     },
   },

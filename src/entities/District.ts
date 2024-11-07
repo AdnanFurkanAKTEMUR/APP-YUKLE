@@ -28,9 +28,6 @@ export class District extends BaseEntity {
   @Column({ type: "varchar", nullable: true })
   postalCode: string;
 
-  @Column({ type: "varchar", nullable: true })
-  plateCode: string;
-
   @OneToMany(() => Address, (address) => address.district, { nullable: true })
   addresses?: Address[] | null;
 

@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -12,6 +13,7 @@ import { CompanyUser } from "./CompanyUser";
 import { Country } from "./Country";
 import { City } from "./City";
 import { District } from "./District";
+import { Offer } from "./Offer";
 
 @Entity()
 export class Address extends BaseEntity {
@@ -41,6 +43,9 @@ export class Address extends BaseEntity {
 
   @ManyToOne(() => District, (district) => district.addresses)
   district: District;
+
+  @OneToMany(() => Offer, (offer) => offer.address)
+  offersAddress: Offer[];
 
   @ManyToOne(() => CompanyUser, (companyUser) => companyUser.createdAddresses)
   createdCompanyUser: CompanyUser;

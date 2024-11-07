@@ -17,12 +17,11 @@ const DistrictResolvers = {
 
   Mutation: {
     createDistrict: async (_parent: any, args: any, _context: Context, _info: any) => {
-      const { districtName, cityId, postalCode, plateCode } = args.input;
+      const { districtName, cityId, postalCode } = args.input;
       try {
         const district = District.create({
           districtName: districtName,
           postalCode: postalCode,
-          plateCode: plateCode,
         });
         if (cityId) {
           const city = await City.findOne({ where: { id: cityId } });

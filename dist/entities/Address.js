@@ -16,6 +16,7 @@ const CompanyUser_1 = require("./CompanyUser");
 const Country_1 = require("./Country");
 const City_1 = require("./City");
 const District_1 = require("./District");
+const Offer_1 = require("./Offer");
 let Address = class Address extends typeorm_1.BaseEntity {
 };
 exports.Address = Address;
@@ -55,6 +56,10 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => District_1.District, (district) => district.addresses),
     __metadata("design:type", District_1.District)
 ], Address.prototype, "district", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.address),
+    __metadata("design:type", Array)
+], Address.prototype, "offersAddress", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.createdAddresses),
     __metadata("design:type", CompanyUser_1.CompanyUser)

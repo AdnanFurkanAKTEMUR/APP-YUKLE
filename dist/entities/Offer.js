@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Offer = void 0;
 const typeorm_1 = require("typeorm");
 const CompanyUser_1 = require("./CompanyUser");
+const Address_1 = require("./Address");
 let Offer = class Offer extends typeorm_1.BaseEntity {
 };
 exports.Offer = Offer;
@@ -19,10 +20,6 @@ __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Offer.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Offer.prototype, "companyUserId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Date)
@@ -76,46 +73,21 @@ __decorate([
     __metadata("design:type", Number)
 ], Offer.prototype, "counterOffer", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Offer.prototype, "fastPickupId", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Offer.prototype, "pickupCountryId", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Offer.prototype, "pickupCityId", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Offer.prototype, "pickupDistrictId", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
-], Offer.prototype, "placeDetail", void 0);
+    (0, typeorm_1.ManyToOne)(() => Address_1.Address, (address) => address.offersAddress),
+    __metadata("design:type", Address_1.Address)
+], Offer.prototype, "address", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "bool", default: false }),
     __metadata("design:type", Boolean)
 ], Offer.prototype, "offersAccepted", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], Offer.prototype, "createdBy", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.offers, { nullable: false }),
-    (0, typeorm_1.JoinColumn)({ name: "companyUserId" }),
+    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.createdOffers),
     __metadata("design:type", CompanyUser_1.CompanyUser)
-], Offer.prototype, "companyUser", void 0);
+], Offer.prototype, "createdCompanyUser", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], Offer.prototype, "updatedBy", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], Offer.prototype, "deletedBy", void 0);
+    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.updatedOffers, { nullable: true }),
+    __metadata("design:type", Object)
+], Offer.prototype, "updatedCompanyUser", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
