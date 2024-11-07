@@ -3,11 +3,16 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { CompanyUser } from "./CompanyUser";
+import { CompanyRecord } from "./CompanyRecord";
+import { CompanyDocument } from "./CompanyDocument";
+import { AdminUser } from "./AdminUser";
 
 @Entity()
 export class CompanyProfile extends BaseEntity {
@@ -32,14 +37,22 @@ export class CompanyProfile extends BaseEntity {
   @Column({ type: "varchar", nullable: true })
   taxPlateDoc: string;
 
-  @Column({ type: "int", nullable: true })
-  companyDocumentId: number;
+  @OneToMany(() => CompanyDocument, (companyDocument) => companyDocument.companyProfile, {
+    nullable: true,
+  })
+  companyDocuments?: CompanyDocument[] | null;
 
-  @Column({ type: "int", nullable: true })
-  updatedBy: number;
+  @ManyToOne(() => AdminUser, (adminUser) => adminUser.updatedCompanyProfiles, { nullable: true })
+  updatedAdminUser?: AdminUser | null;
 
-  @Column({ type: "int", nullable: true })
-  deletedBy: number;
+  @ManyToOne(() => AdminUser, (adminUser) => adminUser.createdCompanyProfiles, { nullable: true })
+  createdAdminUser?: AdminUser | null;
+
+  @ManyToOne(() => AdminUser, (adminUser) => adminUser.deletedCompanyProfiles, { nullable: true })
+  deletedAdminUser?: AdminUser | null;
+
+  @OneToOne(() => CompanyRecord, (companyRecord) => companyRecord.companyProfile)
+  companyRecord: CompanyRecord;
 
   @CreateDateColumn()
   createdAt: Date;

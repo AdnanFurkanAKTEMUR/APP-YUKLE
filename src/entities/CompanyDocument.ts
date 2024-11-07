@@ -1,5 +1,14 @@
-import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { CompanyProfile } from "./CompanyProfile";
 
 @Entity()
 export class CompanyDocument extends BaseEntity {
@@ -15,8 +24,8 @@ export class CompanyDocument extends BaseEntity {
   @Column()
   documentFolder!: string;
 
-  @Column()
-  companyProfileId!: number;
+  @ManyToOne(() => CompanyProfile, (companyProfile) => companyProfile.companyDocuments)
+  companyProfile: CompanyProfile;
 
   @Column()
   createdBy!: number;

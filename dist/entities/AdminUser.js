@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminUser = void 0;
 const typeorm_1 = require("typeorm");
+const CompanyProfile_1 = require("./CompanyProfile");
 let AdminUser = class AdminUser extends typeorm_1.BaseEntity {
 };
 exports.AdminUser = AdminUser;
@@ -58,6 +59,24 @@ __decorate([
     (0, typeorm_1.Column)({ type: "timestamp", nullable: true }),
     __metadata("design:type", Object)
 ], AdminUser.prototype, "resetPasswordTokenExpires", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.updatedAdminUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], AdminUser.prototype, "updatedCompanyProfiles", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.createdAdminUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], AdminUser.prototype, "createdCompanyProfiles", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.deletedAdminUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], AdminUser.prototype, "deletedCompanyProfiles", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

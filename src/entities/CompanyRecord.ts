@@ -3,14 +3,14 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-
+import { CompanyProfile } from "./CompanyProfile";
 
 @Entity()
 export class CompanyRecord extends BaseEntity {
-  //companyRecordId
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -41,8 +41,10 @@ export class CompanyRecord extends BaseEntity {
   @Column()
   truckType!: string;
 
-  @Column({type:"int", nullable:true})
-  companyProfileId: number;
+  @OneToOne(() => CompanyProfile, (companyProfile) => companyProfile.companyRecord, {
+    nullable: true,
+  })
+  companyProfile?: CompanyProfile | null;
 
   @Column()
   countryId!: number;
@@ -53,7 +55,7 @@ export class CompanyRecord extends BaseEntity {
   @Column()
   districtId!: number;
 
-  @Column()
+  @Column({ type: "varchar", length: 200 })
   addressDescription!: string;
 
   @Column()

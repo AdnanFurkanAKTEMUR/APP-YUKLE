@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyDocument = void 0;
 const typeorm_1 = require("typeorm");
+const CompanyProfile_1 = require("./CompanyProfile");
 let CompanyDocument = class CompanyDocument extends typeorm_1.BaseEntity {
 };
 exports.CompanyDocument = CompanyDocument;
@@ -31,9 +32,9 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyDocument.prototype, "documentFolder", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyDocument.prototype, "companyProfileId", void 0);
+    (0, typeorm_1.ManyToOne)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.companyDocuments),
+    __metadata("design:type", CompanyProfile_1.CompanyProfile)
+], CompanyDocument.prototype, "companyProfile", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)

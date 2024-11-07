@@ -12,6 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyProfile = void 0;
 const typeorm_1 = require("typeorm");
 const CompanyUser_1 = require("./CompanyUser");
+const CompanyRecord_1 = require("./CompanyRecord");
+const CompanyDocument_1 = require("./CompanyDocument");
+const AdminUser_1 = require("./AdminUser");
 let CompanyProfile = class CompanyProfile extends typeorm_1.BaseEntity {
 };
 exports.CompanyProfile = CompanyProfile;
@@ -44,17 +47,27 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyProfile.prototype, "taxPlateDoc", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], CompanyProfile.prototype, "companyDocumentId", void 0);
+    (0, typeorm_1.OneToMany)(() => CompanyDocument_1.CompanyDocument, (companyDocument) => companyDocument.companyProfile, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyProfile.prototype, "companyDocuments", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], CompanyProfile.prototype, "updatedBy", void 0);
+    (0, typeorm_1.ManyToOne)(() => AdminUser_1.AdminUser, (adminUser) => adminUser.updatedCompanyProfiles, { nullable: true }),
+    __metadata("design:type", Object)
+], CompanyProfile.prototype, "updatedAdminUser", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], CompanyProfile.prototype, "deletedBy", void 0);
+    (0, typeorm_1.ManyToOne)(() => AdminUser_1.AdminUser, (adminUser) => adminUser.createdCompanyProfiles, { nullable: true }),
+    __metadata("design:type", Object)
+], CompanyProfile.prototype, "createdAdminUser", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => AdminUser_1.AdminUser, (adminUser) => adminUser.deletedCompanyProfiles, { nullable: true }),
+    __metadata("design:type", Object)
+], CompanyProfile.prototype, "deletedAdminUser", void 0);
+__decorate([
+    (0, typeorm_1.OneToOne)(() => CompanyRecord_1.CompanyRecord, (companyRecord) => companyRecord.companyProfile),
+    __metadata("design:type", CompanyRecord_1.CompanyRecord)
+], CompanyProfile.prototype, "companyRecord", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
