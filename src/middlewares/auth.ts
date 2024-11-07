@@ -57,7 +57,7 @@ export const auth = async (header: string, cookie: any): Promise<AuthTokenPayloa
 
     return null;
   } catch (error) {
-    console.error("Authentication error:", error);
+    //console.error("Authentication error:", error);
     return null;
   }
 };

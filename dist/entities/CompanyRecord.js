@@ -12,6 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyRecord = void 0;
 const typeorm_1 = require("typeorm");
 const CompanyProfile_1 = require("./CompanyProfile");
+const Country_1 = require("./Country");
+const City_1 = require("./City");
+const District_1 = require("./District");
 let CompanyRecord = class CompanyRecord extends typeorm_1.BaseEntity {
 };
 exports.CompanyRecord = CompanyRecord;
@@ -62,17 +65,17 @@ __decorate([
     __metadata("design:type", Object)
 ], CompanyRecord.prototype, "companyProfile", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyRecord.prototype, "countryId", void 0);
+    (0, typeorm_1.ManyToOne)(() => Country_1.Country, (country) => country.companyRecords),
+    __metadata("design:type", Country_1.Country)
+], CompanyRecord.prototype, "country", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyRecord.prototype, "cityId", void 0);
+    (0, typeorm_1.ManyToOne)(() => City_1.City, (city) => city.companyRecords),
+    __metadata("design:type", City_1.City)
+], CompanyRecord.prototype, "city", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyRecord.prototype, "districtId", void 0);
+    (0, typeorm_1.ManyToOne)(() => District_1.District, (district) => district.companyRecords),
+    __metadata("design:type", District_1.District)
+], CompanyRecord.prototype, "district", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", length: 200 }),
     __metadata("design:type", String)

@@ -3,11 +3,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { CompanyProfile } from "./CompanyProfile";
+import { Country } from "./Country";
+import { City } from "./City";
+import { District } from "./District";
 
 @Entity()
 export class CompanyRecord extends BaseEntity {
@@ -46,14 +50,14 @@ export class CompanyRecord extends BaseEntity {
   })
   companyProfile?: CompanyProfile | null;
 
-  @Column()
-  countryId!: number;
+  @ManyToOne(() => Country, (country) => country.companyRecords)
+  country: Country;
 
-  @Column()
-  cityId!: number;
+  @ManyToOne(() => City, (city) => city.companyRecords)
+  city: City;
 
-  @Column()
-  districtId!: number;
+  @ManyToOne(() => District, (district) => district.companyRecords)
+  district: District;
 
   @Column({ type: "varchar", length: 200 })
   addressDescription!: string;

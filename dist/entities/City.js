@@ -13,6 +13,8 @@ exports.City = void 0;
 const typeorm_1 = require("typeorm");
 const District_1 = require("./District");
 const Country_1 = require("./Country");
+const Address_1 = require("./Address");
+const CompanyRecord_1 = require("./CompanyRecord");
 let City = class City extends typeorm_1.BaseEntity {
 };
 exports.City = City;
@@ -29,18 +31,21 @@ __decorate([
     __metadata("design:type", String)
 ], City.prototype, "plateCode", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => District_1.District, (district) => district.city),
-    __metadata("design:type", Array)
+    (0, typeorm_1.ManyToOne)(() => Country_1.Country, (country) => country.cities, { nullable: true }),
+    __metadata("design:type", Object)
+], City.prototype, "country", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => District_1.District, (district) => district.city, { nullable: true }),
+    __metadata("design:type", Object)
 ], City.prototype, "districts", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], City.prototype, "countryId", void 0);
+    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.city, { nullable: true }),
+    __metadata("design:type", Object)
+], City.prototype, "addresses", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Country_1.Country, (country) => country.cities),
-    (0, typeorm_1.JoinColumn)({ name: "countryId" }),
-    __metadata("design:type", Country_1.Country)
-], City.prototype, "country", void 0);
+    (0, typeorm_1.OneToMany)(() => CompanyRecord_1.CompanyRecord, (companyRecord) => companyRecord.city, { nullable: true }),
+    __metadata("design:type", Object)
+], City.prototype, "companyRecords", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

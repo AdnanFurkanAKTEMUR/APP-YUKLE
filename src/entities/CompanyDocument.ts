@@ -9,6 +9,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { CompanyProfile } from "./CompanyProfile";
+import { CompanyUser } from "./CompanyUser";
 
 @Entity()
 export class CompanyDocument extends BaseEntity {
@@ -27,14 +28,20 @@ export class CompanyDocument extends BaseEntity {
   @ManyToOne(() => CompanyProfile, (companyProfile) => companyProfile.companyDocuments)
   companyProfile: CompanyProfile;
 
-  @Column()
-  createdBy!: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.createdCompanyDocuments, {
+    nullable: true,
+  })
+  createdCompanyUser?: CompanyUser | null;
 
-  @Column({ type: "int", nullable: true })
-  updatedBy: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedCompanyDocuments, {
+    nullable: true,
+  })
+  updatedCompanyUser?: CompanyUser | null;
 
-  @Column({ type: "int", nullable: true })
-  deletedBy: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.deletedCompanyDocuments, {
+    nullable: true,
+  })
+  deletedCompanyUser?: CompanyUser | null;
 
   @CreateDateColumn()
   createdAt: Date;

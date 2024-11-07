@@ -12,7 +12,7 @@ import {
 import { CompanyUser } from "./CompanyUser";
 import { CompanyRecord } from "./CompanyRecord";
 import { CompanyDocument } from "./CompanyDocument";
-import { AdminUser } from "./AdminUser";
+import { Address } from "./Address";
 
 @Entity()
 export class CompanyProfile extends BaseEntity {
@@ -42,14 +42,21 @@ export class CompanyProfile extends BaseEntity {
   })
   companyDocuments?: CompanyDocument[] | null;
 
-  @ManyToOne(() => AdminUser, (adminUser) => adminUser.updatedCompanyProfiles, { nullable: true })
-  updatedAdminUser?: AdminUser | null;
+  @OneToMany(() => Address, (address) => address.companyProfile, { nullable: true })
+  addresses?: Address[] | null;
 
-  @ManyToOne(() => AdminUser, (adminUser) => adminUser.createdCompanyProfiles, { nullable: true })
-  createdAdminUser?: AdminUser | null;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.createdCompanyProfiles)
+  createdCompanyUser: CompanyUser;
 
-  @ManyToOne(() => AdminUser, (adminUser) => adminUser.deletedCompanyProfiles, { nullable: true })
-  deletedAdminUser?: AdminUser | null;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedCompanyProfiles, {
+    nullable: true,
+  })
+  updatedCompanyUser?: CompanyUser | null;
+
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.deletedCompanyProfiles, {
+    nullable: true,
+  })
+  deletedCompanyUser?: CompanyUser | null;
 
   @OneToOne(() => CompanyRecord, (companyRecord) => companyRecord.companyProfile)
   companyRecord: CompanyRecord;

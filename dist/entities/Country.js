@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Country = void 0;
 const typeorm_1 = require("typeorm");
 const City_1 = require("./City");
+const Address_1 = require("./Address");
+const CompanyRecord_1 = require("./CompanyRecord");
 let Country = class Country extends typeorm_1.BaseEntity {
 };
 exports.Country = Country;
@@ -28,9 +30,17 @@ __decorate([
     __metadata("design:type", String)
 ], Country.prototype, "plateCode", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => City_1.City, (city) => city.country),
-    __metadata("design:type", Array)
+    (0, typeorm_1.OneToMany)(() => City_1.City, (city) => city.country, { nullable: true }),
+    __metadata("design:type", Object)
 ], Country.prototype, "cities", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.country, { nullable: true }),
+    __metadata("design:type", Object)
+], Country.prototype, "addresses", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyRecord_1.CompanyRecord, (companyRecord) => companyRecord.country, { nullable: true }),
+    __metadata("design:type", Object)
+], Country.prototype, "companyRecords", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

@@ -8,7 +8,6 @@ const DistrictType = (0, graphql_tag_1.default) `
   type District {
     id: Int
     districtName: String
-    cityId: Int
     city: City
     postalCode: String
     plateCode: String
@@ -20,9 +19,19 @@ const DistrictType = (0, graphql_tag_1.default) `
     cityId: Int!
   }
 
+  input createDistrictInput {
+    districtName: String!
+    cityId: Int
+    postalCode: String
+    plateCode: String
+  }
+
   type Query {
     getDistrict(input: getId): District
-    getDistrictOfCity(input: getDistrictOfCityInput): District
+  }
+
+  type Mutation {
+    createDistrict(input: createDistrictInput): District
   }
 `;
 exports.default = DistrictType;

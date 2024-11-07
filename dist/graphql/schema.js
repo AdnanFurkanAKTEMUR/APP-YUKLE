@@ -22,6 +22,8 @@ const AdminUserResolver_1 = __importDefault(require("./resolvers/AdminUserResolv
 const graphql_middleware_1 = require("graphql-middleware");
 const graphqlShield_1 = require("../middlewares/graphqlShield");
 const CompanyRecordResolver_1 = __importDefault(require("./resolvers/CompanyRecordResolver"));
+const DistrictResolver_1 = __importDefault(require("./resolvers/DistrictResolver"));
+const CityResolver_1 = __importDefault(require("./resolvers/CityResolver"));
 const schema = (0, schema_1.makeExecutableSchema)({
     typeDefs: [
         AcceptedOfferType_1.default,
@@ -38,7 +40,13 @@ const schema = (0, schema_1.makeExecutableSchema)({
         GeneralInputTypes_1.default,
         OfferType_1.default,
     ],
-    resolvers: [AuthResolver_1.default, AdminUserResolver_1.default, CompanyRecordResolver_1.default],
+    resolvers: [
+        AuthResolver_1.default,
+        AdminUserResolver_1.default,
+        CompanyRecordResolver_1.default,
+        DistrictResolver_1.default,
+        CityResolver_1.default,
+    ],
 });
 const shieldedSchema = (0, graphql_middleware_1.applyMiddleware)(schema, graphqlShield_1.permissions);
 exports.default = shieldedSchema;

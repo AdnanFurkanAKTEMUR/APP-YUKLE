@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 const CompanyUser_1 = require("./CompanyUser");
 const CompanyRecord_1 = require("./CompanyRecord");
 const CompanyDocument_1 = require("./CompanyDocument");
-const AdminUser_1 = require("./AdminUser");
+const Address_1 = require("./Address");
 let CompanyProfile = class CompanyProfile extends typeorm_1.BaseEntity {
 };
 exports.CompanyProfile = CompanyProfile;
@@ -53,17 +53,25 @@ __decorate([
     __metadata("design:type", Object)
 ], CompanyProfile.prototype, "companyDocuments", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => AdminUser_1.AdminUser, (adminUser) => adminUser.updatedCompanyProfiles, { nullable: true }),
+    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.companyProfile, { nullable: true }),
     __metadata("design:type", Object)
-], CompanyProfile.prototype, "updatedAdminUser", void 0);
+], CompanyProfile.prototype, "addresses", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => AdminUser_1.AdminUser, (adminUser) => adminUser.createdCompanyProfiles, { nullable: true }),
-    __metadata("design:type", Object)
-], CompanyProfile.prototype, "createdAdminUser", void 0);
+    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.createdCompanyProfiles),
+    __metadata("design:type", CompanyUser_1.CompanyUser)
+], CompanyProfile.prototype, "createdCompanyUser", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => AdminUser_1.AdminUser, (adminUser) => adminUser.deletedCompanyProfiles, { nullable: true }),
+    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.updatedCompanyProfiles, {
+        nullable: true,
+    }),
     __metadata("design:type", Object)
-], CompanyProfile.prototype, "deletedAdminUser", void 0);
+], CompanyProfile.prototype, "updatedCompanyUser", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.deletedCompanyProfiles, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyProfile.prototype, "deletedCompanyUser", void 0);
 __decorate([
     (0, typeorm_1.OneToOne)(() => CompanyRecord_1.CompanyRecord, (companyRecord) => companyRecord.companyProfile),
     __metadata("design:type", CompanyRecord_1.CompanyRecord)

@@ -63,7 +63,6 @@ const auth = async (header, cookie) => {
         return null;
     }
     catch (error) {
-        console.error("Authentication error:", error);
         return null;
     }
 };

@@ -25,6 +25,7 @@ export const permissions = shield(
     },
     Mutation: {
       createCompanyRecord: or(isAdmin, not(isAuthenticated)),
+      
     },
   },
   {

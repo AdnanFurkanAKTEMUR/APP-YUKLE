@@ -4,7 +4,6 @@ const DistrictType = gql`
   type District {
     id: Int
     districtName: String
-    cityId: Int
     city: City
     postalCode: String
     plateCode: String
@@ -16,9 +15,19 @@ const DistrictType = gql`
     cityId: Int!
   }
 
+  input createDistrictInput {
+    districtName: String!
+    cityId: Int
+    postalCode: String
+    plateCode: String
+  }
+
   type Query {
     getDistrict(input: getId): District
-    getDistrictOfCity(input: getDistrictOfCityInput): District
+  }
+
+  type Mutation {
+    createDistrict(input: createDistrictInput): District
   }
 `;
 

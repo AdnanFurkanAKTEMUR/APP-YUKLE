@@ -3,11 +3,9 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { CompanyProfile } from "./CompanyProfile";
 
 @Entity()
 export class AdminUser extends BaseEntity {
@@ -44,20 +42,6 @@ export class AdminUser extends BaseEntity {
   @Column({ type: "timestamp", nullable: true })
   resetPasswordTokenExpires: Date | null;
 
-  @OneToMany(() => CompanyProfile, (companyProfile) => companyProfile.updatedAdminUser, {
-    nullable: true,
-  })
-  updatedCompanyProfiles?: CompanyProfile[] | null;
-
-  @OneToMany(() => CompanyProfile, (companyProfile) => companyProfile.createdAdminUser, {
-    nullable: true,
-  })
-  createdCompanyProfiles?: CompanyProfile[] | null;
-
-  @OneToMany(() => CompanyProfile, (companyProfile) => companyProfile.deletedAdminUser, {
-    nullable: true,
-  })
-  deletedCompanyProfiles?: CompanyProfile[] | null;
 
   @CreateDateColumn()
   createdAt: Date;

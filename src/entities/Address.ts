@@ -1,12 +1,25 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { CompanyProfile } from "./CompanyProfile";
+import { CompanyUser } from "./CompanyUser";
+import { Country } from "./Country";
+import { City } from "./City";
+import { District } from "./District";
 
 @Entity()
 export class Address extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
-  companyId!: number;
+  @ManyToOne(() => CompanyProfile, (companyProfile) => companyProfile.addresses)
+  companyProfile: CompanyProfile;
 
   @Column()
   addressName!: string;
@@ -20,23 +33,23 @@ export class Address extends BaseEntity {
   @Column({ type: "varchar", nullable: true })
   addressType: string;
 
-  @Column({ type: "int", nullable: true })
-  countryId!: number;
+  @ManyToOne(() => Country, (country) => country.addresses)
+  country: Country;
 
-  @Column({ type: "int", nullable: true })
-  cityId!: number;
+  @ManyToOne(() => City, (city) => city.addresses)
+  city: City;
 
-  @Column({ type: "int", nullable: true })
-  districtId!: number;
+  @ManyToOne(() => District, (district) => district.addresses)
+  district: District;
 
-  @Column()
-  createdBy!: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.createdAddresses)
+  createdCompanyUser: CompanyUser;
 
-  @Column({ type: "int", nullable: true })
-  updatedBy: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedAddresses, { nullable: true })
+  updatedCompanyUser?: CompanyUser | null;
 
-  @Column({ type: "int", nullable: true })
-  deletedBy: number;
+  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.deletedAddresses, { nullable: true })
+  deletedCompanyUser?: CompanyUser | null;
 
   @CreateDateColumn()
   createdAt: Date;

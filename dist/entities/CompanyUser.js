@@ -13,6 +13,8 @@ exports.CompanyUser = void 0;
 const typeorm_1 = require("typeorm");
 const CompanyProfile_1 = require("./CompanyProfile");
 const Offer_1 = require("./Offer");
+const Address_1 = require("./Address");
+const CompanyDocument_1 = require("./CompanyDocument");
 let CompanyUser = class CompanyUser extends typeorm_1.BaseEntity {
 };
 exports.CompanyUser = CompanyUser;
@@ -70,17 +72,53 @@ __decorate([
     __metadata("design:type", Array)
 ], CompanyUser.prototype, "offers", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Number)
-], CompanyUser.prototype, "createdBy", void 0);
+    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.createdCompanyUser, { nullable: true }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "createdAddresses", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], CompanyUser.prototype, "updatedBy", void 0);
+    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.updatedCompanyUser, { nullable: true }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "updatedAddresses", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "int", nullable: true }),
-    __metadata("design:type", Number)
-], CompanyUser.prototype, "deletedBy", void 0);
+    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.deletedCompanyUser, { nullable: true }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "deletedAddresses", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyDocument_1.CompanyDocument, (companyDocument) => companyDocument.createdCompanyUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "createdCompanyDocuments", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyDocument_1.CompanyDocument, (companyDocument) => companyDocument.updatedCompanyUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "updatedCompanyDocuments", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyDocument_1.CompanyDocument, (companyDocument) => companyDocument.deletedCompanyUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "deletedCompanyDocuments", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.createdCompanyUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "createdCompanyProfiles", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.updatedCompanyUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "updatedCompanyProfiles", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.deletedCompanyUser, {
+        nullable: true,
+    }),
+    __metadata("design:type", Object)
+], CompanyUser.prototype, "deletedCompanyProfiles", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
