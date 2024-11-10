@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyUser.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyUser.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,eAAe,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;CA2B1B,CAAC;AAEF,kBAAe,eAAe,CAAC"}
+{"version":3,"file":"CompanyUser.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyUser.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,eAAe,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;CA6C1B,CAAC;AAEF,kBAAe,eAAe,CAAC"}

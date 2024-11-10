@@ -14,7 +14,7 @@ const typeorm_1 = require("typeorm");
 const District_1 = require("./District");
 const Country_1 = require("./Country");
 const Address_1 = require("./Address");
-const CompanyRecord_1 = require("./CompanyRecord");
+const Company_1 = require("./Company");
 let City = class City extends typeorm_1.BaseEntity {
 };
 exports.City = City;
@@ -43,9 +43,9 @@ __decorate([
     __metadata("design:type", Object)
 ], City.prototype, "addresses", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => CompanyRecord_1.CompanyRecord, (companyRecord) => companyRecord.city, { nullable: true }),
+    (0, typeorm_1.OneToMany)(() => Company_1.Company, (company) => company.city, { nullable: true }),
     __metadata("design:type", Object)
-], City.prototype, "companyRecords", void 0);
+], City.prototype, "companies", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

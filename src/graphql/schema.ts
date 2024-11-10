@@ -6,10 +6,9 @@ import GeneralInputTypes from "./types/GeneralInputTypes";
 import AdminUserType from "./types/AdminUserType";
 import AddressType from "./types/AddressType";
 import CityType from "./types/CityType";
-import CompanyDocumentType from "./types/CompanyDocument";
-import CompanyProfileType from "./types/CompanyProfile";
-import CompanyRecordType from "./types/CompanyRecord";
-import CompanyUserType from "./types/CompanyUser";
+import CompanyDocumentType from "./types/CompanyDocumentType";
+import CompanyType from "./types/CompanyType";
+import CompanyUserType from "./types/CompanyUserType";
 import CountryType from "./types/CountryType";
 import DistrictType from "./types/DistrictType";
 import OfferType from "./types/OfferType";
@@ -17,9 +16,7 @@ import AcceptedOfferType from "./types/AcceptedOfferType";
 import AdminUserResolvers from "./resolvers/AdminUserResolver";
 import { applyMiddleware } from "graphql-middleware";
 import { permissions } from "@middlewares/graphqlShield";
-import CompanyRecordResolvers from "./resolvers/CompanyRecordResolver";
-import DistrictResolvers from "./resolvers/DistrictResolver";
-import CityResolver from "./resolvers/CityResolver";
+
 
 const schema = makeExecutableSchema({
   typeDefs: [
@@ -29,21 +26,14 @@ const schema = makeExecutableSchema({
     AuthType,
     CityType,
     CompanyDocumentType,
-    CompanyProfileType,
-    CompanyRecordType,
+    CompanyType,
     CompanyUserType,
     CountryType,
     DistrictType,
     GeneralInputTypes,
     OfferType,
   ],
-  resolvers: [
-    AuthResolver,
-    AdminUserResolvers,
-    CompanyRecordResolvers,
-    DistrictResolvers,
-    CityResolver,
-  ],
+  resolvers: [AuthResolver, AdminUserResolvers],
 });
 
 const shieldedSchema = applyMiddleware(schema, permissions);

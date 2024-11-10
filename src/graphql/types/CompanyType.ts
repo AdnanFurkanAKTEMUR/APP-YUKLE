@@ -1,7 +1,7 @@
 import { gql } from "graphql-tag";
 
-const CompanyRecordType = gql`
-  type CompanyRecord {
+const CompanyType = gql`
+  type Company {
     id: Int
     companyName: String
     officialsName: String
@@ -12,48 +12,53 @@ const CompanyRecordType = gql`
     companySector: String
     dailyTrip: String
     truckType: String
-    companyProfileId: Int
-    companyProfile: CompanyProfile
-    countryId: Int
-    cityId: Int
-    districtId: Int
-    addressDescription: String
+    taxAdministration: String
+    taxPlateDoc: String
     messageConfirm: Boolean
     kvkkConfirm: Boolean
     otpVerification: Boolean
     mailVerification: Boolean
+    addresses: [Address]
+    country: Country
+    city: City
+    district: District
+    addressDescription: String
+    companyDocuments: [CompanyDocument]
+    companyUsers: [CompanyUser]
     createdAt: String
     updatedAt: String
   }
 
-  input createCompanyRecordInput {
+  type Query {
+    getAllCompanies: [Company]
+    getCompanyById(id: Int!): Company
+  }
+
+  input createCompanyInput {
     companyName: String!
     officialsName: String!
     companyPhoneNumber: String!
     companyMail: String!
-    membershipNote: String!
+    membershipNote: String
     taxNumber: String!
     companySector: String!
     dailyTrip: String!
     truckType: String!
-    countryId: Int!
-    cityId: Int!
-    districtId: Int!
-    addressDescription: String!
+    taxAdministration: String!
+    taxPlateDoc: String
     messageConfirm: Boolean!
     kvkkConfirm: Boolean!
     otpVerification: Boolean!
     mailVerification: Boolean!
-  }
-
-  type Query {
-    getCompanyRecord(input: getId): CompanyRecord
-    getAllCompanyRecord: [CompanyRecord]
+    countryId: Int!
+    cityId: Int!
+    districtId: Int!
+    addressDescription: String!
   }
 
   type Mutation {
-    createCompanyRecord(input: createCompanyRecordInput): successMsg
+    createCompany(input: createCompanyInput): Company
   }
 `;
 
-export default CompanyRecordType;
+export default CompanyType;

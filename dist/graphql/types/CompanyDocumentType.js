@@ -7,7 +7,7 @@ const CompanyDocumentType = (0, graphql_tag_1.gql) `
     documentTitle: String
     documentType: String
     documentFolder: String
-    companyProfile: CompanyProfile
+    company: Company
     createdCompanyUser: CompanyUser
     updatedCompanyUser: CompanyUser
     createdAt: String
@@ -15,9 +15,22 @@ const CompanyDocumentType = (0, graphql_tag_1.gql) `
   }
 
   type Query {
-    getCompanyDocument(input: getId): CompanyDocument
-    getAllCompanyDocument: [CompanyDocument]
+    getAllCompanyDocuments: [CompanyDocument]
+    getCompanyDocumentById(id: Int!): CompanyDocument
+  }
+
+  input createCompanyDocumentInput {
+    documentTitle: String!
+    documentType: String!
+    documentFolder: String!
+    companyId: Int!
+    createdCompanyUserId: Int
+    updatedCompanyUserId: Int
+  }
+
+  type Mutation {
+    createCompanyDocument(input: createCompanyDocumentInput): CompanyDocument
   }
 `;
 exports.default = CompanyDocumentType;
-//# sourceMappingURL=CompanyDocument.js.map
+//# sourceMappingURL=CompanyDocumentType.js.map

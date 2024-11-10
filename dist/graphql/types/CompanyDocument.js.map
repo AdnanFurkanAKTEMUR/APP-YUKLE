@@ -1,1 +1,1 @@
-{"version":3,"file":"CompanyDocument.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyDocument.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,mBAAmB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;CAoB9B,CAAC;AACF,kBAAe,mBAAmB,CAAC"}
+{"version":3,"file":"CompanyDocument.js","sourceRoot":"","sources":["../../../src/graphql/types/CompanyDocument.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,mBAAmB,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;CAiB9B,CAAC;AACF,kBAAe,mBAAmB,CAAC"}

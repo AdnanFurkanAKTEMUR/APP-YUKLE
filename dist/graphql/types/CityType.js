@@ -1,28 +1,28 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_tag_1 = __importDefault(require("graphql-tag"));
-const CityType = (0, graphql_tag_1.default) `
+const graphql_tag_1 = require("graphql-tag");
+const CityType = (0, graphql_tag_1.gql) `
   type City {
     id: Int
     cityName: String
     plateCode: String
-    district: [District]
     country: Country
+    districts: [District]
+    addresses: [Address]
+    companies: [Company]
     createdAt: String
     updatedAt: String
+  }
+
+  type Query {
+    getAllCities: [City]
+    getCityById(id: Int!): City
   }
 
   input createCityInput {
     cityName: String!
     plateCode: String
     countryId: Int
-  }
-
-  type Query {
-    getCity(input: getId): City
   }
 
   type Mutation {

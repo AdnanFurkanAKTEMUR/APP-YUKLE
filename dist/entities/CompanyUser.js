@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyUser = void 0;
 const typeorm_1 = require("typeorm");
-const CompanyProfile_1 = require("./CompanyProfile");
 const Offer_1 = require("./Offer");
 const Address_1 = require("./Address");
 const CompanyDocument_1 = require("./CompanyDocument");
+const Company_1 = require("./Company");
 let CompanyUser = class CompanyUser extends typeorm_1.BaseEntity {
 };
 exports.CompanyUser = CompanyUser;
@@ -59,9 +59,9 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyUser.prototype, "userImage", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => CompanyProfile_1.CompanyProfile, (company) => company.companyUsers),
-    __metadata("design:type", CompanyProfile_1.CompanyProfile)
-], CompanyUser.prototype, "companyProfile", void 0);
+    (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.companyUsers),
+    __metadata("design:type", Company_1.Company)
+], CompanyUser.prototype, "company", void 0);
 __decorate([
     (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.createdCompanyUser),
     __metadata("design:type", Array)
@@ -79,10 +79,6 @@ __decorate([
     __metadata("design:type", Object)
 ], CompanyUser.prototype, "updatedAddresses", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => Address_1.Address, (address) => address.deletedCompanyUser, { nullable: true }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "deletedAddresses", void 0);
-__decorate([
     (0, typeorm_1.OneToMany)(() => CompanyDocument_1.CompanyDocument, (companyDocument) => companyDocument.createdCompanyUser, {
         nullable: true,
     }),
@@ -95,30 +91,6 @@ __decorate([
     __metadata("design:type", Object)
 ], CompanyUser.prototype, "updatedCompanyDocuments", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => CompanyDocument_1.CompanyDocument, (companyDocument) => companyDocument.deletedCompanyUser, {
-        nullable: true,
-    }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "deletedCompanyDocuments", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.createdCompanyUser, {
-        nullable: true,
-    }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "createdCompanyProfiles", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.updatedCompanyUser, {
-        nullable: true,
-    }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "updatedCompanyProfiles", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.deletedCompanyUser, {
-        nullable: true,
-    }),
-    __metadata("design:type", Object)
-], CompanyUser.prototype, "deletedCompanyProfiles", void 0);
-__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyUser.prototype, "createdAt", void 0);
@@ -126,10 +98,6 @@ __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyUser.prototype, "updatedAt", void 0);
-__decorate([
-    (0, typeorm_1.DeleteDateColumn)(),
-    __metadata("design:type", Date)
-], CompanyUser.prototype, "deletedAt", void 0);
 exports.CompanyUser = CompanyUser = __decorate([
     (0, typeorm_1.Entity)()
 ], CompanyUser);

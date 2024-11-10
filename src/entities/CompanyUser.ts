@@ -2,17 +2,16 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { CompanyProfile } from "./CompanyProfile";
 import { Offer } from "./Offer";
 import { Address } from "./Address";
 import { CompanyDocument } from "./CompanyDocument";
+import { Company } from "./Company";
 
 @Entity()
 export class CompanyUser extends BaseEntity {
@@ -45,10 +44,10 @@ export class CompanyUser extends BaseEntity {
 
   //s3teki yeri
   @Column({ nullable: true, type: "varchar" })
-  userImage: string;
+  userImage?: string;
 
-  @ManyToOne(() => CompanyProfile, (company) => company.companyUsers)
-  companyProfile: CompanyProfile;
+  @ManyToOne(() => Company, (company) => company.companyUsers)
+  company: Company;
 
   @OneToMany(() => Offer, (offer) => offer.createdCompanyUser)
   createdOffers: Offer[];
@@ -56,14 +55,12 @@ export class CompanyUser extends BaseEntity {
   @OneToMany(() => Offer, (offer) => offer.updatedCompanyUser)
   updatedOffers: Offer[];
 
+  //one to manylerde nullable yapmaya gerek yok aynı
   @OneToMany(() => Address, (address) => address.createdCompanyUser, { nullable: true })
   createdAddresses?: Address[] | null;
 
   @OneToMany(() => Address, (address) => address.updatedCompanyUser, { nullable: true })
   updatedAddresses?: Address[] | null;
-
-  @OneToMany(() => Address, (address) => address.deletedCompanyUser, { nullable: true })
-  deletedAddresses?: Address[] | null;
 
   @OneToMany(() => CompanyDocument, (companyDocument) => companyDocument.createdCompanyUser, {
     nullable: true,
@@ -75,32 +72,9 @@ export class CompanyUser extends BaseEntity {
   })
   updatedCompanyDocuments?: CompanyDocument[] | null;
 
-  @OneToMany(() => CompanyDocument, (companyDocument) => companyDocument.deletedCompanyUser, {
-    nullable: true,
-  })
-  deletedCompanyDocuments?: CompanyDocument[] | null;
-
-  @OneToMany(() => CompanyProfile, (companyProfile) => companyProfile.createdCompanyUser, {
-    nullable: true,
-  })
-  createdCompanyProfiles?: CompanyProfile[] | null;
-
-  @OneToMany(() => CompanyProfile, (companyProfile) => companyProfile.updatedCompanyUser, {
-    nullable: true,
-  })
-  updatedCompanyProfiles?: CompanyProfile[] | null;
-
-  @OneToMany(() => CompanyProfile, (companyProfile) => companyProfile.deletedCompanyUser, {
-    nullable: true,
-  })
-  deletedCompanyProfiles?: CompanyProfile[] | null;
-
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
 }

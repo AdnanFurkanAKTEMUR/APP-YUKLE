@@ -31,10 +31,6 @@ __decorate([
     __metadata("design:type", Date)
 ], AcceptedOffer.prototype, "acceptedDate", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", Date)
-], AcceptedOffer.prototype, "deletedDate", void 0);
-__decorate([
     (0, typeorm_1.Column)({ type: "bool", default: true }),
     __metadata("design:type", Boolean)
 ], AcceptedOffer.prototype, "status", void 0);

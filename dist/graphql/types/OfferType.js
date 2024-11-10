@@ -4,8 +4,6 @@ const graphql_tag_1 = require("graphql-tag");
 const OfferType = (0, graphql_tag_1.gql) `
   type Offer {
     id: Int
-    companyUserId: Int
-    companyUser: CompanyUser
     offerStartDate: String
     offerEndDate: String
     offerPrice: Float
@@ -19,24 +17,45 @@ const OfferType = (0, graphql_tag_1.gql) `
     packagingType: String
     offerNote: String
     counterOffer: Int
-    # address id
-    fastPickupId: Int
-    pickupCountryId: Int
-    pickupCityId: Int
-    pickupDistrictId: Int
-    placeDetail: String
+    pickupDetail: String
+    placeAddress: Address
+    address: Address
     offersAccepted: Boolean
-    createdBy: CompanyUser
-    updatedBy: Int
-    deletedBy: Int
+    createdCompanyUser: CompanyUser
+    updatedCompanyUser: CompanyUser
     createdAt: String
     updatedAt: String
-    deletedAt: String
   }
 
   type Query {
-    getAllOffer: [Offer]
-    getOffer(input: getId): Offer
+    getAllOffers: [Offer]
+    getOfferById(id: Int!): Offer
+  }
+
+  input createOfferInput {
+    offerStartDate: String!
+    offerEndDate: String!
+    offerPrice: Float!
+    transportType: String!
+    cargoTonnage: Float!
+    transportedMaterial: String!
+    loadWeight: Float!
+    truckTrailerType: String!
+    transportDateTime: String!
+    installationType: String!
+    packagingType: String!
+    offerNote: String!
+    counterOffer: Int!
+    pickupDetail: String!
+    placeAddressId: Int!
+    addressId: Int!
+    createdCompanyUserId: Int!
+    updatedCompanyUserId: Int
+    offersAccepted: Boolean
+  }
+
+  type Mutation {
+    createOffer(input: createOfferInput): Offer
   }
 `;
 exports.default = OfferType;

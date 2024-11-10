@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { City } from "./City";
 import { Address } from "./Address";
-import { CompanyRecord } from "./CompanyRecord";
+import { Company } from "./Company";
 
 //ads eklenecek
 @Entity()
@@ -29,8 +29,8 @@ export class Country extends BaseEntity {
   @OneToMany(() => Address, (address) => address.country, { nullable: true })
   addresses?: Address[] | null;
 
-  @OneToMany(() => CompanyRecord, (companyRecord) => companyRecord.country, { nullable: true })
-  companyRecords?: CompanyRecord[] | null;
+  @OneToMany(() => Company, (company) => company.country, { nullable: true })
+  companies?: Company[] | null;
 
   @CreateDateColumn()
   createdAt: Date;

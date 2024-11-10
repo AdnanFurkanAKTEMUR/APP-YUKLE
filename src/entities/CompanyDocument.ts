@@ -2,14 +2,13 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { CompanyProfile } from "./CompanyProfile";
 import { CompanyUser } from "./CompanyUser";
+import { Company } from "./Company";
 
 @Entity()
 export class CompanyDocument extends BaseEntity {
@@ -25,8 +24,8 @@ export class CompanyDocument extends BaseEntity {
   @Column()
   documentFolder!: string;
 
-  @ManyToOne(() => CompanyProfile, (companyProfile) => companyProfile.companyDocuments)
-  companyProfile: CompanyProfile;
+  @ManyToOne(() => Company, (company) => company.companyDocuments)
+  company: Company;
 
   @ManyToOne(() => CompanyUser, (companyUser) => companyUser.createdCompanyDocuments, {
     nullable: true,
@@ -38,17 +37,9 @@ export class CompanyDocument extends BaseEntity {
   })
   updatedCompanyUser?: CompanyUser | null;
 
-  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.deletedCompanyDocuments, {
-    nullable: true,
-  })
-  deletedCompanyUser?: CompanyUser | null;
-
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
 }

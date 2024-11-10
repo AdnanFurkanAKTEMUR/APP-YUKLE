@@ -1,1 +1,1 @@
-{"version":3,"file":"CityType.js","sourceRoot":"","sources":["../../../src/graphql/types/CityType.ts"],"names":[],"mappings":";;;;;AAAA,8DAA8B;AAE9B,MAAM,QAAQ,GAAG,IAAA,qBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;CAwBnB,CAAC;AAEF,kBAAe,QAAQ,CAAC"}
+{"version":3,"file":"CityType.js","sourceRoot":"","sources":["../../../src/graphql/types/CityType.ts"],"names":[],"mappings":";;AAAA,6CAAkC;AAElC,MAAM,QAAQ,GAAG,IAAA,iBAAG,EAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;CA2BnB,CAAC;AAEF,kBAAe,QAAQ,CAAC"}

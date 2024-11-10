@@ -9,8 +9,7 @@ const AdminUser_1 = require("./entities/AdminUser");
 const Address_1 = require("./entities/Address");
 const City_1 = require("./entities/City");
 const CompanyDocument_1 = require("./entities/CompanyDocument");
-const CompanyProfile_1 = require("./entities/CompanyProfile");
-const CompanyRecord_1 = require("./entities/CompanyRecord");
+const Company_1 = require("./entities/Company");
 const CompanyUser_1 = require("./entities/CompanyUser");
 const Country_1 = require("./entities/Country");
 const District_1 = require("./entities/District");
@@ -19,7 +18,17 @@ dotenv_1.default.config();
 exports.default = new typeorm_1.DataSource({
     type: "postgres",
     url: process.env.POSTGRES_CONNECTION_STRING,
-    entities: [Address_1.Address, AdminUser_1.AdminUser, City_1.City, CompanyDocument_1.CompanyDocument, CompanyProfile_1.CompanyProfile, CompanyRecord_1.CompanyRecord, CompanyUser_1.CompanyUser, Country_1.Country, District_1.District, Offer_1.Offer],
+    entities: [
+        Address_1.Address,
+        AdminUser_1.AdminUser,
+        City_1.City,
+        CompanyDocument_1.CompanyDocument,
+        Company_1.Company,
+        CompanyUser_1.CompanyUser,
+        Country_1.Country,
+        District_1.District,
+        Offer_1.Offer,
+    ],
     synchronize: true,
 });
 //# sourceMappingURL=typeorm.config.js.map

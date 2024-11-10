@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const graphql_tag_1 = require("graphql-tag");
-const CompanyRecordType = (0, graphql_tag_1.gql) `
-  type CompanyRecord {
+const CompanyType = (0, graphql_tag_1.gql) `
+  type Company {
     id: Int
     companyName: String
     officialsName: String
@@ -13,47 +13,53 @@ const CompanyRecordType = (0, graphql_tag_1.gql) `
     companySector: String
     dailyTrip: String
     truckType: String
-    companyProfile: CompanyProfile
-    country: Country
-    city: City
-    district: District
-    addressDescription: String
+    taxAdministration: String
+    taxPlateDoc: String
     messageConfirm: Boolean
     kvkkConfirm: Boolean
     otpVerification: Boolean
     mailVerification: Boolean
+    addresses: [Address]
+    country: Country
+    city: City
+    district: District
+    addressDescription: String
+    companyDocuments: [CompanyDocument]
+    companyUsers: [CompanyUser]
     createdAt: String
     updatedAt: String
   }
 
-  input createCompanyRecordInput {
+  type Query {
+    getAllCompanies: [Company]
+    getCompanyById(id: Int!): Company
+  }
+
+  input createCompanyInput {
     companyName: String!
     officialsName: String!
     companyPhoneNumber: String!
     companyMail: String!
-    membershipNote: String!
+    membershipNote: String
     taxNumber: String!
     companySector: String!
     dailyTrip: String!
     truckType: String!
-    countryId: Int!
-    cityId: Int!
-    districtId: Int!
-    addressDescription: String!
+    taxAdministration: String!
+    taxPlateDoc: String
     messageConfirm: Boolean!
     kvkkConfirm: Boolean!
     otpVerification: Boolean!
     mailVerification: Boolean!
-  }
-
-  type Query {
-    getCompanyRecord(input: getId): CompanyRecord
-    getAllCompanyRecord: [CompanyRecord]
+    countryId: Int!
+    cityId: Int!
+    districtId: Int!
+    addressDescription: String!
   }
 
   type Mutation {
-    createCompanyRecord(input: createCompanyRecordInput): successMsg
+    createCompany(input: createCompanyInput): Company
   }
 `;
-exports.default = CompanyRecordType;
-//# sourceMappingURL=CompanyRecord.js.map
+exports.default = CompanyType;
+//# sourceMappingURL=CompanyType.js.map

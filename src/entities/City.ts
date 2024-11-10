@@ -11,7 +11,7 @@ import {
 import { District } from "./District";
 import { Country } from "./Country";
 import { Address } from "./Address";
-import { CompanyRecord } from "./CompanyRecord";
+import { Company } from "./Company";
 
 //ads eklenecek
 @Entity()
@@ -34,8 +34,8 @@ export class City extends BaseEntity {
   @OneToMany(() => Address, (address) => address.city, { nullable: true })
   addresses?: Address[] | null;
 
-  @OneToMany(() => CompanyRecord, (companyRecord) => companyRecord.city, { nullable: true })
-  companyRecords?: CompanyRecord[] | null;
+  @OneToMany(() => Company, (company) => company.city, { nullable: true })
+  companies?: Company[] | null;
 
   @CreateDateColumn()
   createdAt: Date;

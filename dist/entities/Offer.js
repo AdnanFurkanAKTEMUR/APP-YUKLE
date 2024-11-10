@@ -73,6 +73,14 @@ __decorate([
     __metadata("design:type", Number)
 ], Offer.prototype, "counterOffer", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Offer.prototype, "pickupDetail", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Address_1.Address, (address) => address.placeAddress),
+    __metadata("design:type", Address_1.Address)
+], Offer.prototype, "placeAddress", void 0);
+__decorate([
     (0, typeorm_1.ManyToOne)(() => Address_1.Address, (address) => address.offersAddress),
     __metadata("design:type", Address_1.Address)
 ], Offer.prototype, "address", void 0);
@@ -96,10 +104,6 @@ __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], Offer.prototype, "updatedAt", void 0);
-__decorate([
-    (0, typeorm_1.DeleteDateColumn)(),
-    __metadata("design:type", Date)
-], Offer.prototype, "deletedAt", void 0);
 exports.Offer = Offer = __decorate([
     (0, typeorm_1.Entity)()
 ], Offer);

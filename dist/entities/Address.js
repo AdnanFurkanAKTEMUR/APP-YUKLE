@@ -11,12 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Address = void 0;
 const typeorm_1 = require("typeorm");
-const CompanyProfile_1 = require("./CompanyProfile");
 const CompanyUser_1 = require("./CompanyUser");
 const Country_1 = require("./Country");
 const City_1 = require("./City");
 const District_1 = require("./District");
 const Offer_1 = require("./Offer");
+const Company_1 = require("./Company");
 let Address = class Address extends typeorm_1.BaseEntity {
 };
 exports.Address = Address;
@@ -25,9 +25,9 @@ __decorate([
     __metadata("design:type", Number)
 ], Address.prototype, "id", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.addresses),
-    __metadata("design:type", CompanyProfile_1.CompanyProfile)
-], Address.prototype, "companyProfile", void 0);
+    (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.addresses),
+    __metadata("design:type", Company_1.Company)
+], Address.prototype, "company", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -57,6 +57,10 @@ __decorate([
     __metadata("design:type", District_1.District)
 ], Address.prototype, "district", void 0);
 __decorate([
+    (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.placeAddress),
+    __metadata("design:type", Array)
+], Address.prototype, "placeAddress", void 0);
+__decorate([
     (0, typeorm_1.OneToMany)(() => Offer_1.Offer, (offer) => offer.address),
     __metadata("design:type", Array)
 ], Address.prototype, "offersAddress", void 0);
@@ -68,10 +72,6 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.updatedAddresses, { nullable: true }),
     __metadata("design:type", Object)
 ], Address.prototype, "updatedCompanyUser", void 0);
-__decorate([
-    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.deletedAddresses, { nullable: true }),
-    __metadata("design:type", Object)
-], Address.prototype, "deletedCompanyUser", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

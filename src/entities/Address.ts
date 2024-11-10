@@ -8,20 +8,20 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
-import { CompanyProfile } from "./CompanyProfile";
 import { CompanyUser } from "./CompanyUser";
 import { Country } from "./Country";
 import { City } from "./City";
 import { District } from "./District";
 import { Offer } from "./Offer";
+import { Company } from "./Company";
 
 @Entity()
 export class Address extends BaseEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => CompanyProfile, (companyProfile) => companyProfile.addresses)
-  companyProfile: CompanyProfile;
+  @ManyToOne(() => Company, (company) => company.addresses)
+  company: Company;
 
   @Column()
   addressName!: string;
@@ -44,6 +44,9 @@ export class Address extends BaseEntity {
   @ManyToOne(() => District, (district) => district.addresses)
   district: District;
 
+  @OneToMany(() => Offer, (offer) => offer.placeAddress)
+  placeAddress: Offer[];
+
   @OneToMany(() => Offer, (offer) => offer.address)
   offersAddress: Offer[];
 
@@ -52,9 +55,6 @@ export class Address extends BaseEntity {
 
   @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedAddresses, { nullable: true })
   updatedCompanyUser?: CompanyUser | null;
-
-  @ManyToOne(() => CompanyUser, (companyUser) => companyUser.deletedAddresses, { nullable: true })
-  deletedCompanyUser?: CompanyUser | null;
 
   @CreateDateColumn()
   createdAt: Date;

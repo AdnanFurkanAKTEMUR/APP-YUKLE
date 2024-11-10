@@ -2,7 +2,6 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -55,6 +54,12 @@ export class Offer extends BaseEntity {
   @Column()
   counterOffer: number;
 
+  @Column()
+  pickupDetail: string;
+
+  @ManyToOne(() => Address, (address) => address.placeAddress)
+  placeAddress: Address;
+
   @ManyToOne(() => Address, (address) => address.offersAddress)
   address: Address;
 
@@ -67,12 +72,11 @@ export class Offer extends BaseEntity {
   @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedOffers, { nullable: true })
   updatedCompanyUser?: CompanyUser | null;
 
+  //accepted trucker user gelecek
+
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
 }

@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import { gql } from "graphql-tag";
 
 const DistrictType = gql`
   type District {
@@ -6,22 +6,21 @@ const DistrictType = gql`
     districtName: String
     city: City
     postalCode: String
+    addresses: [Address]
+    companies: [Company]
     createdAt: String
     updatedAt: String
   }
 
-  input getDistrictOfCityInput {
-    cityId: Int!
+  type Query {
+    getAllDistricts: [District]
+    getDistrictById(id: Int!): District
   }
 
   input createDistrictInput {
     districtName: String!
     cityId: Int
     postalCode: String
-  }
-
-  type Query {
-    getDistrict(input: getId): District
   }
 
   type Mutation {

@@ -1,12 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const CompanyProfile_1 = require("../../entities/CompanyProfile");
-const CompanyRecord_1 = require("../../entities/CompanyRecord");
+const Company_1 = require("../../entities/Company");
 const CompanyRecordResolvers = {
     Query: {
         getCompanyRecord: async (_parent, args, _context, _info) => {
             const { id } = args.input;
-            const companyRecord = await CompanyRecord_1.CompanyRecord.findOne({
+            const companyRecord = await Company_1.Company.findOne({
                 where: {
                     id,
                 },
@@ -20,7 +19,7 @@ const CompanyRecordResolvers = {
             if (!user || user.type != 0)
                 throw new Error("Yetkisiz işlem!");
             try {
-                const companyRecors = await CompanyRecord_1.CompanyRecord.find();
+                const companyRecors = await Company_1.Company.find();
                 if (companyRecors.length > 0) {
                     return companyRecors;
                 }
@@ -33,25 +32,7 @@ const CompanyRecordResolvers = {
             }
         },
     },
-    Mutation: {
-        createCompanyRecord: async (_parent, args, _context, _info) => {
-            console.log("first");
-            try {
-                const createdCompanyProfile = await CompanyProfile_1.CompanyProfile.create({
-                    companyCode: "code01",
-                    companyPhoneNumber: args.input.companyPhoneNumber,
-                    taxNumber: args.input.taxNumber,
-                    taxAdministration: args.input.taxNumber,
-                }).save();
-                await CompanyRecord_1.CompanyRecord.create(Object.assign(Object.assign({}, args.input), { companyProfileId: createdCompanyProfile.id })).save();
-                return { success: true, msg: "Kayıt Başarılı!" };
-            }
-            catch (e) {
-                console.log(e);
-                throw new Error(e);
-            }
-        },
-    },
+    Mutation: {},
 };
 exports.default = CompanyRecordResolvers;
 //# sourceMappingURL=CompanyRecordResolver.js.map

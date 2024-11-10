@@ -1,24 +1,27 @@
-import gql from "graphql-tag";
+import { gql } from "graphql-tag";
 
 const CityType = gql`
   type City {
     id: Int
     cityName: String
     plateCode: String
-    district: [District]
     country: Country
+    districts: [District]
+    addresses: [Address]
+    companies: [Company]
     createdAt: String
     updatedAt: String
+  }
+
+  type Query {
+    getAllCities: [City]
+    getCityById(id: Int!): City
   }
 
   input createCityInput {
     cityName: String!
     plateCode: String
     countryId: Int
-  }
-
-  type Query {
-    getCity(input: getId): City
   }
 
   type Mutation {

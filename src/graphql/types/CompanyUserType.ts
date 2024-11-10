@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const graphql_tag_1 = require("graphql-tag");
-const CompanyUserType = (0, graphql_tag_1.gql) `
+import { gql } from "graphql-tag";
+
+const CompanyUserType = gql`
   type CompanyUser {
     id: Int
     userFirstName: String
+    type: Int
     userLastName: String
     userEmail: String
     userRole: String
@@ -12,40 +12,38 @@ const CompanyUserType = (0, graphql_tag_1.gql) `
     userStatus: Boolean
     userPhone: String
     userImage: String
-    type: Int
-    companyProfile: CompanyProfile
+    company: Company
     createdOffers: [Offer]
     updatedOffers: [Offer]
     createdAddresses: [Address]
     updatedAddresses: [Address]
     createdCompanyDocuments: [CompanyDocument]
     updatedCompanyDocuments: [CompanyDocument]
-    createdCompanyProfiles: [CompanyProfile]
-    updatedCompanyProfiles: [CompanyProfile]
     createdAt: String
     updatedAt: String
   }
 
+  type Query {
+    getAllCompanyUsers: [CompanyUser]
+    getCompanyUserById(id: Int!): CompanyUser
+  }
+
   input createCompanyUserInput {
-    userFirstName: String
-    userLastName: String
-    userEmail: String
-    userRole: String
-    userPassword: String
+    userFirstName: String!
+    type: Int
+    userLastName: String!
+    userEmail: String!
+    userRole: String!
+    userPassword: String!
     userStatus: Boolean
     userPhone: String
     userImage: String
-    companyProfileId: Int
-  }
-
-  type Query {
-    getAllCompanyUser: [CompanyUser]
-    getCompanyUser(input: getId): CompanyUser
+    companyId: Int!
   }
 
   type Mutation {
     createCompanyUser(input: createCompanyUserInput): CompanyUser
   }
 `;
-exports.default = CompanyUserType;
-//# sourceMappingURL=CompanyUser.js.map
+
+export default CompanyUserType;

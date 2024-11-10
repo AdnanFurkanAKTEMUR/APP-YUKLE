@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyDocument = void 0;
 const typeorm_1 = require("typeorm");
-const CompanyProfile_1 = require("./CompanyProfile");
 const CompanyUser_1 = require("./CompanyUser");
+const Company_1 = require("./Company");
 let CompanyDocument = class CompanyDocument extends typeorm_1.BaseEntity {
 };
 exports.CompanyDocument = CompanyDocument;
@@ -33,9 +33,9 @@ __decorate([
     __metadata("design:type", String)
 ], CompanyDocument.prototype, "documentFolder", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => CompanyProfile_1.CompanyProfile, (companyProfile) => companyProfile.companyDocuments),
-    __metadata("design:type", CompanyProfile_1.CompanyProfile)
-], CompanyDocument.prototype, "companyProfile", void 0);
+    (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.companyDocuments),
+    __metadata("design:type", Company_1.Company)
+], CompanyDocument.prototype, "company", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.createdCompanyDocuments, {
         nullable: true,
@@ -49,12 +49,6 @@ __decorate([
     __metadata("design:type", Object)
 ], CompanyDocument.prototype, "updatedCompanyUser", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.deletedCompanyDocuments, {
-        nullable: true,
-    }),
-    __metadata("design:type", Object)
-], CompanyDocument.prototype, "deletedCompanyUser", void 0);
-__decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyDocument.prototype, "createdAt", void 0);
@@ -62,10 +56,6 @@ __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], CompanyDocument.prototype, "updatedAt", void 0);
-__decorate([
-    (0, typeorm_1.DeleteDateColumn)(),
-    __metadata("design:type", Date)
-], CompanyDocument.prototype, "deletedAt", void 0);
 exports.CompanyDocument = CompanyDocument = __decorate([
     (0, typeorm_1.Entity)()
 ], CompanyDocument);
