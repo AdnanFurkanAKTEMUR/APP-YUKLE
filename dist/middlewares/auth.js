@@ -54,6 +54,7 @@ const auth = async (header, cookie) => {
         }
         if (token) {
             const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+            console.log(verified, "verified");
             const payload = verified;
             if (isAuthTokenPayload(payload)) {
                 payload.from = "mobil";
@@ -68,6 +69,15 @@ const auth = async (header, cookie) => {
 };
 exports.auth = auth;
 function isAuthTokenPayload(payload) {
-    return typeof payload === "object" && payload !== null && "id" in payload && "companyId" in payload && "name" in payload && "surname" in payload && "email" in payload && "verified" in payload && "role" in payload && "type" in payload;
+    return (typeof payload === "object" &&
+        payload !== null &&
+        "id" in payload &&
+        "company_id" in payload &&
+        "name" in payload &&
+        "surname" in payload &&
+        "email" in payload &&
+        "verified" in payload &&
+        "role" in payload &&
+        "type" in payload);
 }
 //# sourceMappingURL=auth.js.map

@@ -1,50 +1,135 @@
-import { AdminUser } from "@entities/AdminUser";
+import { Company } from "@entities/Company";
 import { CompanyUser } from "@entities/CompanyUser";
-import argon2 from "argon2";
-import * as jwt from "jsonwebtoken";
+import { Context } from "@genType/genType";
+import { hash } from "argon2";
 
 const CompanyUserResolver = {
-  Mutation: {
-    loginAdminUserMobile: async (_parent: any, args: any, _context: any, _info: any) => {
-      const { email, password } = args.input;
-      const adminUser = await AdminUser.findOne({ where: { email } });
-      if (!adminUser) throw new Error("Kullanıcı bulunamadı");
-      const isValid = await argon2.verify(adminUser.password, password);
-      if (!isValid) throw new Error("Invalid creds.");
-      const token = jwt.sign(
-        {
-          id: adminUser.id,
-          name: adminUser.name,
-          surname: adminUser.surname,
-          email: adminUser.email,
-          verified: adminUser.verified,
-          type: adminUser.type,
-          companyId: 0,
-          role: "",
-        },
-        process.env.TOKEN_SECRET as jwt.Secret
-      );
-      return { token, adminUser };
+  Query: {
+    getCompanyUserById: async (
+      _parent: any,
+      args: any,
+      context: Context,
+      _info: any
+    ): Promise<CompanyUser | null> => {
+      const { id } = args.input;
+      const { user } = context;
+      if (!user || user.id == undefined)
+        throw new Error("Hata: Yetkisiz işlem kullanıcı bulunamadı!");
+      try {
+        const companyUser = await CompanyUser.findOne({
+          where: { id: id, company: { id: user.company_id } },
+        });
+        return companyUser;
+      } catch (e) {
+        throw new Error(e);
+      }
     },
-    loginCompanyUserMobile: async (_parent: any, args: any, _context: any, _info: any) => {
-      const { email, password } = args.input;
-      const companyUser = await CompanyUser.findOne({ where: { userEmail: email } });
-      if (!companyUser) throw new Error("Kullanıcı bulunamadı");
-      const isValid = await argon2.verify(companyUser.userPassword, password);
-      if (!isValid) throw new Error("Invalid creds.");
-      const token = jwt.sign(
-        {
-          user_id: companyUser.id,
-          company_id: "",
-          name: companyUser.userFirstName,
-          surname: companyUser.userLastName,
-          role: companyUser.userRole,
-          email: companyUser.userEmail,
-          type: companyUser.type,
-        },
-        process.env.TOKEN_SECRET as jwt.Secret
-      );
-      return { token, companyUser };
+    getAllCompanyUsers: async (
+      _parent: any,
+      _args: any,
+      context: Context,
+      _info: any
+    ): Promise<CompanyUser[] | null> => {
+      const { user } = context;
+      console.log(user);
+      try {
+        const companyUsers = await CompanyUser.find();
+        return companyUsers;
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+    getCompanyUsersOfCompany: async (
+      _parent: any,
+      _args: any,
+      context: Context,
+      _info: any
+    ): Promise<CompanyUser[] | null> => {
+      const { user } = context;
+      if (!user || user.id == undefined) throw new Error("Hata: Kullanıcı yetkisi geçersiz");
+      try {
+        const users = await CompanyUser.find({ where: { company: { id: user.company_id } } });
+        return users;
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+  },
+  Mutation: {
+    createCompanyUser: async (
+      _parent: any,
+      args: any,
+      context: Context,
+      _info: any
+    ): Promise<CompanyUser | null> => {
+      const {
+        userFirstName,
+        userLastName,
+        userEmail,
+        userRole,
+        userPassword,
+        userPhone,
+        userImage,
+      } = args.input;
+      const { user } = context;
+      if (!user || user.id == undefined) throw new Error("Hata: Yetkisiz işlem");
+      try {
+        const hashedPassword = await hash(userPassword);
+        const companyUser = CompanyUser.create({
+          userFirstName: userFirstName,
+          userLastName: userLastName,
+          userEmail: userEmail,
+          userRole: userRole,
+          userPassword: hashedPassword,
+          userPhone: userPhone,
+          userImage: userImage,
+        });
+        const company = await Company.findOne({ where: { id: user.company_id } });
+        if (!company) throw new Error("Hata: Firma bilgisi bulunamadı!");
+        companyUser.company = company;
+        await companyUser.save();
+        return companyUser;
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+    createCompanyUserByAdmin: async (
+      _parent: any,
+      args: any,
+      _context: Context,
+      _info: any
+    ): Promise<CompanyUser | null> => {
+      const {
+        userFirstName,
+        userLastName,
+        userEmail,
+        userRole,
+        userPassword,
+        userPhone,
+        userImage,
+        companyId,
+      } = args.input;
+      // const { user } = context;
+      //if (!user || user.id == undefined) throw new Error("Hata: Yetkisiz işlem");
+      try {
+        const hashedPassword = await hash(userPassword);
+        const companyUser = CompanyUser.create({
+          userFirstName: userFirstName,
+          userLastName: userLastName,
+          userEmail: userEmail,
+          userRole: userRole,
+          userPassword: hashedPassword,
+          userPhone: userPhone,
+          userImage: userImage,
+        });
+        const company = await Company.findOne({ where: { id: companyId } });
+        if (!company) throw new Error("Hata: Firma bilgisi bulunamadı!");
+        companyUser.company = company;
+        await companyUser.save();
+        return companyUser;
+      } catch (e) {
+        throw new Error(e);
+      }
     },
   },
 };

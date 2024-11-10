@@ -4,11 +4,20 @@ const City_1 = require("../../entities/City");
 const Country_1 = require("../../entities/Country");
 const CityResolver = {
     Query: {
-        getCity: async (_parent, args, _context, _info) => {
+        getCityById: async (_parent, args, _context, _info) => {
             const { id } = args.input;
             try {
                 const city = await City_1.City.find({ where: { id } });
                 return city;
+            }
+            catch (e) {
+                throw new Error(e);
+            }
+        },
+        getAllCities: async (_parent, _args, _context, _info) => {
+            try {
+                const cities = await City_1.City.find();
+                return cities;
             }
             catch (e) {
                 throw new Error(e);

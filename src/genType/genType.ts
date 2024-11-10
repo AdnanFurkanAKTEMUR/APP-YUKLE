@@ -3,8 +3,8 @@ import { DataSource } from "typeorm";
 //type 0 biz, type 1 companyUser type 2 truckeruser
 
 export type User = {
-  user_id: number;
-  company_id: string;
+  id: number;
+  company_id: number;
   name: string;
   surname: string;
   email: string;

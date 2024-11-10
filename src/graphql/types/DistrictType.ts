@@ -14,7 +14,7 @@ const DistrictType = gql`
 
   type Query {
     getAllDistricts: [District]
-    getDistrictById(id: Int!): District
+    getDistrictById(input: getId): District
   }
 
   input createDistrictInput {

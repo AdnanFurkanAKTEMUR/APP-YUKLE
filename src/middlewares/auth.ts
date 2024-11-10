@@ -48,6 +48,7 @@ export const auth = async (header: string, cookie: any): Promise<AuthTokenPayloa
 
     if (token) {
       const verified = jwt.verify(token, process.env.TOKEN_SECRET as jwt.Secret);
+      console.log(verified, "verified");
       const payload = verified as unknown;
       if (isAuthTokenPayload(payload)) {
         payload.from = "mobil";
@@ -63,5 +64,16 @@ export const auth = async (header: string, cookie: any): Promise<AuthTokenPayloa
 };
 
 function isAuthTokenPayload(payload: any): payload is AuthTokenPayload {
-  return typeof payload === "object" && payload !== null && "id" in payload && "companyId" in payload && "name" in payload && "surname" in payload && "email" in payload && "verified" in payload && "role" in payload && "type" in payload;
+  return (
+    typeof payload === "object" &&
+    payload !== null &&
+    "id" in payload &&
+    "company_id" in payload &&
+    "name" in payload &&
+    "surname" in payload &&
+    "email" in payload &&
+    "verified" in payload &&
+    "role" in payload &&
+    "type" in payload
+  );
 }

@@ -11,16 +11,44 @@ const AuthResolver = {
       if (!adminUser) throw new Error("Kullanıcı bulunamadı");
       const isValid = await argon2.verify(adminUser.password, password);
       if (!isValid) throw new Error("Invalid creds.");
-      const token = jwt.sign({ id: adminUser.id, name: adminUser.name, surname: adminUser.surname, email: adminUser.email, verified: adminUser.verified, type: adminUser.type, companyId: 0, role: "" }, process.env.TOKEN_SECRET as jwt.Secret);
+      const token = jwt.sign(
+        {
+          id: adminUser.id,
+          name: adminUser.name,
+          surname: adminUser.surname,
+          email: adminUser.email,
+          verified: adminUser.verified,
+          type: adminUser.type,
+          companyId: 0,
+          role: "",
+        },
+        process.env.TOKEN_SECRET as jwt.Secret
+      );
       return { token, adminUser };
     },
     loginCompanyUserMobile: async (_parent: any, args: any, _context: any, _info: any) => {
       const { email, password } = args.input;
-      const companyUser = await CompanyUser.findOne({ where: { userEmail:email } });
+      const companyUser = await CompanyUser.findOne({
+        where: { userEmail: email },
+        relations: ["company"],
+      });
       if (!companyUser) throw new Error("Kullanıcı bulunamadı");
       const isValid = await argon2.verify(companyUser.userPassword, password);
       if (!isValid) throw new Error("Invalid creds.");
-      const token = jwt.sign({ user_id: companyUser.id, company_id: "", name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET as jwt.Secret);
+
+      const token = jwt.sign(
+        {
+          id: companyUser.id,
+          company_id: companyUser.company.id,
+          name: companyUser.userFirstName,
+          surname: companyUser.userLastName,
+          role: companyUser.userRole,
+          email: companyUser.userEmail,
+          type: companyUser.type,
+          verified: true,
+        },
+        process.env.TOKEN_SECRET as jwt.Secret
+      );
       return { token, companyUser };
     },
   },

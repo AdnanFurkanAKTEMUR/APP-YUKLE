@@ -14,7 +14,7 @@ const CountryType = gql`
 
   type Query {
     getAllCountries: [Country]
-    getCountryById(id: Int!): Country
+    getCountryById(input: getId): Country
   }
 
   input createCountryInput {

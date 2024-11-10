@@ -48,8 +48,8 @@ export class Company extends BaseEntity {
   @Column()
   truckType!: string;
 
-  @Column()
-  taxAdministration: string;
+  @Column({ type: "varchar", nullable: true })
+  taxAdministration?: string | null;
 
   @Column({ type: "varchar", nullable: true })
   taxPlateDoc: string;

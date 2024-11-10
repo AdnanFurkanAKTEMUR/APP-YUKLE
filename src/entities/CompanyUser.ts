@@ -44,7 +44,7 @@ export class CompanyUser extends BaseEntity {
 
   //s3teki yeri
   @Column({ nullable: true, type: "varchar" })
-  userImage?: string;
+  userImage?: string | null;
 
   @ManyToOne(() => Company, (company) => company.companyUsers)
   company: Company;

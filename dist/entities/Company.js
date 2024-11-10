@@ -61,8 +61,8 @@ __decorate([
     __metadata("design:type", String)
 ], Company.prototype, "truckType", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    __metadata("design:type", String)
+    (0, typeorm_1.Column)({ type: "varchar", nullable: true }),
+    __metadata("design:type", Object)
 ], Company.prototype, "taxAdministration", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", nullable: true }),

@@ -32,7 +32,7 @@ const CompanyType = (0, graphql_tag_1.gql) `
 
   type Query {
     getAllCompanies: [Company]
-    getCompanyById(id: Int!): Company
+    getCompanyById(input: getId): Company
   }
 
   input createCompanyInput {
@@ -45,8 +45,6 @@ const CompanyType = (0, graphql_tag_1.gql) `
     companySector: String!
     dailyTrip: String!
     truckType: String!
-    taxAdministration: String!
-    taxPlateDoc: String
     messageConfirm: Boolean!
     kvkkConfirm: Boolean!
     otpVerification: Boolean!
@@ -58,7 +56,7 @@ const CompanyType = (0, graphql_tag_1.gql) `
   }
 
   type Mutation {
-    createCompany(input: createCompanyInput): Company
+    createCompany(input: createCompanyInput): successMsg
   }
 `;
 exports.default = CompanyType;

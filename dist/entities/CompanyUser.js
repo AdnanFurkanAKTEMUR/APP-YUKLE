@@ -56,7 +56,7 @@ __decorate([
 ], CompanyUser.prototype, "userPhone", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true, type: "varchar" }),
-    __metadata("design:type", String)
+    __metadata("design:type", Object)
 ], CompanyUser.prototype, "userImage", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.companyUsers),

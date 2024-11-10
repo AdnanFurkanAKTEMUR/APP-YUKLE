@@ -40,18 +40,39 @@ const AuthResolver = {
             const isValid = await argon2_1.default.verify(adminUser.password, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ id: adminUser.id, name: adminUser.name, surname: adminUser.surname, email: adminUser.email, verified: adminUser.verified, type: adminUser.type, companyId: 0, role: "" }, process.env.TOKEN_SECRET);
+            const token = jwt.sign({
+                id: adminUser.id,
+                name: adminUser.name,
+                surname: adminUser.surname,
+                email: adminUser.email,
+                verified: adminUser.verified,
+                type: adminUser.type,
+                companyId: 0,
+                role: "",
+            }, process.env.TOKEN_SECRET);
             return { token, adminUser };
         },
         loginCompanyUserMobile: async (_parent, args, _context, _info) => {
             const { email, password } = args.input;
-            const companyUser = await CompanyUser_1.CompanyUser.findOne({ where: { userEmail: email } });
+            const companyUser = await CompanyUser_1.CompanyUser.findOne({
+                where: { userEmail: email },
+                relations: ["company"],
+            });
             if (!companyUser)
                 throw new Error("Kullanıcı bulunamadı");
             const isValid = await argon2_1.default.verify(companyUser.userPassword, password);
             if (!isValid)
                 throw new Error("Invalid creds.");
-            const token = jwt.sign({ user_id: companyUser.id, company_id: "", name: companyUser.userFirstName, surname: companyUser.userLastName, role: companyUser.userRole, email: companyUser.userEmail, type: companyUser.type }, process.env.TOKEN_SECRET);
+            const token = jwt.sign({
+                id: companyUser.id,
+                company_id: companyUser.company.id,
+                name: companyUser.userFirstName,
+                surname: companyUser.userLastName,
+                role: companyUser.userRole,
+                email: companyUser.userEmail,
+                type: companyUser.type,
+                verified: true,
+            }, process.env.TOKEN_SECRET);
             return { token, companyUser };
         },
     },

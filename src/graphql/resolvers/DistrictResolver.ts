@@ -4,11 +4,19 @@ import { Context } from "@genType/genType";
 
 const DistrictResolvers = {
   Query: {
-    getDistrict: async (_parent: any, args: any, _context: Context, _info: any) => {
+    getDistrictById: async (_parent: any, args: any, _context: Context, _info: any) => {
       const { id } = args.input;
       try {
         const district = await District.find({ where: { id } });
         return district;
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+    getAllDistricts: async (_parent: any, _args: any, _context: Context, _info: any) => {
+      try {
+        const districts = await District.find();
+        return districts;
       } catch (e) {
         throw new Error(e);
       }

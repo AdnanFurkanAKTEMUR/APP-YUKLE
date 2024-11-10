@@ -15,7 +15,7 @@ const CountryType = (0, graphql_tag_1.gql) `
 
   type Query {
     getAllCountries: [Country]
-    getCountryById(id: Int!): Country
+    getCountryById(input: getId): Country
   }
 
   input createCountryInput {

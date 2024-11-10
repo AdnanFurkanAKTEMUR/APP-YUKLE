@@ -15,7 +15,7 @@ const CityType = gql`
 
   type Query {
     getAllCities: [City]
-    getCityById(id: Int!): City
+    getCityById(input: getId): City
   }
 
   input createCityInput {

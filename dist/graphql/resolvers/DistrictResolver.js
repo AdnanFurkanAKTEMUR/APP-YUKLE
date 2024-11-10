@@ -4,11 +4,20 @@ const City_1 = require("../../entities/City");
 const District_1 = require("../../entities/District");
 const DistrictResolvers = {
     Query: {
-        getDistrict: async (_parent, args, _context, _info) => {
+        getDistrictById: async (_parent, args, _context, _info) => {
             const { id } = args.input;
             try {
                 const district = await District_1.District.find({ where: { id } });
                 return district;
+            }
+            catch (e) {
+                throw new Error(e);
+            }
+        },
+        getAllDistricts: async (_parent, _args, _context, _info) => {
+            try {
+                const districts = await District_1.District.find();
+                return districts;
             }
             catch (e) {
                 throw new Error(e);
