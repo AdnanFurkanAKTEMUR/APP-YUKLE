@@ -15,6 +15,7 @@ import { CompanyUser } from "./CompanyUser";
 import { Country } from "./Country";
 import { City } from "./City";
 import { District } from "./District";
+import { Offer } from "./Offer";
 
 @Entity()
 export class Company extends BaseEntity {
@@ -88,6 +89,9 @@ export class Company extends BaseEntity {
 
   @OneToMany(() => CompanyUser, (companyUser) => companyUser.company)
   companyUsers: CompanyUser[];
+
+  @OneToMany(() => Offer, (offer) => offer.company)
+  offers: Offer[];
 
   @CreateDateColumn()
   createdAt: Date;

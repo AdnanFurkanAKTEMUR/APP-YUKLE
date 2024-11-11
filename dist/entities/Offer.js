@@ -13,6 +13,7 @@ exports.Offer = void 0;
 const typeorm_1 = require("typeorm");
 const CompanyUser_1 = require("./CompanyUser");
 const Address_1 = require("./Address");
+const Company_1 = require("./Company");
 let Offer = class Offer extends typeorm_1.BaseEntity {
 };
 exports.Offer = Offer;
@@ -96,6 +97,10 @@ __decorate([
     (0, typeorm_1.ManyToOne)(() => CompanyUser_1.CompanyUser, (companyUser) => companyUser.updatedOffers, { nullable: true }),
     __metadata("design:type", Object)
 ], Offer.prototype, "updatedCompanyUser", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => Company_1.Company, (company) => company.offers),
+    __metadata("design:type", Company_1.Company)
+], Offer.prototype, "company", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)

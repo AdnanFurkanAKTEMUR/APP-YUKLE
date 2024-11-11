@@ -9,6 +9,7 @@ import {
 } from "typeorm";
 import { CompanyUser } from "./CompanyUser";
 import { Address } from "./Address";
+import { Company } from "./Company";
 
 @Entity()
 export class Offer extends BaseEntity {
@@ -71,6 +72,9 @@ export class Offer extends BaseEntity {
 
   @ManyToOne(() => CompanyUser, (companyUser) => companyUser.updatedOffers, { nullable: true })
   updatedCompanyUser?: CompanyUser | null;
+
+  @ManyToOne(() => Company, (company) => company.offers)
+  company: Company;
 
   //accepted trucker user gelecek
 
