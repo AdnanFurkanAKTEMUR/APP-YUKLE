@@ -21,6 +21,7 @@ import CountryResolver from "./resolvers/CountryResolver";
 import CityResolver from "./resolvers/CityResolver";
 import DistrictResolvers from "./resolvers/DistrictResolver";
 import CompanyUserResolver from "./resolvers/CompanyUserResolver";
+import AddressResolver from "./resolvers/AddressResolver";
 
 const schema = makeExecutableSchema({
   typeDefs: [
@@ -45,6 +46,7 @@ const schema = makeExecutableSchema({
     CityResolver,
     DistrictResolvers,
     CompanyUserResolver,
+    AddressResolver,
   ],
 });
 

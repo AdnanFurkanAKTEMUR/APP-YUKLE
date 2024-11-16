@@ -32,7 +32,7 @@ const AddressType = gql`
 
   type Query {
     getAllAddress: [Address]
-    getAddress(input: getId): Address
+    getAllCompanyAddress: [Address]
   }
 
   type Mutation {

@@ -25,6 +25,7 @@ const CountryResolver_1 = __importDefault(require("./resolvers/CountryResolver")
 const CityResolver_1 = __importDefault(require("./resolvers/CityResolver"));
 const DistrictResolver_1 = __importDefault(require("./resolvers/DistrictResolver"));
 const CompanyUserResolver_1 = __importDefault(require("./resolvers/CompanyUserResolver"));
+const AddressResolver_1 = __importDefault(require("./resolvers/AddressResolver"));
 const schema = (0, schema_1.makeExecutableSchema)({
     typeDefs: [
         AcceptedOfferType_1.default,
@@ -48,6 +49,7 @@ const schema = (0, schema_1.makeExecutableSchema)({
         CityResolver_1.default,
         DistrictResolver_1.default,
         CompanyUserResolver_1.default,
+        AddressResolver_1.default,
     ],
 });
 const shieldedSchema = (0, graphql_middleware_1.applyMiddleware)(schema, graphqlShield_1.permissions);
