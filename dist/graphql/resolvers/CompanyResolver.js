@@ -21,7 +21,7 @@ const CompanyResolver = {
             throw new Error("Kayıt bulunamadı!");
         },
         getAllCompanies: async (_parent, _args, context, _info) => {
-            const user = context.user;
+            const user = context === null || context === void 0 ? void 0 : context.user;
             if (!user || user.type != 0)
                 throw new Error("Yetkisiz işlem!");
             try {
