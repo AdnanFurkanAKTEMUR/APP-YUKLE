@@ -1,7 +1,7 @@
 import { Company } from "@entities/Company";
 import { CompanyUser } from "@entities/CompanyUser";
 import { Context } from "@genType/genType";
-import { hash } from "argon2";
+import { hash, verify } from "argon2";
 
 const CompanyUserResolver = {
   Query: {
@@ -89,6 +89,25 @@ const CompanyUserResolver = {
         companyUser.company = company;
         await companyUser.save();
         return companyUser;
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+    companyUserLogin: async (_parent: any, args: any, _context: Context, _info: any) => {
+      const { email, password } = args.input;
+      if (!email || !password) throw new Error("Hata: Eksik bilgi girdiniz!");
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let isValidEmail = emailPattern.test(email);
+      if (!isValidEmail) throw new Error("Hata: Email pattern");
+      try {
+        const user = await CompanyUser.findOne({
+          where: { userEmail: email },
+          relations: ["company"],
+        });
+        if (!user) throw new Error("Hata: Email veya şifre yanlış!");
+        const isValidPass = await verify(user.userPassword, password);
+        if (!isValidPass) throw new Error("Hata: Email veya şifre yanlış!");
+        return user;
       } catch (e) {
         throw new Error(e);
       }

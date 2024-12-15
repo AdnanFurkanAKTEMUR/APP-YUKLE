@@ -51,9 +51,15 @@ const CompanyUserType = (0, graphql_tag_1.gql) `
     companyId: Int
   }
 
+  input companyUserLoginInput {
+    email: String!
+    password: String!
+  }
+
   type Mutation {
     createCompanyUser(input: createCompanyUserInput): CompanyUser
     createCompanyUserByAdmin(input: createCompanyUserByAdminInput): CompanyUser
+    companyUserLogin(input: companyUserLoginInput): CompanyUser
   }
 `;
 exports.default = CompanyUserType;

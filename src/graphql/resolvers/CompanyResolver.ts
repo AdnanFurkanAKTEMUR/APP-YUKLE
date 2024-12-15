@@ -1,8 +1,11 @@
 import { City } from "@entities/City";
 import { Company } from "@entities/Company";
+import { CompanyUser } from "@entities/CompanyUser";
 import { Country } from "@entities/Country";
 import { District } from "@entities/District";
 import { Context } from "@genType/genType";
+import generateRandomPassword from "@helpers/generateRandomPass";
+import { hash } from "argon2";
 
 const CompanyResolver = {
   Query: {
@@ -82,6 +85,19 @@ const CompanyResolver = {
         if (!district) throw new Error("Hata:Semt/Mahalle bulunamadı!");
         createdCompany.district = district;
         await createdCompany.save();
+        const pass = generateRandomPassword();
+        console.log(pass);
+        const hashedPass = await hash("123");
+        const createdCompanyRootUser = CompanyUser.create({
+          userFirstName: companyName,
+          userLastName: companyName,
+          userEmail: companyMail,
+          userRole: "superadmin",
+          userPassword: hashedPass,
+          userPhone: companyPhoneNumber,
+          company: createdCompany,
+        });
+        await createdCompanyRootUser.save();
         return { success: true, msg: "Kayıt Başarılı!" };
       } catch (e) {
         console.log(e);

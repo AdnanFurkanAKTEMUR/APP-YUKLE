@@ -12,6 +12,7 @@ const cors_1 = __importDefault(require("cors"));
 const schema_1 = __importDefault(require("./graphql/schema"));
 const typeorm_config_1 = __importDefault(require("./typeorm.config"));
 const auth_1 = require("./middlewares/auth");
+const graphql_depth_limit_1 = __importDefault(require("graphql-depth-limit"));
 async function startServer() {
     const SqlConnection = await typeorm_config_1.default.initialize();
     const app = (0, express_1.default)();
@@ -22,6 +23,7 @@ async function startServer() {
     };
     const server = new server_1.ApolloServer({
         schema: schema_1.default,
+        validationRules: [(0, graphql_depth_limit_1.default)(2)],
         plugins: [(0, drainHttpServer_1.ApolloServerPluginDrainHttpServer)({ httpServer })],
     });
     await server.start();

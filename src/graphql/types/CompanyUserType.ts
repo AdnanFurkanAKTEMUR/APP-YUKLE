@@ -50,9 +50,15 @@ const CompanyUserType = gql`
     companyId: Int
   }
 
+  input companyUserLoginInput {
+    email: String!
+    password: String!
+  }
+
   type Mutation {
     createCompanyUser(input: createCompanyUserInput): CompanyUser
     createCompanyUserByAdmin(input: createCompanyUserByAdminInput): CompanyUser
+    companyUserLogin(input: companyUserLoginInput): CompanyUser
   }
 `;
 

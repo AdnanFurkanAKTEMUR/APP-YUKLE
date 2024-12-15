@@ -1,9 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const City_1 = require("../../entities/City");
 const Company_1 = require("../../entities/Company");
+const CompanyUser_1 = require("../../entities/CompanyUser");
 const Country_1 = require("../../entities/Country");
 const District_1 = require("../../entities/District");
+const generateRandomPass_1 = __importDefault(require("../../helpers/generateRandomPass"));
+const argon2_1 = require("argon2");
 const CompanyResolver = {
     Query: {
         getCompanyById: async (_parent, args, context, _info) => {
@@ -71,6 +77,19 @@ const CompanyResolver = {
                     throw new Error("Hata:Semt/Mahalle bulunamadı!");
                 createdCompany.district = district;
                 await createdCompany.save();
+                const pass = (0, generateRandomPass_1.default)();
+                console.log(pass);
+                const hashedPass = await (0, argon2_1.hash)("123");
+                const createdCompanyRootUser = CompanyUser_1.CompanyUser.create({
+                    userFirstName: companyName,
+                    userLastName: companyName,
+                    userEmail: companyMail,
+                    userRole: "superadmin",
+                    userPassword: hashedPass,
+                    userPhone: companyPhoneNumber,
+                    company: createdCompany,
+                });
+                await createdCompanyRootUser.save();
                 return { success: true, msg: "Kayıt Başarılı!" };
             }
             catch (e) {

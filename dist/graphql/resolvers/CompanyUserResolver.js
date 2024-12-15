@@ -72,6 +72,30 @@ const CompanyUserResolver = {
                 throw new Error(e);
             }
         },
+        companyUserLogin: async (_parent, args, _context, _info) => {
+            const { email, password } = args.input;
+            if (!email || !password)
+                throw new Error("Hata: Eksik bilgi girdiniz!");
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let isValidEmail = emailPattern.test(email);
+            if (!isValidEmail)
+                throw new Error("Hata: Email pattern");
+            try {
+                const user = await CompanyUser_1.CompanyUser.findOne({
+                    where: { userEmail: email },
+                    relations: ["company"],
+                });
+                if (!user)
+                    throw new Error("Hata: Email veya şifre yanlış!");
+                const isValidPass = await (0, argon2_1.verify)(user.userPassword, password);
+                if (!isValidPass)
+                    throw new Error("Hata: Email veya şifre yanlış!");
+                return user;
+            }
+            catch (e) {
+                throw new Error(e);
+            }
+        },
         createCompanyUserByAdmin: async (_parent, args, _context, _info) => {
             const { userFirstName, userLastName, userEmail, userRole, userPassword, userPhone, userImage, companyId, } = args.input;
             try {

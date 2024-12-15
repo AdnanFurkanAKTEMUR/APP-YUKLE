@@ -8,6 +8,7 @@ import cors from "cors";
 import shieldedSchema from "./graphql/schema";
 import typeormConfig from "./typeorm.config";
 import { auth } from "./middlewares/auth";
+import depthLimit from "graphql-depth-limit";
 //import * as jwt from "jsonwebtoken";
 
 async function startServer() {
@@ -20,6 +21,7 @@ async function startServer() {
   };
   const server = new ApolloServer({
     schema: shieldedSchema,
+    validationRules: [depthLimit(2)], // Derinlik sınırı
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });
   await server.start();
